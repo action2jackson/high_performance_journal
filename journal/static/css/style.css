@@ -1,0 +1,291 @@
+body {
+	font-family: 'Poppins', sans-serif;
+
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+a {
+	cursor: pointer;
+}
+
+/* HEADER */
+header {
+	background: linear-gradient(#D1913C, #FFD194);
+	width: 100%;
+}
+
+.inner_header {
+	display: flex;
+	height: 10vh;
+	width: 70%;
+	margin: auto;
+	align-items: center;
+}
+
+.logo_container, .navigation_container {
+	display: flex;
+}
+
+.logo_container {
+	flex: 2;
+}
+
+.logo_container a {
+	color: white;
+	margin: 5px;
+	font-size: 30px;
+}
+
+.logo {
+	color: white;
+	font-size: 30px;
+	font-weight: 500;
+	margin: 5px;
+}
+
+nav {
+	flex: 1;
+}
+
+.navigation_container {
+	justify-content: space-around;
+	list-style: none;
+}
+
+.nav-link {
+	color: white;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.nav-link:hover {
+	color: #FFD194;
+}
+/* HEADER */
+
+/* MOOD CHECK */
+.after-header {
+	background: linear-gradient(#FFD194, #d6ae7b);
+	height: 90vh;
+}
+
+.feeling_container {
+	padding-top: 5%;
+	margin-bottom: 5%;
+}
+
+.feeling {
+	text-decoration: underline;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.emoji {
+	display: flex;
+	justify-content: center;
+}
+
+.emoji a {
+	padding: 1%;
+}
+
+#happy:hover {
+	color: yellow;
+}
+#meh:hover {
+	color: lightslategrey;
+}
+#sad:hover {
+	color: blue;
+}
+/* MOOD CHECK */
+
+/* BUTTON */
+.button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 80%;
+	margin: auto;
+}
+
+.button a {
+    background: linear-gradient(#4ca2cd,#FFD194);
+    margin: 2vh;
+    padding: 75px;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #FFF;
+    user-select: none;
+	text-align: center;
+	word-spacing: 9999999px; 
+	transition: all 0.5s ease 0s;
+}
+
+.button a:hover {
+	color: #404040 !important;
+	font-weight: 700 !important;
+	letter-spacing: 3px;
+	background: none;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.3s ease 0s;
+}
+/* BUTTON */
+
+.goal_container {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	cursor: pointer;
+}
+
+.ninety-days {
+	font-size: 20px;
+	align-items: center;
+}
+
+.goal_container:hover {
+	color: #D1913C;
+}
+
+@media screen and (max-width: 1300px) {
+
+	.line {
+		width: 30px;
+		height: 3px;
+		background: white;
+		margin: 5px;
+	}
+
+	nav {
+		position: relative;
+	}
+
+	.hamburger {
+		position: absolute;
+		cursor: pointer;
+		right: 0;
+		top: 50%;
+		transform: translate(-5%, -50%);
+	}
+
+	.navigation_container {
+		position: absolute;
+		opacity: 0;
+		margin-top: 10%;
+		height: 10vh;
+		width: 100%;
+		flex-direction: column;
+		transition: all 1s ease-in;
+		pointer-events: none;
+		text-align: center;
+		border-radius: 100px;
+	}
+
+	.nav-link:hover {
+		color: #D1913C;
+	}
+
+	.navigation_container.open {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.button {
+		width: 70%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.button a {
+		font-size: 30px;
+		padding: 30px;
+		word-spacing: 0;
+	}
+
+	.ninety-days {
+		font-size: 30px;
+	}
+
+	.goal_container a {
+		font-size: 45px;
+	}
+
+	.feeling {
+		font-size: 35px;
+	}
+
+	.feeling_container a {
+		font-size: 45px;
+		padding: 20px;
+	}
+}
+
+@media screen and (max-width: 725px) {
+	.logo_container a {
+		font-size: 13px;
+	}
+
+	.nav-link {
+		font-size: 15px;
+	}
+
+	.goal_container a {
+		font-size: 30px;
+	}
+}
+
+@media screen and (max-width: 414px) {
+
+	.navigation_container {
+		margin-top: 15px;
+		justify-content: center;
+	}
+
+	.nav-link {
+		font-size: 15px;
+		float: right;
+	}
+
+	.logo_container h4 a {
+		font-size: 12px;
+	}
+
+	.feeling {
+		font-size: 10px;
+	}
+
+	.feeling_container a {
+		font-size: 20px;
+		padding: 7px;
+	}
+
+	.feeling_container {
+		padding-top: 40px;
+	}
+
+	.button a {
+		font-size: 15px;
+		padding: 18px;
+	}
+
+	.goal_container a {
+		font-size: 30px;
+	}
+
+	.ninety-days {
+		font-size: 15px;
+	}
+}

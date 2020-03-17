@@ -1,16 +1,42 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}High Performance Journal{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/38b200e1c8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <header>
+        <div class="inner_header">
+            <div class="logo_container">
+                <a class="fas fa-journal-whills"></a>
+                <h4><a class="logo">HIGH PERFORMANCE JOURNAL</a></h4>
+            </div>
+            <nav>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <ul class="navigation_container">
+                    <li><a class="nav-link" href="#">Collection</a></li>
+                    <li><a class="nav-link" href="#">Sign-up</a></li>
+                    <li><a class="nav-link" href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    {% block content %}
-    {% endblock %}
-
-  </body>
+    <div class="content-container">
+        {% block content %}
+        {% endblock %}  
+    </div>
+    <script src="{% static 'js/javascript.js' %}"></script>
 </body>
-</html>
+</html> 
