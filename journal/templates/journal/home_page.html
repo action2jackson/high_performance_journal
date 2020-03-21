@@ -12,17 +12,28 @@
             <a class="far fa fa-sad-tear fa-2x" id="sad"></a>
         </div>
     </div>
-    <div class="button">
-        <a>Dreams</a>
-        <a>Daily Journal</a>
-        <a>Weekly Journal</a>
-        <a>Monthly Journal</a>
+    <div class="button_container">
+        <div class="button">
+            <a class="btnlink">Dreams</a>
+            <a class="btnlink">Daily Journal</a>
+            <a class="btnlink">Weekly Journal</a>
+            <a class="btnlink">Monthly Journal</a>
+        </div>
     </div>
     <div class="goal_container">
-        <a><h4 class="ninety-days">90 DAY GOALS</h4></a>
+        <a><h3 class="ninety-days">90 DAY GOALS</h3></a>
         <a class="fas fa fa-angle-double-down fa-2x" id="goals"><span></a>
     </div>
 </section>
-
+<!--
+<svg>
+    <filter id="wavy">
+        <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="2">
+            <animate attributeName="baseFrequency" dur="0s" values="0.05;0.02;0.02" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="5"/>
+    </filter>
+</svg>
+-->
 
 {% endblock %}

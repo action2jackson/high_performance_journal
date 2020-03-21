@@ -12,6 +12,33 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="clock">
+        <div class="twelve"></div>
+        <div class="three"></div>
+        <div class="nine"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+
+    <div class="header">
+        <div class="inner_header">
+            <div class="logo_container">
+                <h4><a class="fas fa-journal-whills" id="home_page" href="#">&nbsp;HIGH PERFORMANCE JOURNAL</a></h4>
+            </div>
+            <ul class="navigation_container">
+                <li><a class="nav-link" href="#">Collection</a></li>
+                <li><a class="nav-link" href="#">Sign-up</a></li>
+                <li><a class="nav-link" href="#">Login</a></li>
+            </ul>
+            <!--
+            <button class="sidebar">
+                <span></span>
+            </button>
+            -->
+        </div>
+    </div>
+<!--
     <header>
         <div class="inner_header">
             <div class="logo_container">
@@ -32,6 +59,7 @@
             </nav>
         </div>
     </header>
+-->
 
     <div class="content-container">
         {% block content %}
