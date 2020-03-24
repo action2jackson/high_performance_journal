@@ -1,6 +1,9 @@
+/* GENERAL STYLES */
 body {
 	font-family: 'Poppins', sans-serif;
+	/* temporary */
 	overflow: hidden;
+	/* temporary */
 }
 
 * {
@@ -12,7 +15,9 @@ body {
 a {
 	cursor: pointer;
 }
+/* GENERAL STYLES */
 
+/* PAGE BACKGROUND */
 @keyframes move-twink-back {
     from {
 		background-position:0 0;
@@ -119,15 +124,18 @@ a {
 	animation:move-clouds-back 100s linear infinite;
 	opacity: 0.3;
 }
+/* PAGE BACKGROUND */
 
-@keyframes moonRotate {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+
+/*
+.dreams {
+	position: absolute;
+	background: url('https://i.pinimg.com/236x/f6/75/a8/f675a8b6902fc59508ecd1cb9f159c8f--star-foot-tattoos-star-tattoos-for-men.jpg');
+	background-size: cover;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
 }
+*/
 
 /* HEADER */ 
 .header {
@@ -136,6 +144,15 @@ a {
 	width: 100%;
 	height: 10vh;
 }
+/*
+.sticky {
+	position: fixed;
+ 	right: 0; 
+	left: 0;
+	width: 100%;
+ 	z-index: 999;
+}
+*/
 
 .inner_header {
 	display: flex;
@@ -176,6 +193,7 @@ a {
 	transform: rotate(360deg);
 }
 
+/* Mobile burger styles */
 .burger {
 	cursor: pointer;
 }
@@ -189,6 +207,7 @@ a {
 	transition: 0.3s ease;
 	display: none;
 }
+/* Mobile burger styles */
 
 /* HEADER */
 
@@ -237,8 +256,7 @@ a {
 }
 /* MOOD CHECK */
 
-/* BUTTON */
-
+/* MAIN BUTTONS */
 .button_container {
 	display: flex;
 	justify-content: center;
@@ -279,9 +297,6 @@ a {
 	text-shadow: 3px 3px #000, 4px 4px #000, 5px 5px #000, 6px 6px #000;
 }
 
-
-/* BUTTON */
-
 .goal_container {
 	display: flex;
 	flex-direction: column;
@@ -294,6 +309,8 @@ a {
 .goal_container:hover {
 	font-size: 2rem;
 }
+/* MAIN BUTTONS */
+
 
 @media screen and (max-width: 1350px) {
 
@@ -301,6 +318,7 @@ a {
 		overflow-x: hidden;
 	}
 
+	/* MOBILE HEADER */
 	.burger div {
 		display: block;
 	}
@@ -340,6 +358,7 @@ a {
 		}
 	}
 
+	/* Hamburger > X */
 	.toggle .line1 {
 		transform: rotate(-45deg) translate(-5px, 6px);
 	}
@@ -349,6 +368,7 @@ a {
 	.toggle .line3 {
 		transform: rotate(45deg) translate(-5px, -6px);
 	}
+	/* MOBILE HEADER */
 
 	.feeling {
 		font-size: 1.1rem;
@@ -363,6 +383,7 @@ a {
 		width: 70%;
 		margin: auto;
 		display: flex;
+		/* Switch main buttons to column stack */
 		flex-direction: column;
 	}
 
@@ -384,6 +405,7 @@ a {
 	}
 }
 
+/* Font-size changes */
 @media screen and (max-width: 1025px) {
 	.btnlink {
 		font-size: 2.6rem;
@@ -457,3 +479,4 @@ a {
 		font-size: 0.9rem;
 	}
 }
+/* Font-size changes */
