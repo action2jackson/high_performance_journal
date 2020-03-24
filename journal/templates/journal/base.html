@@ -11,58 +11,27 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="clouds"></div>
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <div class="clouds"></div>
 
-    <div class="clock">
-        <div class="twelve"></div>
-        <div class="three"></div>
-        <div class="nine"></div>
-        <div class="hour"></div>
-        <div class="minute"></div>
-        <div class="second"></div>
-    </div>
-
-    <div class="header">
+    <div class="header"> <!--id="myHeader"-->
         <div class="inner_header">
             <div class="logo_container">
                 <h4><a class="fas fa-journal-whills" id="home_page" href="#">&nbsp;HIGH PERFORMANCE JOURNAL</a></h4>
+            </div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
             <ul class="navigation_container">
                 <li><a class="nav-link" href="#">Collection</a></li>
                 <li><a class="nav-link" href="#">Sign-up</a></li>
                 <li><a class="nav-link" href="#">Login</a></li>
             </ul>
-            <!--
-            <button class="sidebar">
-                <span></span>
-            </button>
-            -->
         </div>
     </div>
-<!--
-    <header>
-        <div class="inner_header">
-            <div class="logo_container">
-                <a class="fas fa-journal-whills"></a>
-                <h4><a class="logo">HIGH PERFORMANCE JOURNAL</a></h4>
-            </div>
-            <nav>
-                <div class="hamburger">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-                <ul class="navigation_container">
-                    <li><a class="nav-link" href="#">Collection</a></li>
-                    <li><a class="nav-link" href="#">Sign-up</a></li>
-                    <li><a class="nav-link" href="#">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
--->
 
     <div class="content-container">
         {% block content %}

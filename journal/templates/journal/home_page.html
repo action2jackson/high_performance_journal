@@ -3,7 +3,7 @@
 {% block title %}Journal{% endblock %}
 {% block content %}
 
-<section class="after-header">
+<section class="after-header" id="AF">
     <div class="feeling_container">
         <h3 class="feeling">How are you feeling today?</h3>
         <div class="emoji">
@@ -21,21 +21,9 @@
         </div>
     </div>
     <div class="goal_container">
-        <div class="goals">
-            <a><h3 class="ninety-days">90 DAY GOALS</h3></a>
-            <a class="fas fa fa-angle-double-down fa-2x" id="goals"><span></a>
-        </div>
+        <a><h3 class="ninety-days">90 DAY GOALS</h3></a>
+        <a class="fas fa fa-angle-double-down fa-2x" id="goals"><span></a>
     </div>
 </section>
-<!--
-<svg>
-    <filter id="wavy">
-        <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="2">
-            <animate attributeName="baseFrequency" dur="0s" values="0.05;0.02;0.02" repeatCount="indefinite"/>
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="5"/>
-    </filter>
-</svg>
--->
 
 {% endblock %}

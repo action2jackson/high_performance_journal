@@ -1,6 +1,6 @@
 body {
 	font-family: 'Poppins', sans-serif;
-	/* background-image: url("https://images-na.ssl-images-amazon.com/images/I/A1rL6udG2dL._AC_SY450_.jpg"); */
+	overflow: hidden;
 }
 
 * {
@@ -79,151 +79,55 @@ a {
 	}
 }
 
-.stars, .twinkling, .clouds {
+
+.stars, .twinkling {
 	position: fixed;
-	width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
+	width: 100%;
+	height: 100%;
 	display: block;
 }
 
+.clouds {
+	position: absolute;
+	height: 50%;
+	top: 0;
+	width: 100%;
+}
+
 .stars {
-	background: url(https://images-na.ssl-images-amazon.com/images/I/A1rL6udG2dL._AC_SY450_.jpg) repeat top center;
-  	z-index: -3;
+	background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+	z-index: -3;
 }
 
 .twinkling {
-	/* http://www.script-tutorials.com/demos/360/images/twinkling.png */
-	background:transparent url(https://images-na.ssl-images-amazon.com/images/I/A1rL6udG2dL._AC_SY450_.jpg) repeat top center;
+	background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
 	z-index: -2; 
 	-moz-animation:move-twink-back 200s linear infinite;
 	-ms-animation:move-twink-back 200s linear infinite;
 	-o-animation:move-twink-back 200s linear infinite;
 	-webkit-animation:move-twink-back 200s linear infinite;
 	animation:move-twink-back 200s linear infinite;
-	animation:tick 200s linear infinite;
 }
 
-.clouds{
+.clouds {
 	background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-	z-index: -1;
-	-moz-animation:move-clouds-back 200s linear infinite;
-	-ms-animation:move-clouds-back 200s linear infinite;
-	-o-animation:move-clouds-back 200s linear infinite;
-	-webkit-animation:move-clouds-back 200s linear infinite;
-	animation:move-clouds-back 200s linear infinite;
+    z-index: -1;
+	-moz-animation:move-clouds-back 100s linear infinite;
+	-ms-animation:move-clouds-back 100s linear infinite;
+	-o-animation:move-clouds-back 100s linear infinite;
+	-webkit-animation:move-clouds-back 100s linear infinite;
+	animation:move-clouds-back 100s linear infinite;
+	opacity: 0.3;
 }
 
-/*
-.dreams {
-	position: absolute;
-	background: url('https://i.pinimg.com/236x/f6/75/a8/f675a8b6902fc59508ecd1cb9f159c8f--star-foot-tattoos-star-tattoos-for-men.jpg');
-	background-size: cover;
-	pointer-events: none;
-	transform: translate(-50%, -50%);
-}
-*/
-
-/* BACKGROUND CLOCK */
-.clock {
-    box-sizing: border-box;
-    margin: 0 auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%; 
-	opacity: 0.5;
-	z-index: 0;
-}
-
-.twelve,
-.three,
-.six,
-.nine {
-    background: #fff;
-	position: absolute;
-}
-
-.twelve {
-    height: 10px;
-    width: 4px;
-}
-
-.three,
-.nine {
-    height: 4px;
-    width: 10px;
-}
-
-.twelve {
-    left: 50%;
-    top: -1px;
-}
-
-.three {
-    right: -1px;
-    top: 50%;
-}
-
-.nine {
-    left: -1px;
-    top: 50%;
-}
-
-.hour {
-	border-radius: 30px;
-    height: 45%;
-    width: 4px;
-    background: #166288;
-    position: absolute;
-    left: 50%;
-    top: 5%;
-    animation: tick 3600s infinite linear;
-	-webkit-animation: tick 3600s infinite linear;
-}
-
-.minute {
-	border-radius: 30px;
-    height: 40%;
-    width: 4px;
-    background: #3a88af;
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    animation: tick 60s infinite linear;
-	-webkit-animation: tick 60s infinite linear;
-}
-
-.second {
-	border-radius: 30px;
-    height: 35%;
-    width: 4px;
-    background: rgb(255, 0, 0);
-    position: absolute;
-    left: 50%;
-    top: 15%;
-    animation: tick 1s infinite linear;
-	-webkit-animation: tick 1s infinite linear;
-}
-
-.hour, .minute, .second {
-    transform-origin: 2px 100%;
-    -webkit-transform-origin: 2px 100%;
-}
-
-@keyframes tick {
+@keyframes moonRotate {
+	from {
+		transform: rotate(0deg);
+	}
 	to {
 		transform: rotate(360deg);
 	}
 }
-@-webkit-keyframes tick {
-	to {
-		-webkit-transform: rotate(360deg);
-	}
-}
-/* BACKGROUND CLOCK */
 
 /* HEADER */ 
 .header {
@@ -268,8 +172,24 @@ a {
 }
 
 .nav-link:hover {
-	color: #FFD194;
+	color: rgba(46, 229, 157, 0.8);
+	transform: rotate(360deg);
 }
+
+.burger {
+	cursor: pointer;
+}
+
+.burger div {
+	width: 25px;
+	height: 3px;
+	background-color: #fff;
+	margin: 5px;
+	transform: translate(-5%, -50%);
+	transition: 0.3s ease;
+	display: none;
+}
+
 /* HEADER */
 
 
@@ -305,12 +225,15 @@ a {
 
 #happy:hover {
 	color: yellow;
+	box-shadow: 0px 5px 5px yellow;
 }
 #meh:hover {
 	color: grey;
+	box-shadow: 0px 5px 5px grey;
 }
 #sad:hover {
 	color: blue;
+	box-shadow: 0px 5px 5px blue;
 }
 /* MOOD CHECK */
 
@@ -342,6 +265,8 @@ a {
     color: #FFF;
 	user-select: none;
 	transition: all 0.5s ease 0s;
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	word-wrap: 1px;
 }
 
 .btnlink:hover {
@@ -350,6 +275,8 @@ a {
 	letter-spacing: 0.2rem;
 	transition: all 0.3s ease 0s;
 	background: url(https://images.theconversation.com/files/222720/original/file-20180612-52455-d6et0u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip);
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.8);
+	text-shadow: 3px 3px #000, 4px 4px #000, 5px 5px #000, 6px 6px #000;
 }
 
 
@@ -367,48 +294,69 @@ a {
 .goal_container:hover {
 	font-size: 2rem;
 }
-/*
-@media screen and (max-width: 1300px) {
 
-	.line {
-		width: 30px;
-		height: 3px;
-		background: white;
-		margin: 5px;
+@media screen and (max-width: 1350px) {
+
+	body {
+		overflow-x: hidden;
 	}
 
-	nav {
-		position: relative;
-	}
-
-	.hamburger {
-		position: absolute;
-		cursor: pointer;
-		right: 0;
-		top: 50%;
-		transform: translate(-5%, -50%);
+	.burger div {
+		display: block;
 	}
 
 	.navigation_container {
 		position: absolute;
-		opacity: 0;
-		margin-top: 10%;
-		height: 10vh;
+		background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+		right: 0;
+		height: 92vh;
 		width: 100%;
+		z-index: 5;
+		top: 8vh;
+		display: flex;
 		flex-direction: column;
-		transition: all 1s ease-in;
-		pointer-events: none;
-		text-align: center;
-		border-radius: 100px;
+		align-items: center;
+		transform: translateX(100%);
+		transition: transform 0.5s ease-in;
 	}
 
-	.nav-link:hover {
-		color: #D1913C;
+	.nav-link {
+		opacity: 0;
+		font-size: 2rem;
 	}
 
-	.navigation_container.open {
-		opacity: 1;
-		pointer-events: all;
+	.header-active {
+		transform: translateX(0%);
+	}
+
+	@keyframes headerFade {
+		from {
+			opacity: 0;
+			transform: translateX(50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0px);
+		}
+	}
+
+	.toggle .line1 {
+		transform: rotate(-45deg) translate(-5px, 6px);
+	}
+	.toggle .line2 {
+		opacity: 0;
+	}
+	.toggle .line3 {
+		transform: rotate(45deg) translate(-5px, -6px);
+	}
+
+	.feeling {
+		font-size: 1.1rem;
+	}
+
+	.feeling_container {
+		font-size: 0.8rem;
+		padding: 20px;
 	}
 
 	.button {
@@ -418,84 +366,94 @@ a {
 		flex-direction: column;
 	}
 
-	.button a {
-		font-size: 30px;
-		padding: 30px;
+	.btnlink {
+		font-size: 2rem;
+		padding: 1em;
 		word-spacing: 0;
+		background: url(https://images.theconversation.com/files/222720/original/file-20180612-52455-d6et0u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip);
+		transition: all 0.3s ease-in 0s;
 	}
 
+	.btnlink:hover {
+		background: url(https://cdn.mos.cms.futurecdn.net/paWPwF85Vkcs8YUuyvA3YM-1200-80.jpg);
+		background-size: cover;
+	}
+
+	#goals, .ninety-days {
+		font-size: 1.2rem;
+	}
+}
+
+@media screen and (max-width: 1025px) {
+	.btnlink {
+		font-size: 2.6rem;
+	}
+	.feeling {
+		font-size: 2rem;
+	}
+	.emoji a {
+		font-size: 2.5rem;
+	}
 	.ninety-days {
-		font-size: 30px;
+		font-size: 2rem;
+	}
+	#goals {
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (max-width: 769px) {
+	#home_page {
+		font-size: 1.4rem;
 	}
 
-	.goal_container a {
-		font-size: 45px;
+	.button {
+		width: 100%;
+	}
+
+	.btnlink {
+		font-size: 1.75rem;
 	}
 
 	.feeling {
-		font-size: 35px;
+		font-size: 0.9rem;
 	}
 
-	.feeling_container a {
-		font-size: 45px;
-		padding: 20px;
-	}
-}
-
-@media screen and (max-width: 725px) {
-	.logo_container a {
-		font-size: 13px;
-	}
-
-	.nav-link {
-		font-size: 15px;
-	}
-
-	.goal_container a {
-		font-size: 30px;
+	.emoji a {
+		font-size: 1.35rem;
 	}
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 470px) {
 
-	.navigation_container {
-		margin-top: 15px;
-		justify-content: center;
-	}
-
-	.nav-link {
-		font-size: 15px;
-		float: right;
-	}
-
-	.logo_container h4 a {
-		font-size: 12px;
+	#home_page {
+		font-size: 1rem;
 	}
 
 	.feeling {
-		font-size: 10px;
+		font-size: 0.8rem;
 	}
 
-	.feeling_container a {
-		font-size: 20px;
-		padding: 7px;
+	.emoji a {
+		font-size: 1rem;
 	}
 
-	.feeling_container {
-		padding-top: 40px;
+	.btnlink {
+		font-size: 1.2rem;
+		padding: 1em;
 	}
 
-	.button a {
-		font-size: 15px;
-		padding: 18px;
-	}
-
-	.goal_container a {
-		font-size: 30px;
+	#goals {
+		font-size: 1.5rem;
 	}
 
 	.ninety-days {
-		font-size: 15px;
+		font-size: 0.9rem;
 	}
 }
-*/
+
+@media screen and (max-width: 330px) {
+	#home_page {
+		font-size: 0.9rem;
+	}
+}
