@@ -1,5 +1,5 @@
+/* MOBILE HAMBURGER EFFECTS */
 const headerSlide = () => {
-  // Get classes
   const burger = document.querySelector('.burger');
   const header = document.querySelector('.navigation_container');
   const nav_link = document.querySelectorAll('.nav-link');
@@ -21,6 +21,7 @@ const headerSlide = () => {
     burger.classList.toggle('toggle');
   });
 }
+/* MOBILE HAMBURGER EFFECTS */
 
 headerSlide();
 
@@ -44,7 +45,7 @@ document.addEventListener("mousemove", function(e) {
   },4000)
 }) 
 */
-/*
+
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 var after_header = document.getElementById("AF");
@@ -59,5 +60,4 @@ window.addEventListener('scroll', function(){
     header.classList.add("header");
     header.classList.remove("sticky");
   }
-})
-*/
+});
