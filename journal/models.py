@@ -13,4 +13,7 @@ class Goal(models.Model):
     deeper_progress_3 = models.CharField(max_length=30)
     created_date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.goal
+
     

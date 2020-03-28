@@ -478,38 +478,77 @@ a {
 }
 /* Font-size changes */
 
-.ninety-day-goals {
-	height: 100vh;
-	width: 70%;
-	margin: auto;
-}
-
 .my_goals {
 	display: flex;
-	background: white;
-}
-
-.big-goal {
-	padding: 20px;
-	text-decoration: underline;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
 }
 
 .goals_form {
 	text-align: center;
-	max-width: 50%;
-	margin: 2rem auto;
-	border: 2px dotted black;
-	padding: 2rem;
+	margin: auto;
+	width: 40%;
+	min-width: 500px;
+	padding: 4em;
+	background:#fff;
 }
 
-input {
+.goals_form div {
+	margin-top: 20px;
+}
+
+.goals_form input {
 	display: block;
 	width: 100%;
+	border: none;
+	border-bottom: 2px solid #000;
+	font-size: 1rem;
 }
 
-.save_goal {
+.goals_form input:focus {
+	outline: none;
+	font-size: 1.3rem;
+	border-bottom: 3.5px solid #000;
+}
+
+.goals_form input:focus::placeholder {
+	color: transparent;
+}
+
+.goals_form ol li {
+	margin-left: 1em;
+	padding-left: 0.5em;
+	list-style-type: lower-roman;
+}
+
+.roadmap {
+	text-align: left;
+	padding-bottom: 1em;
+	border-bottom: 1px solid grey;
+}
+
+.big_goal input{
+	margin-top: 1em;
+}
+
+.based_progress {
+	text-align: left;
+}
+
+#save_goal {
 	color: #fff;
-	background: #343050;
+	border-radius: 40px;
+	background: #50497e;
+	font-weight: 500;
 	padding: 0.5rem;
-	margin-top: 0.5rem;
+	margin-top: 2em;
+	cursor: pointer;
+	border: none;
+	transition: 0.5s ease;
+}
+
+#save_goal:hover {
+	transition: 0.5s ease;
+	background: #6d64a5;
 }
