@@ -34,77 +34,21 @@
 
 <section>
     <div class="my_goals">
-        <form class="goals_form" method="POST" action="" autocomplete="off">
-            <p class="roadmap">13-Week Roadmap - The big Idea - Goal 1</p>
-            <div class="big_goal">
-                <label for="{{ form.goal.id_for_label }}"><h2>My Big Goal #1</h2></label>
-                <input maxlength="50" type="text" name="goal" placeholder="Land my first Programming job" tabindex="1">
+        <form class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
+            {% csrf_token %}
+            <div class="tab">
+                {{ goal|crispy }}
             </div>
-            <div class="big_goal">
-                <label for="{{ form.goal.id_for_label }}"><h3>This goal is important to me because...</h3></label>
-                <input type="text" name="goal" placeholder="It will get my foot in the door and help my confidence" tabindex="2">
+            <!--
+            <div class="tab">
+                <p class="roadmap">13-Week Roadmap - The big Idea</p>
+                {{ goal|crispy }}
             </div>
-            <div class="goal_list">
-                <label for="{{ form.goal.id_for_label }}"><h3>My Progress Goals</h3></label>
-                <ol>
-                    <li> 
-                        <input type="text" name="progress_1" placeholder="Create 2 big projects" tabindex="3">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_2" placeholder="Make myself known in the programming community" tabindex="4">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_3" placeholder="Have different ways recruiters can find me" tabindex="5">
-                    </li>
-                </ol>
+            <div class="tab">
+                <p class="roadmap">13-Week Roadmap - The big Idea</p>
+                {{ goal|crispy }}
             </div>
-            <div class="action_tasks">
-                <h3>My Actions & Tasks</h3>
-            </div>
-            <div class="based_progress">
-                <label for="{{ form.goal.id_for_label }}">
-                    <h5>Based on Progress Goal #1:</h5>
-                    <ol>
-                        <li> 
-                            <input type="text" name="progress_1" placeholder="Brain storm projects I would like to create" tabindex="6">
-                        </li>
-                        <li> 
-                            <input type="text" name="progress_2" placeholder="Put away 3-5hrs a day to work on those projects" tabindex="7">
-                        </li>
-                        <li> 
-                            <input type="text" name="progress_3" placeholder="Set deadlines to put pressure on myself" tabindex="8">
-                        </li>
-                    </ol>
-                </label>
-            </div>
-            <div class="based_progress">
-                <label for="{{ form.goal.id_for_label }}"><h5>Based on Progress Goal #2:</h5></label>
-                <ol>
-                    <li> 
-                        <input type="text" name="progress_1" placeholder="Attend 2 coding meet ups every month" tabindex="9">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_2" placeholder="DM popular programmers on social media"tabindex="10">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_3" placeholder="Start a tiktok programming account" tabindex="11">
-                    </li>
-                </ol>
-            </div>
-            <div class="based_progress">
-                <label for="{{ form.goal.id_for_label }}"><h5>Based on Progress Goal #1:</h5></label>
-                <ol>
-                    <li> 
-                        <input type="text" name="progress_1" placeholder="Create a Linkedin account" tabindex="12">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_2" placeholder="Create a nice Portfolio" tabindex="13">
-                    </li>
-                    <li> 
-                        <input type="text" name="progress_3" placeholder="Create a Resume" tabindex="14">
-                    </li>
-                </ol>
-            </div>
+            -->
             <input id="save_goal" type="submit" value="save" tabindex="15"/>
         </form>
     </div>

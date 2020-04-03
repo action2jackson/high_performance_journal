@@ -3,17 +3,18 @@ from django.utils import timezone
 
 
 class Goal(models.Model):
-    goal = models.CharField(max_length=30, blank=True)
-    goal_important = models.CharField(max_length=30, blank=True)
-    progress_1 = models.CharField(max_length=30, blank=True)
-    progress_2 = models.CharField(max_length=30, blank=True)
-    progress_3 = models.CharField(max_length=30, blank=True)
-    deeper_progress_1 = models.CharField(max_length=30, blank=True)
-    deeper_progress_2 = models.CharField(max_length=30, blank=True)
-    deeper_progress_3 = models.CharField(max_length=30)
+    goal = models.CharField(max_length=30, blank=True , null=True)
+    goal_important = models.CharField(max_length=30, blank=True, null=True)
+    progress_1 = models.CharField(max_length=30, blank=True, null=True)
+    progress_2 = models.CharField(max_length=30, blank=True, null=True)
+    progress_3 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_1 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_2 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_3 = models.CharField(max_length=30, null=True)
+    deeper_progress_4 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_5 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_6 = models.CharField(max_length=30, null=True)
+    deeper_progress_7 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_8 = models.CharField(max_length=30, blank=True, null=True)
+    deeper_progress_9 = models.CharField(max_length=30, null=True)
     created_date = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.goal
-
-    

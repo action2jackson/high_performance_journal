@@ -21,7 +21,7 @@
         <div class="inner_header" id="myHeader">
             <!-- HOME PAGE-->
             <div class="logo_container">
-                <h4><a class="fas fa-journal-whills" id="home_page" href="#">&nbsp;HIGH PERFORMANCE JOURNAL</a></h4>
+                <h4><a class="fas fa-journal-whills" id="home_page" href="{% url 'index' %}">&nbsp;HIGH PERFORMANCE JOURNAL</a></h4>
             </div>
             <!-- HOME PAGE-->
 
@@ -35,9 +35,9 @@
 
             <!-- HEADER LINKS -->
             <ul class="navigation_container">
-                <li><a class="nav-link" href="#">Goals</a></li>
+                <li><a class="nav-link" href="{% url 'goals_list' %}">Goals</a></li>
+                <li><a class="nav-link" href="#">Collection</a></li>
                 <li><a class="nav-link" href="#">Sign-up</a></li>
-                <li><a class="nav-link" href="#">Login</a></li>
             </ul>
             <!-- HEADER LINKS -->
         </div>

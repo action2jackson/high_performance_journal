@@ -125,6 +125,7 @@ a {
 
 
 /*
+<--- FOR DREAM PAGE --->
 .dreams {
 	position: absolute;
 	background: url('https://i.pinimg.com/236x/f6/75/a8/f675a8b6902fc59508ecd1cb9f159c8f--star-foot-tattoos-star-tattoos-for-men.jpg');
@@ -132,6 +133,7 @@ a {
 	pointer-events: none;
 	transform: translate(-50%, -50%);
 }
+<--- FOR DREAM PAGE --->
 */
 
 /* HEADER */ 
@@ -142,6 +144,7 @@ a {
 	height: 10vh;
 }
 /*
+<--- NOT WORKING --->
 .sticky {
 	position: fixed;
  	right: 0; 
@@ -478,6 +481,8 @@ a {
 }
 /* Font-size changes */
 
+
+/* GOALS */
 .my_goals {
 	display: flex;
 	flex-direction: column;
@@ -485,31 +490,40 @@ a {
 	width: 100%;
 }
 
+#goal_form {
+	padding: 4em;
+}
+
 .goals_form {
 	text-align: center;
 	margin: auto;
 	width: 40%;
 	min-width: 500px;
-	padding: 4em;
+	padding-bottom: 1em;
 	background:#fff;
 }
 
 .goals_form div {
-	margin-top: 20px;
+	margin-top: 1.2em;
 }
 
 .goals_form input {
 	display: block;
-	width: 100%;
+	margin: auto;
+	width: 80%;
 	border: none;
 	border-bottom: 2px solid #000;
 	font-size: 1rem;
 }
 
+.goals_form label {
+	font-size: 1.1rem;
+}
+
 .goals_form input:focus {
 	outline: none;
-	font-size: 1.3rem;
-	border-bottom: 3.5px solid #000;
+	font-weight: 500;
+	border-bottom: 3px solid #000;
 }
 
 .goals_form input:focus::placeholder {
@@ -532,6 +546,10 @@ a {
 	margin-top: 1em;
 }
 
+.progress_list {
+	text-align: left;
+}
+
 .based_progress {
 	text-align: left;
 }
@@ -552,3 +570,4 @@ a {
 	transition: 0.5s ease;
 	background: #6d64a5;
 }
+/* GOALS */
