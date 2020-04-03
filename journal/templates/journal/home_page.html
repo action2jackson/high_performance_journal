@@ -16,7 +16,7 @@
     </div>
     <!-- DAILY MOOD -->
 
-    <!-- MAIN PAGES -->
+    <!-- MAIN PAGE -->
     <div class="button_container">
         <div class="button">
             <a class="btnlink">Dreams</a>
@@ -29,7 +29,7 @@
         <a><h3 class="ninety-days">90 DAY GOALS</h3></a>
         <a class="fas fa fa-angle-double-down fa-2x" id="goals"><span></a>
     </div>
-    <!-- MAIN PAGES -->
+    <!-- MAIN PAGE -->
 </section>
 
 <section>
@@ -37,19 +37,21 @@
         <form class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
             {% csrf_token %}
             <div class="tab">
-                {{ goal|crispy }}
-            </div>
-            <!--
-            <div class="tab">
-                <p class="roadmap">13-Week Roadmap - The big Idea</p>
-                {{ goal|crispy }}
+                <h1>My Big Goal #1</h1>
+                {{ goal1|crispy }}
             </div>
             <div class="tab">
-                <p class="roadmap">13-Week Roadmap - The big Idea</p>
-                {{ goal|crispy }}
+                    <h1>My Big Goal #3</h1>
+                {{ goal2|crispy }}
             </div>
-            -->
-            <input id="save_goal" type="submit" value="save" tabindex="15"/>
+            <div class="tab">
+                    <h1>My Big Goal #3</h1>
+                {{ goal3|crispy }}
+            </div>
+            <div class="multi_step">
+                <button type="button" id="prevBtn">Previous</button>
+                <button type="button" id="nextBtn">Next</button>
+            </div> 
         </form>
     </div>
 </section>

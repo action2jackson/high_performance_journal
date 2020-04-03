@@ -43,7 +43,7 @@ class GoalForm(forms.ModelForm):
         field_classes = {
         }
         labels = {
-            'goal': ('My Big Goal'),
+            'goal': (''),
             'goal_important': ('This goal is important to me because...'),
             'progress_1': ('My progress Goals'),
             'progress_2': (''),

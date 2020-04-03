@@ -6,7 +6,7 @@
 {% for goal in goal_page %}
     <div class="my_goals">
         <form class="goals_form" id="goal_form">
-            <p class="roadmap">13-Week Roadmap - The big Idea - Goal 1</p>
+            <p class="roadmap">13-Week Roadmap - The big Idea - Goal 1 - {{ goal.created_date }}</p>
             <div class="big_goal">
                 <label><h2>My Big Goal #1</h2></label>
                 {{ goal.goal }}
@@ -74,6 +74,7 @@
                     </li>
                 </ol>
             </div>
+            <button><a href="{% url 'goals_delete' %}">DELETE</a></button>
         </form>
     </div>
 {% endfor %}

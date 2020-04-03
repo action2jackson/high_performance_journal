@@ -491,7 +491,7 @@ a {
 }
 
 #goal_form {
-	padding: 4em;
+	padding: 2em;
 }
 
 .goals_form {
@@ -554,20 +554,43 @@ a {
 	text-align: left;
 }
 
-#save_goal {
+.multi_step {
+	display: flex;
+	margin: auto;
+	width: 80%;
+}
+
+.multi_step button {
 	color: #fff;
 	border-radius: 40px;
 	background: #50497e;
-	font-weight: 500;
+	font-size: 1rem;
 	padding: 0.5rem;
 	margin-top: 2em;
 	cursor: pointer;
 	border: none;
 	transition: 0.5s ease;
+	outline: none;
+	margin: 0.2em;
 }
 
-#save_goal:hover {
+#nextBtn {
+	width: 60%;
+}
+#prevBtn {
+	opacity: 0.7;
+	background: #6d64a5;
+	width: 40%;
+}
+
+.multi_step #prevBtn:hover {
+	transition: 0.5s ease;
+	background: #8179b9;
+}
+
+.multi_step #nextBtn:hover {
 	transition: 0.5s ease;
 	background: #6d64a5;
 }
+
 /* GOALS */
