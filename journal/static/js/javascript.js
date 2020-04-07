@@ -26,7 +26,7 @@ const headerSlide = () => {
 headerSlide();
 
 /*
-<---DREAMS--->
+<--- FOR DREAM PAGE --->
 document.addEventListener("mousemove", function(e) {
   var body = document.querySelector('body');
   var stars = document.createElement('span');
@@ -44,6 +44,7 @@ document.addEventListener("mousemove", function(e) {
       stars.remove();
   },4000)
 }) 
+<--- FOR DREAM PAGE --->
 */
 
 var header = document.getElementById("myHeader");
@@ -55,10 +56,66 @@ window.addEventListener('scroll', function(){
   after_header.style.top = +this.window.pageXOffset+'px'
   if (window.pageYOffset > sticky) {
     header.classList.remove("header");
-    header.classList.add("sticky");
   } else {
     header.classList.add("header");
-    header.classList.remove("sticky");
   }
 });
 
+
+var currentStep = 0;
+showStep(currentStep);
+
+function showStep(step) {
+  var formStep = document.getElementsByClassName("form_step");
+  if (step > 0) {
+    document.body.scrollIntoView(false); 
+  }
+  formStep[step].style.display = "block";
+
+  if (step == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+    document.getElementById('nextBtn').style.width = "100%";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (step == (formStep.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+}
+
+function nextPrev(step) {
+  var formStep = document.getElementsByClassName("form_step");
+  if (step == 1 && !validateForm()) return false;
+  formStep[currentStep].style.display = "none";
+  currentStep = currentStep + step;
+  if (currentStep >= formStep.length) {
+    var confirmGoals = confirm("Are you confident with your goals?")
+    if (confirmGoals == true) {
+      document.getElementById("form_for_goals").submit();
+      return false;
+    }
+  }
+  showStep(currentStep);
+}
+
+nextBtn.addEventListener('click', function() {
+  nextPrev(1)
+}, false)
+prevBtn.addEventListener('click', function() {
+  nextPrev(-1)
+}, false)
+
+function validateForm() {
+  var formStep, emptyInput, i, valid = true;
+  formStep = document.getElementsByClassName("form_step");
+  emptyInput = formStep[currentStep].getElementsByTagName("input");
+  for (i = 0; i < emptyInput.length; i++) {
+    if (emptyInput[i].value == "") {
+      emptyInput[i].className += " invalid";
+      valid = false;
+    }
+  }
+  return valid;
+}

@@ -143,16 +143,6 @@ a {
 	width: 100%;
 	height: 10vh;
 }
-/*
-<--- NOT WORKING --->
-.sticky {
-	position: fixed;
- 	right: 0; 
-	left: 0;
-	width: 100%;
- 	z-index: 999;
-}
-*/
 
 .inner_header {
 	display: flex;
@@ -302,11 +292,17 @@ a {
 	flex-direction: column;
 	text-align: center;
 	margin: auto 0 0 0;
-	z-index: 1;
-	color: #fff;
+	width: 100%;
 }
 
-.goal_container:hover {
+#goals {
+	z-index: 1;
+	color: #fff;
+	text-decoration: none;
+	transition: 0.3s ease;
+}
+
+#goals:hover {
 	font-size: 2rem;
 }
 /* MAIN BUTTONS */
@@ -518,6 +514,7 @@ a {
 
 .goals_form label {
 	font-size: 1.1rem;
+	font-weight: 600;
 }
 
 .goals_form input:focus {
@@ -526,32 +523,12 @@ a {
 	border-bottom: 3px solid #000;
 }
 
-.goals_form input:focus::placeholder {
-	color: transparent;
+.form_step {
+	display: none;
 }
 
-.goals_form ol li {
-	margin-left: 1em;
-	padding-left: 0.5em;
-	list-style-type: lower-roman;
-}
-
-.roadmap {
-	text-align: left;
-	padding-bottom: 1em;
-	border-bottom: 1px solid grey;
-}
-
-.big_goal input{
-	margin-top: 1em;
-}
-
-.progress_list {
-	text-align: left;
-}
-
-.based_progress {
-	text-align: left;
+input.invalid {
+	background-color: #ffdddd;
 }
 
 .multi_step {
@@ -592,5 +569,4 @@ a {
 	transition: 0.5s ease;
 	background: #6d64a5;
 }
-
 /* GOALS */
