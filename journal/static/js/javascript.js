@@ -46,7 +46,8 @@ document.addEventListener("mousemove", function(e) {
 }) 
 <--- FOR DREAM PAGE --->
 */
-
+/*
+<--- Save for later --->
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
 var after_header = document.getElementById("AF");
@@ -60,6 +61,8 @@ window.addEventListener('scroll', function(){
     header.classList.add("header");
   }
 });
+<--- Save for later --->
+*/
 
 
 var currentStep = 0;
@@ -78,6 +81,7 @@ function showStep(step) {
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
+
   if (step == (formStep.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
@@ -115,7 +119,8 @@ function validateForm() {
     if (emptyInput[i].value == "") {
       emptyInput[i].className += " invalid";
       valid = false;
-    }
+    } 
   }
+  
   return valid;
 }

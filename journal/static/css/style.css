@@ -496,7 +496,8 @@ a {
 	width: 40%;
 	min-width: 500px;
 	padding-bottom: 1em;
-	background:#fff;
+	background: linear-gradient(#B3FFAB, #12FFF7);
+	border-radius: 2em;
 }
 
 .goals_form div {
@@ -508,6 +509,7 @@ a {
 	margin: auto;
 	width: 80%;
 	border: none;
+	background: none;
 	border-bottom: 2px solid #000;
 	font-size: 1rem;
 }
@@ -523,12 +525,48 @@ a {
 	border-bottom: 3px solid #000;
 }
 
+.roadmap {
+	text-align: left;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #000;
+}
+
+.progress_list, .based_progress {
+	text-align: left;
+}
+
+.space {
+	padding-left: 1em;
+}
+
+
+
+#form_instructions {
+	display: flex;
+	padding: 1.5em;
+}
+
+#form_instructions h1 {
+	font-size: 2rem;
+}
+
+.introduction {
+	margin: auto;
+}
+
+.intro {
+	float: left;
+}
+
+
+
+
 .form_step {
 	display: none;
 }
 
 input.invalid {
-	background-color: #ffdddd;
+	border-bottom: 1px solid darkblue;
 }
 
 .multi_step {
@@ -539,6 +577,7 @@ input.invalid {
 
 .multi_step button {
 	color: #fff;
+	width: 100%;
 	border-radius: 40px;
 	background: #50497e;
 	font-size: 1rem;
@@ -551,22 +590,35 @@ input.invalid {
 	margin: 0.2em;
 }
 
-#nextBtn {
+.nextButton {
 	width: 60%;
 }
-#prevBtn {
+.prevButton {
 	opacity: 0.7;
 	background: #6d64a5;
 	width: 40%;
 }
 
-.multi_step #prevBtn:hover {
+.multi_step .prevButton:hover {
 	transition: 0.5s ease;
 	background: #8179b9;
 }
 
-.multi_step #nextBtn:hover {
+.multi_step .nextButton:hover {
 	transition: 0.5s ease;
 	background: #6d64a5;
+}
+
+.delete_goals {
+	font-size: 0.7rem;
+	text-decoration: none;
+	color: #fff;
+	padding: 0.5em;
+	background: red;
+	transition: 0.5s ease;
+}
+.delete_goals:hover {
+	transition: 0.5s ease;
+	padding: 0.5em 3em;
 }
 /* GOALS */

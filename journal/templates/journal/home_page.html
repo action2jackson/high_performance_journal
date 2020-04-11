@@ -35,24 +35,29 @@
     <div class="my_goals">
         <form id="form_for_goals" class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
             {% csrf_token %}
-            <div class="form_step">
-                <h1 style="font-weight: bold;">This is your 90 day sprint!</h1>
+            {{ goals.management_form }}
+            <div class="form_step" id="form_instructions">
+                <i class="far fa-clock fa-6x"></i>
+                <h1>This is your 90 day sprint!</h1>
+                <div class="introduction">
+                    <p>Create 3 different goals to accomplish in the next 90 days. You're 3 goals
+                    will be broken down into smaller wins to make them manageable.
+                    These goals can be related to any part of your life that your looking to improve. EX: 
+                    work, health, relationships, etc... </p>
+                </div>
+                <div>
+                    <h5>Make sure to take your time and be thoughtful when filling out your goals</h5>
+                </div>
             </div>
-            <div class="form_step">
-                <h1>My Big Goal #1</h1>
-                {{ goal1|crispy }}
-            </div>
-            <div class="form_step">
-                <h1>My Big Goal #2</h1>
-                {{ goal2|crispy }}
-            </div>
-            <div class="form_step">
-                <h1>My Big Goal #3</h1>
-                {{ goal3|crispy }}
-            </div>
+            {% for goal in goals %}
+                <div class="form_step">
+                    <h1 id="goal_number">My Big Goal #{{ forloop.counter }}</h1>
+                    {{ goal|crispy }}
+                </div>
+            {% endfor %}
             <div class="multi_step">
-                <button type="button" id="prevBtn">Previous</button>
-                <button type="button" id="nextBtn">Next</button>
+                <button type="button" class="prevButton" id="prevBtn">Previous</button>
+                <button type="button" class="nextButton" id="nextBtn">Next</button>
             </div> 
         </form>
     </div>
