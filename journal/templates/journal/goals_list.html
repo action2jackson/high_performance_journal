@@ -3,89 +3,86 @@
 {% block title %}My Goals{% endblock %}
 
 {% block content %}
-{% for goal in goal_page %}
-    <div class="mySlides fade">
-        <div class="my_goals">
-            <form class="goals_form" id="goal_form">
-                <p class="roadmap">13-Week Roadmap - The big Idea - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
-                <a class="delete_goals" href="{% url 'goals_delete'%}" onclick="window.confirm('Are you sure you want to delete all your goals and restart your 90 day sprint?')">DELETE ALL GOALS</a>
-                <div class="big_goal">
-                    <label><h2>My Big Goal #{{ forloop.counter }}</h2></label>
-                    {{ goal.goal }}
-                </div>
-                <div class="big_goal">
-                    <label for="{{ form.goal_important.id_for_label }}"><h3>This goal is important to me because...</h3></label>
-                    {{ goal.goal_important}}
-                </div>
-                <div>
-                    <label><h3>My Progress Goals</h3></label>
-                    <ol class="progress_list">
-                        <li class="space"> 
-                            {{ goal.progress_1 }}
-                        </li>
-                        <li class="space"> 
-                            {{ goal.progress_1 }}                
-                        </li>
-                        <li class="space"> 
-                            {{ goal.progress_1 }}
-                        </li>
-                    </ol>
-                </div>
-                <div class="action_tasks">
-                    <h3>My Actions & Tasks</h3>
-                </div>
-                <div class="based_progress">
-                    <label><h5>Based on Progress Goal #1:</h5></label>
-                        <ol>
+    {% for goal in goal_page %}
+        <div class="mySlides fade">
+            <div class="my_goals">
+                <form class="goals_form" id="goal_form">
+                    <p class="roadmap">13-Week Roadmap - The big Idea - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
+                    <a class="delete_goals" href="{% url 'goals_delete' %}">DELETE ALL GOALS</a>
+                    <div class="big_goal">
+                        <label><h2>My Big Goal #{{ forloop.counter }}</h2></label>
+                        {{ goal.goal }}
+                    </div>
+                    <div class="big_goal">
+                        <label for="{{ form.goal_important.id_for_label }}"><h3>This goal is important to me because...</h3></label>
+                        {{ goal.goal_important}}
+                    </div>
+                    <div>
+                        <label><h3>My Progress Goals</h3></label>
+                        <ol class="progress_list">
                             <li class="space"> 
-                                {{ goal.deeper_progress_1 }}   
+                                {{ goal.progress_1 }}
                             </li>
                             <li class="space"> 
-                                {{ goal.deeper_progress_2 }}  
+                                {{ goal.progress_1 }}                
                             </li>
                             <li class="space"> 
-                                {{ goal.deeper_progress_3 }}
+                                {{ goal.progress_1 }}
                             </li>
                         </ol>
-                </div>
-                <div class="based_progress">
-                    <label><h5>Based on Progress Goal #2:</h5></label>
-                    <ol>
-                        <li class="space"> 
-                            {{ goal.deeper_progress_4 }}
-                        </li>
-                        <li class="space"> 
-                            {{ goal.deeper_progress_5 }}
-                        </li>
-                        <li class="space">  
-                            {{ goal.deeper_progress_6 }}
-                        </li>
-                    </ol>
-                </div>
-                <div class="based_progress">
-                    <label><h5>Based on Progress Goal #3:</h5></label>
-                    <ol>
-                        <li class="space"> 
-                            {{ goal.deeper_progress_7 }}
-                        </li>
-                        <li class="space"> 
-                            {{ goal.deeper_progress_8 }}
-                        </li>
-                        <li class="space"> 
-                            {{ goal.deeper_progress_9 }}
-                        </li>
-                    </ol>
-                </div>
-                <div class="slide_container">
-                    <a class="prevArrow" onclick="plusSlides(-1)"><i class="fas fa-long-arrow-alt-left fa-2x"></i></a>
-                    <a class="edit_goals" href="#">Edit Goal</a>
-                    <a class="nextArrow" onclick="plusSlides(1)"><i class="fas fa-long-arrow-alt-right fa-2x"></i></a>
-                </div>
-            </form>
+                    </div>
+                    <div class="action_tasks">
+                        <h3>My Actions & Tasks</h3>
+                    </div>
+                    <div class="based_progress">
+                        <label><h5>Based on Progress Goal #1:</h5></label>
+                            <ol>
+                                <li class="space"> 
+                                    {{ goal.deeper_progress_1 }}   
+                                </li>
+                                <li class="space"> 
+                                    {{ goal.deeper_progress_2 }}  
+                                </li>
+                                <li class="space"> 
+                                    {{ goal.deeper_progress_3 }}
+                                </li>
+                            </ol>
+                    </div>
+                    <div class="based_progress">
+                        <label><h5>Based on Progress Goal #2:</h5></label>
+                        <ol>
+                            <li class="space"> 
+                                {{ goal.deeper_progress_4 }}
+                            </li>
+                            <li class="space"> 
+                                {{ goal.deeper_progress_5 }}
+                            </li>
+                            <li class="space">  
+                                {{ goal.deeper_progress_6 }}
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="based_progress">
+                        <label><h5>Based on Progress Goal #3:</h5></label>
+                        <ol>
+                            <li class="space"> 
+                                {{ goal.deeper_progress_7 }}
+                            </li>
+                            <li class="space"> 
+                                {{ goal.deeper_progress_8 }}
+                            </li>
+                            <li class="space"> 
+                                {{ goal.deeper_progress_9 }}
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="slide_container">
+                        <a class="prevArrow" onclick="plusSlides(-1)"><i class="fas fa-long-arrow-alt-left fa-2x"></i></a>
+                        <a class="edit_goals" href="#">Edit Goal</a>
+                        <a class="nextArrow" onclick="plusSlides(1)"><i class="fas fa-long-arrow-alt-right fa-2x"></i></a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-{% endfor %}
-
-
-
+    {% endfor %}
 {% endblock %}

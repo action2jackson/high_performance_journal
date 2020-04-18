@@ -25,7 +25,7 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_9',
         )
         widgets = {
-            'goal': (forms.TextInput(attrs={'placeholder': 'Land my first Programming job', 'required': 'True'})),
+            'goal': (forms.TextInput(attrs={'placeholder': 'Land my first Programming job', 'required': 'True', 'autofocus': 'autofocus'})),
             'goal_important': (forms.TextInput(attrs={'placeholder': 'It will get my foot in the door and help my confidence', 'required': 'True'})),
             'progress_1': (forms.TextInput(attrs={'placeholder': 'Create 2 big projects', 'required': 'True'})),
             'progress_2': (forms.TextInput(attrs={'placeholder': 'Make myself known in the programming community', 'required': 'True'})),
@@ -58,9 +58,4 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_7': ('Based on Progress Goal #3:'),
             'deeper_progress_8': (''),
             'deeper_progress_9': (''),
-        }
-        error_messages = {
-            '__all__': { 
-                'max_length': ("Your answers should be short and effective!"),
-            },
         }

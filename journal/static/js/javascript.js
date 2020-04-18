@@ -13,7 +13,7 @@ const headerSlide = () => {
         if(link.style.animation) {
           link.style.animation = '';
         } else {
-          // Add style animation to nav_links with javascript
+          // Add style animation to nav_linksx
           link.style.animation = `headerFade 0.5s ease forwards ${index / 7 + 0.5}s`;
         }
       });
@@ -48,18 +48,63 @@ document.addEventListener("mousemove", function(e) {
 */
 
 
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-var after_header = document.getElementById("AF");
-var goals = document.getElementById("goals");
-
-window.addEventListener('scroll', function() {
-  after_header.style.opacity = 1 - +this.window.pageYOffset/550+'';
-  after_header.style.top = +this.window.pageXOffset+'px'
-});
-
-
 if (window.location.pathname == "/") {
+  var header = document.getElementById("myHeader");
+  var sticky = header.offsetTop;
+  var after_header = document.getElementById("AF");
+  var goals = document.getElementById("goals");
+
+  window.addEventListener('scroll', function(e) {
+    after_header.style.opacity = 1 - +this.window.pageYOffset/550+'';
+    after_header.style.top = +this.window.pageXOffset+'px';
+
+    const targetButtons = document.querySelectorAll('.btnlink');
+    var targetGoals = document.getElementsByClassName('goal_parallax');
+    var targetEmojiCon = document.getElementsByClassName('feeling');
+    var targetEmoji = document.getElementsByClassName('far');
+
+    function parallax(target) {
+      for (index = 0; index < target.length; index++) {
+        var position = window.pageYOffset * target[index].dataset.rate;
+        if(target[index].dataset.direction === 'vertical') {
+          target[index].style.transform = 'translate3d(0px, '+position+'px, 0px)';
+        } else {
+          var positionX = window.pageYOffset * target[index].dataset.ratex;
+          var positionY = window.pageYOffset * target[index].dataset.ratey;
+  
+          target[index].style.transform = 'translate3d('+positionX+'px, '+positionY+'px, 0px)';
+        }
+      }
+    }
+    parallax(targetEmojiCon);
+    parallax(targetEmoji);
+    parallax(targetButtons);
+    parallax(targetGoals);
+  });
+
+
+  function swalSubmitGoal() {
+    swal({
+      title: "Are you sure?",
+      text: "Once submitted, your 90 day sprint will start!",
+      // icon: "warning",
+      buttons: true,
+      // dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Submitting Form!", {
+          icon: "success",
+        });
+        document.getElementById("form_for_goals").submit();
+        return false;
+      } else {
+        swal("Make sure your goals are thoughtful!");
+      }
+    });
+  }
+
+  
   var currentStep = 0;
   showStep(currentStep);
 
@@ -90,10 +135,8 @@ if (window.location.pathname == "/") {
     formStep[currentStep].style.display = "none";
     currentStep = currentStep + step;
     if (currentStep >= formStep.length) {
-      var confirmGoals = confirm("Are you confident with your goals?");
-      if (confirmGoals == true) {
-        document.getElementById("form_for_goals").submit();
-        return false;
+      if (swalSubmitGoal() != true) {
+        currentStep = 3;
       }
     }
     showStep(currentStep);
@@ -118,7 +161,7 @@ if (window.location.pathname == "/") {
         }
       });
       if (emptyInput[i].value == "") {
-        emptyInput[i].className = " invalid";
+        emptyInput[i].className = "invalid";
         valid = false;
       }
     } 
@@ -129,6 +172,12 @@ if (window.location.pathname == "/") {
 
 
 if (window.location.pathname == "/goals/") {
+  var deleteGoals = document.getElementsByClassName("delete_goals");
+  var resetGoals = function(e) {
+    if (!confirm('Are you sure you want to delete all your goals and restart your 90 day sprint?')) e.preventDefault();
+  }
+  deleteGoals[0].addEventListener('click', resetGoals, false);
+
   var slideIndex = 1;
   showSlides(slideIndex);
 
@@ -151,3 +200,5 @@ if (window.location.pathname == "/goals/") {
     slides[slideIndex-1].style.display = "block";
   }
 }
+
+

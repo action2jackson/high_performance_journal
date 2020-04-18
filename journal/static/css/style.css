@@ -1,6 +1,7 @@
 /* GENERAL STYLES */
 body {
 	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
 }
 
 * {
@@ -681,4 +682,14 @@ input.valid {
 @keyframes fade {
 	from {opacity: .4}
 	to {opacity: 1}
+}
+
+.swal-text {
+	background-color: #FEFAE3;
+	padding: 17px;
+	border: 1px solid #F0E1A1;
+	display: block;
+	margin: 22px;
+	text-align: center;
+	color: #61534e;
 }

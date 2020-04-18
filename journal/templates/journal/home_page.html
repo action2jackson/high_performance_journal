@@ -4,63 +4,63 @@
 {% block title %}Journal{% endblock %}
 {% block content %}
 
-<section class="after-header" id="AF">
-    <!-- DAILY MOOD -->
-    <div class="feeling_container">
-        <h3 class="feeling">How are you feeling today?</h3>
-        <div class="emoji">
-            <a class="far fa fa-smile-beam fa-2x" id="happy"></a>
-            <a class="far fa fa-meh fa-2x" id="meh"></a>
-            <a class="far fa fa-sad-tear fa-2x" id="sad"></a>
-        </div>
-    </div>
-    <!-- DAILY MOOD -->
-
-    <!-- MAIN PAGE -->
-    <div class="button_container">
-        <div class="button">
-            <a class="btnlink">Dreams</a>
-            <a class="btnlink">Daily Journal</a>
-            <a class="btnlink">Weekly Journal</a>
-            <a class="btnlink">Monthly Journal</a>
-        </div>
-    </div>
-    <div class="goal_container">
-        <a id="goals" href="#form_for_goals"><h3>90 DAY GOALS<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
-    </div>
-    <!-- MAIN PAGE -->
-</section>
-
-<section>
-    <div class="my_goals">
-        <form id="form_for_goals" class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
-            {% csrf_token %}
-            {{ goals.management_form }}
-            <div class="form_step" id="form_instructions">
-                <i class="far fa-clock fa-6x"></i>
-                <h1>This is your 90 day sprint!</h1>
-                <div class="introduction">
-                    <p>Create 3 different goals to accomplish in the next 90 days. You're 3 goals
-                    will be broken down into smaller wins to make them manageable.
-                    These goals can be related to any part of your life that your looking to improve. EX: 
-                    work, health, relationships, etc... </p>
-                </div>
-                <div>
-                    <h5>Make sure to take your time and be thoughtful when filling out your goals</h5>
-                </div>
+    <section class="after-header" id="AF">
+        <!-- DAILY MOOD -->
+        <div class="feeling_container">
+            <h3 class="feeling" data-rateY="0" data-rateX="5" data-direction="horizontal">How are you feeling today?</h3>
+            <div class="emoji">
+                <a class="far fa fa-smile-beam fa-2x" id="happy" data-rateY="-1" data-rateX="-1" data-direction="horizontal"></a>
+                <a class="far fa fa-meh fa-2x" id="meh" data-rate="-1" data-direction="vertical"></a>
+                <a class="far fa fa-sad-tear fa-2x" id="sad" data-rateY="-1" data-rateX="1" data-direction="horizontal"></a>
             </div>
-            {% for goal in goals %}
-                <div class="form_step">
-                    <h1 id="goal_number">My Big Goal #{{ forloop.counter }}</h1>
-                    {{ goal|crispy }}
+        </div>
+        <!-- DAILY MOOD -->
+
+        <!-- MAIN PAGE -->
+        <div class="button_container">
+            <div class="button">
+                <a class="btnlink" data-rateY="0" data-rateX="-2" data-direction="horizontal">Dreams</a>
+                <a class="btnlink" data-rateY="0" data-rateX="-2" data-direction="horizontal">Daily Journal</a>
+                <a class="btnlink" data-rateY="0" data-rateX="2" data-direction="horizontal">Weekly Journal</a>
+                <a class="btnlink" data-rateY="0" data-rateX="2" data-direction="horizontal">Monthly Journal</a>
+            </div>
+        </div>
+        <div class="goal_container">
+            <a id="goals" href="#form_for_goals" class="goal_parallax" data-rateY="0" data-rateX="-5" data-direction="horizontal"><h3>90 DAY GOALS<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
+        </div>
+        <!-- MAIN PAGE -->
+    </section>
+
+    <section>
+        <div class="my_goals">
+            <form id="form_for_goals" class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
+                {% csrf_token %}
+                {{ goals.management_form }}
+                <div class="form_step" id="form_instructions">
+                    <i class="far fa-clock fa-6x"></i>
+                    <h1>This is your 90 day sprint!</h1>
+                    <div class="introduction">
+                        <p>Create 3 different goals to accomplish in the next 90 days. You're 3 goals
+                        will be broken down into smaller wins to make them manageable.
+                        These goals can be related to any part of your life that your looking to improve. EX: 
+                        work, health, relationships, etc... </p>
+                    </div>
+                    <div>
+                        <h5>Make sure to take your time and be thoughtful when filling out your goals</h5>
+                    </div>
                 </div>
-            {% endfor %}
-            <div class="multi_step">
-                <button type="button" class="prevButton" id="prevBtn">Previous</button>
-                <button type="button" class="nextButton" id="nextBtn">Next</button>
-            </div> 
-        </form>
-    </div>
-</section>
+                {% for goal in goals %}
+                    <div class="form_step">
+                        <h1 id="goal_number">My Big Goal #{{ forloop.counter }}</h1>
+                        {{ goal|crispy }}
+                    </div>
+                {% endfor %}
+                <div class="multi_step">
+                    <button type="button" class="prevButton" id="prevBtn">Previous</button>
+                    <button type="button" class="nextButton" id="nextBtn">Next</button>
+                </div> 
+            </form>
+        </div>
+    </section>
 
 {% endblock %}
