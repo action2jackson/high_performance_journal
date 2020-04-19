@@ -15,6 +15,8 @@ a {
 }
 /* GENERAL STYLES */
 
+
+
 /* PAGE BACKGROUND */
 @keyframes move-twink-back {
     from {
@@ -125,6 +127,7 @@ a {
 /* PAGE BACKGROUND */
 
 
+
 /*
 <--- FOR DREAM PAGE --->
 .dreams {
@@ -136,6 +139,8 @@ a {
 }
 <--- FOR DREAM PAGE --->
 */
+
+
 
 /* HEADER */ 
 .header {
@@ -203,6 +208,7 @@ a {
 /* HEADER */
 
 
+
 /* MOOD CHECK */
 .after-header {
 	display: flex;
@@ -246,6 +252,8 @@ a {
 	box-shadow: 0px 5px 5px blue;
 }
 /* MOOD CHECK */
+
+
 
 /* MAIN BUTTONS */
 .button_container {
@@ -302,18 +310,273 @@ a {
 	text-decoration: none;
 	transition: 0.3s ease;
 }
-
-#goals:hover {
-	font-size: 2rem;
-}
 /* MAIN BUTTONS */
 
 
-@media screen and (max-width: 1350px) {
 
-	body {
-		overflow-x: hidden;
+/* GOALS */
+
+.my_goals {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+}
+
+#goal_page {
+	padding: 2em;
+}
+
+.goals_form {
+	text-align: center;
+	margin: auto;
+	width: 40%;
+	min-width: 500px;
+	padding-bottom: 1em;
+	background: linear-gradient(#B3FFAB, #12FFF7);
+	border-radius: 2em;
+}
+
+.goals_form div {
+	margin-top: 1.2em;
+}
+
+.goals_form input {
+	display: block;
+	margin: auto;
+	width: 80%;
+	border: none;
+	background: none;
+	border-bottom: 2px solid #000;
+	font-size: 1rem;
+}
+
+.goals_form label {
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.goals_form input:focus {
+	outline: none;
+	font-weight: 500;
+	border-bottom: 3px solid #000;
+}
+
+.roadmap {
+	text-align: left;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #000;
+}
+
+.progress_list, .based_progress {
+	text-align: left;
+}
+
+.space {
+	padding-left: 1em;
+}
+
+/* Instructions part of Form */
+#form_instructions {
+	display: flex;
+	padding: 1.5em;
+}
+
+.intro_title {
+	font-size: 2rem;
+}
+.introduction {
+	margin: auto;
+}
+
+.form_step {
+	display: none;
+}
+
+/* Validation part of form */
+input.invalid {
+	border-bottom: 1px solid red;
+}
+
+input.valid {
+	display: block;
+	margin: auto;
+	width: 80%;
+	border: none;
+	background: none;
+	border-bottom: 2px solid #000;
+	font-size: 1rem;
+}
+
+/* Next and previous slide for Form */
+.multi_step {
+	display: flex;
+	margin: auto;
+	width: 80%;
+}
+
+.multi_step button {
+	color: #fff;
+	width: 100%;
+	border-radius: 40px;
+	background: #50497e;
+	font-size: 1rem;
+	padding: 0.5rem;
+	margin-top: 2em;
+	cursor: pointer;
+	border: none;
+	transition: 0.5s ease;
+	outline: none;
+	margin: 0.2em;
+}
+
+.nextButton {
+	width: 60%;
+}
+.prevButton {
+	opacity: 0.7;
+	background: #6d64a5;
+	width: 40%;
+}
+
+.multi_step .prevButton:hover {
+	transition: 0.5s ease;
+	background: #8179b9;
+}
+
+.multi_step .nextButton:hover {
+	transition: 0.5s ease;
+	background: #6d64a5;
+}
+
+/* Delete goals button */
+.delete_goals {
+	display: flex;
+	justify-content: center;
+	font-size: 0.75rem;
+	text-decoration: none;
+	color: #000;
+	padding: 0.4em;
+	background: none;
+	transition: 0.5s ease;
+}
+.delete_goals:hover {
+	transition: 0.5s ease;
+	padding: 0.4em 2em;
+	color: #fff;
+	background: #8360c3;
+}
+
+/* Slide show for displaying Goals */
+.mySlides {
+	display: none;
+}
+
+.slide_container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.slide_container a i:hover {
+	color: #8360c3;
+}
+  
+/* Fading animation */
+.fade {
+	-webkit-animation: fade 1.5s;
+	animation: fade 1.5s
+}
+  
+@-webkit-keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+  
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+/* Slide show for displaying Goals */
+
+
+/* Edit button for Goals */
+.edit_goals {
+	color: #000;
+	text-decoration: none;
+	transition: 0.3s ease;
+	padding: 0.5em;
+}
+
+.edit_goals:hover {
+	background: #8360c3;
+	transition: 0.3s ease;
+	border-radius: 15px;
+	color: #fff;
+}
+/* Edit button for Goals */
+
+
+/* Confirm message styling */
+.swal-text {
+	background-color: #FEFAE3;
+	padding: 17px;
+	border: 1px solid #F0E1A1;
+	display: block;
+	margin: 22px;
+	text-align: center;
+	color: #61534e;
+}
+/* Confirm message styling */
+
+/* GOALS */
+
+/* Desktops */
+@media screen and (min-width: 2000px) {
+	.nav-link {
+		font-size: 2rem;
 	}
+	#home_page {
+		font-size: 3.5rem;
+	}
+	.feeling {
+		font-size: 2.5rem;
+	}
+	.emoji a {
+		font-size: 3rem;
+	}
+	.btnlink {
+		margin-top: 2.5em;
+		font-size: 3rem;
+	}
+	.goal_parallax {
+		font-size: 2rem;		
+	}
+	.intro_title {
+		font-size: 3.5rem;
+	}
+	.goals_form {
+		font-size: 2rem;
+	}
+	.multi_step button {
+		font-size: 2.25rem;
+	}
+	.goals_form label {
+		font-size: 2rem;
+	}
+	.goals_form input {
+		font-size: 1.75rem;
+	}
+	.delete_goals {
+		font-size: 1.5rem;
+	}
+	.swal-text {
+		font-size: 2rem;
+	}
+}
+/* Desktops */
+
+
+@media screen and (max-width: 1350px) {
 
 	/* MOBILE HEADER */
 	.burger div {
@@ -402,6 +665,40 @@ a {
 	}
 }
 
+/* Just for Ipad Pro */
+@media only screen and (max-width: 1350px) and (min-width: 1023px) {
+	#goal_number {
+		font-size: 2.5rem;
+	}
+	.intro_title {
+		font-size: 3rem;
+	}
+	.introduction p {
+		font-size: 1.7rem;
+	}
+	.intro_end {
+		font-size: 1.7rem;
+	}
+	.multi_step button {
+		font-size: 1.75rem;
+	}
+
+	.roadmap {
+		font-size: 1rem;
+	}
+	.action_tasks h3 {
+		font-size: 2rem;
+	}
+	.space {
+		font-size: 1.35rem;
+	}
+	.big_goal div {
+		font-size: 1.35rem;
+	}
+}
+/* Just for Ipad Pro */
+
+
 /* Font-size changes */
 @media screen and (max-width: 1025px) {
 	.btnlink {
@@ -417,11 +714,21 @@ a {
 		font-size: 2rem;
 	}
 	#goals {
-		font-size: 2.5rem;
+		font-size: 1.5rem;
+	}
+	
+	.goals_form {
+		min-width: 800px;
+	}
+	.goals_form label {
+		font-size: 1.75rem;
+	}
+	.goals_form input {
+		font-size: 1.65rem;
 	}
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 845px) {
 	#home_page {
 		font-size: 1.4rem;
 	}
@@ -441,13 +748,26 @@ a {
 	.emoji a {
 		font-size: 1.35rem;
 	}
+	.goals_form {
+		min-width: 600px;
+	}
+	#goal_number {
+		font-size: 1.5rem;
+	}
+	.goals_form label {
+		font-size: 1rem;
+	}
+	.goals_form input {
+		font-size: 1rem;
+	}
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 620px) {
 
 	#home_page {
 		font-size: 1rem;
 	}
+
 
 	.feeling {
 		font-size: 0.8rem;
@@ -457,17 +777,64 @@ a {
 		font-size: 1rem;
 	}
 
+
 	.btnlink {
 		font-size: 1.2rem;
 		padding: 1em;
 	}
 
+
 	#goals {
-		font-size: 1.5rem;
+		font-size: 0.8rem;
 	}
 
 	.ninety-days {
 		font-size: 0.9rem;
+	}
+
+
+	.goals_form {
+		min-width: 250px;
+	}
+	.goals_form label {
+		font-size: 0.6rem;
+	}
+	.goals_form input {
+		font-size: 0.5rem;
+	}
+	#goal_number {
+		font-size: 1rem;
+	}
+
+	.intro_title {
+		font-size: 1.2rem;
+	}
+	.introduction p {
+		font-size: 0.65rem;
+	}
+	.intro_end {
+		font-size: 0.6rem;
+	}
+	
+	.roadmap {
+		font-size: 0.5rem;
+	}
+	.delete_goals {
+		font-size: 0.5rem;
+	}
+	.action_tasks h3 {
+		font-size: 0.75rem;
+	}
+	.space {
+		font-size: 0.5rem;
+	}
+	.big_goal div {
+		font-size: 0.5rem;
+	}
+
+
+	.swal-text {
+		font-size: 0.75rem;
 	}
 }
 
@@ -477,219 +844,3 @@ a {
 	}
 }
 /* Font-size changes */
-
-
-/* GOALS */
-.my_goals {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	width: 100%;
-}
-
-#goal_form {
-	padding: 2em;
-}
-
-.goals_form {
-	text-align: center;
-	margin: auto;
-	width: 40%;
-	min-width: 500px;
-	padding-bottom: 1em;
-	background: linear-gradient(#B3FFAB, #12FFF7);
-	border-radius: 2em;
-}
-
-.goals_form div {
-	margin-top: 1.2em;
-}
-
-.goals_form input {
-	display: block;
-	margin: auto;
-	width: 80%;
-	border: none;
-	background: none;
-	border-bottom: 2px solid #000;
-	font-size: 1rem;
-}
-
-.goals_form label {
-	font-size: 1.1rem;
-	font-weight: 600;
-}
-
-.goals_form input:focus {
-	outline: none;
-	font-weight: 500;
-	border-bottom: 3px solid #000;
-}
-
-.roadmap {
-	text-align: left;
-	padding-bottom: 1em;
-	border-bottom: 1px solid #000;
-}
-
-.progress_list, .based_progress {
-	text-align: left;
-}
-
-.space {
-	padding-left: 1em;
-}
-
-
-
-
-#form_instructions {
-	display: flex;
-	padding: 1.5em;
-}
-
-#form_instructions h1 {
-	font-size: 2rem;
-}
-
-.introduction {
-	margin: auto;
-}
-
-.intro {
-	float: left;
-}
-
-
-
-
-
-.form_step {
-	display: none;
-}
-
-input.invalid {
-	border-bottom: 1px solid red;
-}
-
-input.valid {
-	display: block;
-	margin: auto;
-	width: 80%;
-	border: none;
-	background: none;
-	border-bottom: 2px solid #000;
-	font-size: 1rem;
-}
-
-.multi_step {
-	display: flex;
-	margin: auto;
-	width: 80%;
-}
-
-.multi_step button {
-	color: #fff;
-	width: 100%;
-	border-radius: 40px;
-	background: #50497e;
-	font-size: 1rem;
-	padding: 0.5rem;
-	margin-top: 2em;
-	cursor: pointer;
-	border: none;
-	transition: 0.5s ease;
-	outline: none;
-	margin: 0.2em;
-}
-
-.nextButton {
-	width: 60%;
-}
-.prevButton {
-	opacity: 0.7;
-	background: #6d64a5;
-	width: 40%;
-}
-
-.multi_step .prevButton:hover {
-	transition: 0.5s ease;
-	background: #8179b9;
-}
-
-.multi_step .nextButton:hover {
-	transition: 0.5s ease;
-	background: #6d64a5;
-}
-
-.delete_goals {
-	display: flex;
-	justify-content: center;
-	font-size: 0.75rem;
-	text-decoration: none;
-	color: #000;
-	padding: 0.4em;
-	background: none;
-	transition: 0.5s ease;
-}
-.delete_goals:hover {
-	transition: 0.5s ease;
-	padding: 0.4em 2em;
-	color: #fff;
-	background: #8360c3;
-}
-
-/* GOALS */
-
-.mySlides {
-	display: none;
-}
-
-.slide_container {
-	display: flex;
-	justify-content: space-around;
-}
-
-.slide_container a i:hover {
-	color: #8360c3;
-}
-
-.edit_goals {
-	color: #000;
-	text-decoration: none;
-	transition: 0.3s ease;
-	padding: 0.5em;
-}
-
-.edit_goals:hover {
-	background: #8360c3;
-	transition: 0.3s ease;
-	border-radius: 15px;
-	color: #fff;
-}
-  
-  /* Fading animation */
-.fade {
-	-webkit-animation: fade 1.5s;
-	animation: fade 1.5s
-}
-  
-@-webkit-keyframes fade {
-	from {opacity: .4}
-	to {opacity: 1}
-}
-  
-@keyframes fade {
-	from {opacity: .4}
-	to {opacity: 1}
-}
-
-.swal-text {
-	background-color: #FEFAE3;
-	padding: 17px;
-	border: 1px solid #F0E1A1;
-	display: block;
-	margin: 22px;
-	text-align: center;
-	color: #61534e;
-}
