@@ -49,6 +49,7 @@ document.addEventListener("mousemove", function(e) {
 
 
 if (window.location.pathname == "/") {
+
   var header = document.getElementById("myHeader");
   var sticky = header.offsetTop;
   var after_header = document.getElementById("AF");
@@ -143,11 +144,11 @@ if (window.location.pathname == "/") {
   }
 
   nextBtn.addEventListener('click', function() {
-    nextPrev(1)
-  }, false)
+    nextPrev(1);
+  }, false);
   prevBtn.addEventListener('click', function() {
-    nextPrev(-1)
-  }, false)
+    nextPrev(-1);
+  }, false);
 
 
   function validateForm() {
@@ -199,6 +200,17 @@ if (window.location.pathname == "/goals/") {
     }
     slides[slideIndex-1].style.display = "block";
   }
+  /* Not working for some reason 
+
+  document.getElementById("PArrow").addEventListener('click', function() {
+    plusSlides(-1);
+  });
+  document.getElementById("NArrow").addEventListener('click', function() {
+    plusSlides(1);
+  });
+  
+  */
+
 }
 
 

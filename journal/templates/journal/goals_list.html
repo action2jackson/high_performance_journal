@@ -6,16 +6,20 @@
     {% for goal in goal_page %}
         <div class="mySlides fade">
             <div class="my_goals">
-                <form class="goals_form" id="goal_form">
+                <div class="goals_form" id="goal_page">
                     <p class="roadmap">13-Week Roadmap - The big Idea - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
                     <a class="delete_goals" href="{% url 'goals_delete' %}">DELETE ALL GOALS</a>
                     <div class="big_goal">
                         <label><h2>My Big Goal #{{ forloop.counter }}</h2></label>
-                        {{ goal.goal }}
+                        <div>
+                            {{ goal.goal }}
+                        </div>
                     </div>
                     <div class="big_goal">
                         <label for="{{ form.goal_important.id_for_label }}"><h3>This goal is important to me because...</h3></label>
-                        {{ goal.goal_important}}
+                        <div>
+                            {{ goal.goal_important}}
+                        </div>
                     </div>
                     <div>
                         <label><h3>My Progress Goals</h3></label>
@@ -24,10 +28,10 @@
                                 {{ goal.progress_1 }}
                             </li>
                             <li class="space"> 
-                                {{ goal.progress_1 }}                
+                                {{ goal.progress_2 }}                
                             </li>
                             <li class="space"> 
-                                {{ goal.progress_1 }}
+                                {{ goal.progress_3 }}
                             </li>
                         </ol>
                     </div>
@@ -77,11 +81,12 @@
                         </ol>
                     </div>
                     <div class="slide_container">
+                        <!-- Temporary onclick listeners -->
                         <a class="prevArrow" onclick="plusSlides(-1)"><i class="fas fa-long-arrow-alt-left fa-2x"></i></a>
                         <a class="edit_goals" href="#">Edit Goal</a>
                         <a class="nextArrow" onclick="plusSlides(1)"><i class="fas fa-long-arrow-alt-right fa-2x"></i></a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     {% endfor %}
