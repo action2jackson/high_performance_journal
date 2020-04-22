@@ -1,0 +1,17 @@
+{% extends 'journal/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="my_goals">
+        <form method="post" class="goals_form" action="">
+            {% csrf_token %}
+            <h1 id="goal_number" style="padding-top: 0.5em;">My Big Goal</h1>
+            {{ goalForm|crispy }}
+            <div class="multi_step">
+                <button type="submit" class="nextButton">Save</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

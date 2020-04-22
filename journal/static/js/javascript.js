@@ -104,7 +104,6 @@ if (window.location.pathname == "/") {
       }
     });
   }
-
   
   var currentStep = 0;
   showStep(currentStep);
@@ -200,6 +199,8 @@ if (window.location.pathname == "/goals/") {
     }
     slides[slideIndex-1].style.display = "block";
   }
+  
+  
   /* Not working for some reason 
 
   document.getElementById("PArrow").addEventListener('click', function() {
@@ -208,7 +209,7 @@ if (window.location.pathname == "/goals/") {
   document.getElementById("NArrow").addEventListener('click', function() {
     plusSlides(1);
   });
-  
+
   */
 
 }

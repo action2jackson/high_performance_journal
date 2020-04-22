@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.forms import formset_factory
 from .models import Goal
@@ -27,6 +27,20 @@ def goals_list(request):
         'goal_page': goal_page
     }
     return render(request, 'journal/goals_list.html', goals_for_frontend)
+
+def goal_edit(request, pk):
+    goal = Goal.objects.get(id=pk)
+    if request.method == 'POST':
+        goalForm = GoalForm(request.POST, instance=goal)
+        if goalForm.is_valid():
+            # post = goalForm.save(commit=False)
+            # post.author = request.user
+            goalForm.save()
+            return redirect('goals_list')
+    else:
+        goalForm = GoalForm(instance=goal)
+        stuff_for_frontend = {'goalForm': goalForm}
+        return render(request, 'journal/goal_edit.html', stuff_for_frontend)
 
 def goals_delete(request):
     Goal.objects.all().delete()

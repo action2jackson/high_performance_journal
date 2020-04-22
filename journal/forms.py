@@ -5,6 +5,7 @@ from django.forms import formset_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
+
 class GoalForm(forms.ModelForm):
     class Meta:
         model = Goal
