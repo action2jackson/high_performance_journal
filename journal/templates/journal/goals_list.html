@@ -83,7 +83,7 @@
                     <div class="slide_container">
                         <!-- Temporary onclick listeners -->
                         <a class="prevArrow" onclick="plusSlides(-1)"><i class="fas fa-long-arrow-alt-left fa-2x"></i></a>
-                        <a class="edit_goals" href="#">Edit Goal</a>
+                        <a class="edit_goals" href="{% url 'goal_edit' pk=goal.pk %}">Edit Goal</a>
                         <a class="nextArrow" onclick="plusSlides(1)"><i class="fas fa-long-arrow-alt-right fa-2x"></i></a>
                     </div>
                 </div>
