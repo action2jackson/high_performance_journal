@@ -1,4 +1,5 @@
 {% extends 'journal/base.html' %} 
+<!-- Need to load in Crispy forms before use -->
 {% load crispy_forms_tags %}
 
 {% block title %}Journal{% endblock %}
@@ -7,8 +8,10 @@
     <section class="after-header" id="AF">
         <!-- DAILY MOOD -->
         <div class="feeling_container">
+            <!-- No Y axis so the parallax movement is completely horizontal -->
             <h3 class="feeling" data-rateY="0" data-rateX="5" data-direction="horizontal">How are you feeling today?</h3>
             <div class="emoji">
+                <!-- Uses both x and y axis to create a diagonal shift -->
                 <a class="far fa fa-smile-beam fa-2x" id="happy" data-rateY="-1" data-rateX="-1" data-direction="horizontal"></a>
                 <a class="far fa fa-meh fa-2x" id="meh" data-rate="-1" data-direction="vertical"></a>
                 <a class="far fa fa-sad-tear fa-2x" id="sad" data-rateY="-1" data-rateX="1" data-direction="horizontal"></a>
@@ -31,11 +34,15 @@
         <!-- MAIN PAGE -->
     </section>
 
+    <!-- GOALS FORM -->
     <section>
         <div class="my_goals">
             <form id="form_for_goals" class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
                 {% csrf_token %}
+                <!-- Django needs this for formsets organizing -->
                 {{ goals.management_form }}
+
+                <!-- Intro to form -->
                 <div class="form_step" id="form_instructions">
                     <i class="far fa-clock fa-6x"></i>
                     <h1 class="intro_title">This is your 90 day sprint!</h1>
@@ -49,18 +56,26 @@
                         <h5 class="intro_end">Make sure to take your time and be thoughtful when filling out your goals</h5>
                     </div>
                 </div>
+
+                <!-- Looping through multiple of the same form in a formset -->
                 {% for goal in goals %}
                     <div class="form_step">
+                        <!-- forloop.counter is a built in Django function -->
                         <h1 id="goal_number">My Big Goal #{{ forloop.counter }}</h1>
+                        <!-- crispy helps with styling -->
                         {{ goal|crispy }}
                     </div>
                 {% endfor %}
+
+                <!-- Navigation through form slides -->
                 <div class="multi_step">
                     <button type="button" class="prevButton" id="prevBtn">Previous</button>
                     <button type="button" class="nextButton" id="nextBtn">Next</button>
                 </div> 
+
             </form>
         </div>
     </section>
+    <!-- GOALS FORM -->
 
 {% endblock %}

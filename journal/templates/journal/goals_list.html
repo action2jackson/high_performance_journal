@@ -3,20 +3,24 @@
 {% block title %}My Goals{% endblock %}
 
 {% block content %}
+    <!-- Loop through the goals that were submitted -->
     {% for goal in goal_page %}
+        <!-- Class for slideshow animation -->
         <div class="mySlides fade">
             <div class="my_goals">
                 <div class="goals_form" id="goal_page">
                     <p class="roadmap">13-Week Roadmap - The big Idea - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
+                    <!-- This button deletes all goals -->
                     <a class="delete_goals" href="{% url 'goals_delete' %}">DELETE ALL GOALS</a>
                     <div class="big_goal">
                         <label><h2>My Big Goal #{{ forloop.counter }}</h2></label>
                         <div>
+                            <!-- Gets the individual model field "goal" from the object "goal"  -->
                             {{ goal.goal }}
                         </div>
                     </div>
                     <div class="big_goal">
-                        <label for="{{ form.goal_important.id_for_label }}"><h3>This goal is important to me because...</h3></label>
+                        <label><h3>This goal is important to me because...</h3></label>
                         <div>
                             {{ goal.goal_important}}
                         </div>
@@ -80,6 +84,8 @@
                             </li>
                         </ol>
                     </div>
+
+                    <!-- Navigation through form slides + edit button -->
                     <div class="slide_container">
                         <!-- Temporary onclick listeners -->
                         <a class="prevArrow" onclick="plusSlides(-1)"><i class="fas fa-long-arrow-alt-left fa-2x"></i></a>
