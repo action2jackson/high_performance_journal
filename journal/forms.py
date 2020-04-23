@@ -9,22 +9,13 @@ from crispy_forms.layout import Submit
 class GoalForm(forms.ModelForm):
     class Meta:
         model = Goal
+        # Excludes Model fields
+        exclude = ('created_date',)
         fields = (
-            'goal',
-            'goal_important',
-            'progress_1',
-            'progress_2',
-            'progress_3',
-            'deeper_progress_1',
-            'deeper_progress_2',
-            'deeper_progress_3',
-            'deeper_progress_4',
-            'deeper_progress_5',
-            'deeper_progress_6',
-            'deeper_progress_7',
-            'deeper_progress_8',
-            'deeper_progress_9',
+            # Includes all Model fields
+            '__all__'
         )
+        # html attributes 
         widgets = {
             'goal': (forms.TextInput(attrs={'placeholder': 'Land my first Programming job', 'required': 'True', 'autofocus': 'autofocus'})),
             'goal_important': (forms.TextInput(attrs={'placeholder': 'It will get my foot in the door and help my confidence', 'required': 'True'})),
@@ -42,9 +33,9 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_9': (forms.TextInput(attrs={'placeholder': 'Create a resume', 'required': 'True'})),
 
         }
-        field_classes = {
-        }
+        # Form labels
         labels = {
+            # leaving it Blank is needed so Dajngo knows not to just autofill the label
             'goal': (''),
             'goal_important': ('This goal is important to me because...'),
             'progress_1': ('My progress Goals'),

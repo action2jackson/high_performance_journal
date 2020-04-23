@@ -3,6 +3,7 @@ from django.utils import timezone
 
 
 class Goal(models.Model):
+    # Model fields for 90 day goals
     goal = models.CharField(max_length=60, blank=True , null=True)
     goal_important = models.CharField(max_length=60, blank=True, null=True)
     progress_1 = models.CharField(max_length=60, blank=True, null=True)
