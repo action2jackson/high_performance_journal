@@ -1,6 +1,12 @@
 from django import forms
 from .models import Goal
 from django.forms import formset_factory
+# For registration
+from django.contrib.auth.forms import UserCreationForm
+# User model from Django
+from django.contrib.auth.models import User
+from django import forms
+
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -11,10 +17,8 @@ class GoalForm(forms.ModelForm):
         model = Goal
         # Excludes Model fields
         exclude = ('created_date',)
-        fields = (
-            # Includes all Model fields
-            '__all__'
-        )
+        # Includes all Model fields
+        fields = '__all__'
         # html attributes 
         widgets = {
             'goal': (forms.TextInput(attrs={'placeholder': 'Land my first Programming job', 'required': 'True', 'autofocus': 'autofocus'})),
@@ -51,3 +55,17 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_8': (''),
             'deeper_progress_9': (''),
         }
+
+
+class SignupForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+        widgets = {
+            'username': (forms.TextInput(attrs={'placeholder': 'Username', 'required': 'True', 'class': 'inputFields'})),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(SignupForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': 'Password', 'required': 'True', 'class': 'inputFields'})
+        self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'required': 'True', 'class': 'inputFields'})

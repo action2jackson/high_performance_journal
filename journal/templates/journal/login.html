@@ -1,0 +1,33 @@
+{% extends 'journal/base.html' %}
+
+{% block title %}Signup{% endblock%}
+
+{% block content %}
+
+    <div class="signupSection" style="width: 30%;">
+        <form action="#" method="POST" class="signupForm" autocomplete="off" style="width: 100%;">
+            {% csrf_token %}
+            <h2>It's Journal Time!</h2>
+            <ul class="noBullet">
+                <li>
+                    <i id="signupIcons" class="fas fa-user-tag"></i>
+                    <input type="text" placeholder="Username..." class="inputFields">
+                </li>
+                <li>
+                    <i id="signupIcons" class="fas fa-key"></i>
+                    <input type="password" placeholder="Password..." class="inputFields">
+                </li>
+                <li class="center-btn">
+                    <button type="submit" class="join-btn">Login</button>
+                </li>
+            </ul>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            <div class="switch">
+                <p>Don't have an account? <a href="{% url 'signup_page' %}">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

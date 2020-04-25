@@ -1,0 +1,40 @@
+{% extends 'journal/base.html' %}
+
+{% block title %}Signup{% endblock%}
+
+{% block content %}
+
+    <div class="signupSection">
+        <div class="intro_signup">
+            <h2>Mission to Success</h2>
+            <i class="icon fas fa-journal-whills" aria-hidden="true"></i>
+            <p>The Future Is Here</p>
+        </div>
+        <form action="#" method="POST" class="signupForm" autocomplete="off">
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            <ul class="noBullet">
+                <li>
+                    <i id="signupIcons" class="fas fa-user-tag"></i>
+                    {{ signupForm.username }}
+                </li>
+                <li>
+                    <i id="signupIcons" class="fas fa-key"></i>
+                    {{ signupForm.password1 }}
+                </li>
+                <li>
+                    <i id="signupIcons" class="fas fa-key"></i>
+                    {{ signupForm.password2 }}
+                </li>
+                <li class="center-btn">
+                    <button type="submit" class="join-btn">Join</button>
+                </li>
+            </ul>
+            {{ signupForm.errors }}
+            <div class="switch">
+                <p>Already have an account? <a href="{% url 'login_page' %}">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

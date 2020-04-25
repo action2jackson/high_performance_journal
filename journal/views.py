@@ -1,9 +1,34 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
 from django.forms import formset_factory
-from .models import Goal
-from .forms import GoalForm
+from django.contrib import messages
+# Helps with registration
+from django.contrib.auth.forms import UserCreationForm
 
+from .models import Goal
+from .forms import GoalForm, SignupForm
+
+
+def login_page(request):
+    return render(request, 'journal/login.html')
+
+def signup_page(request):
+    signupForm = SignupForm()
+
+    if request.method == 'POST':
+        signupForm = SignupForm(request.POST)
+        if signupForm.is_valid():
+            signupForm.save()
+            user = signupForm.cleaned_data.get('username')
+            messages.success(request, 'Account created successfully for' + user)
+            return redirect('login_page') 
+
+    stuff_for_frontend = {
+        'signupForm': signupForm
+    }
+    return render(request, 'journal/signup.html', stuff_for_frontend)
+
+
+    
 # Fill in 90 day Goals form
 def index(request):
     # Create a Formset with 3 forms and 3 being the max amount
@@ -52,7 +77,6 @@ def goal_edit(request, pk):
 def goals_delete(request):
     Goal.objects.all().delete()
     return redirect('goals_list')
-
 
 
     
