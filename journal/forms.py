@@ -62,10 +62,16 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ['username', 'password1', 'password2']
         widgets = {
-            'username': (forms.TextInput(attrs={'placeholder': 'Username', 'required': 'True', 'class': 'inputFields'})),
+            'username': (forms.TextInput(attrs={'placeholder': 'Username', 'class': 'inputFields'})),
+        }
+        help_texts = {
+            'username': None,
+            'password1': None,
+            'password2': None,
         }
 
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
-        self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': 'Password', 'required': 'True', 'class': 'inputFields'})
-        self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'required': 'True', 'class': 'inputFields'})
+        self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'inputFields'})
+        self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'class': 'inputFields'})
+

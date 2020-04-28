@@ -190,7 +190,7 @@ if (window.location.pathname == "/") {
       emptyInput[i].addEventListener('input', function(e) {
         // If the input isn't empty then give it the class 'valid' 
         if (emptyInput[i] != "") {
-          this.className = "valid";
+          this.className = "valid";   
         }
       });
       // If the input is empty then give it the class 'invalid'
@@ -203,7 +203,6 @@ if (window.location.pathname == "/") {
     return valid;
   }
 }
-
 
 
 if (window.location.pathname == "/goals/") {
@@ -256,4 +255,12 @@ if (window.location.pathname == "/goals/") {
 
 }
 
+
+if (window.location.pathname == "/login/") {
+  const input = document.getElementById('password');
+
+  input.addEventListener('keydown', () => {
+      input.setAttribute('type', 'password');
+  });
+}
 

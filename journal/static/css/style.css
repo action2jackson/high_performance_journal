@@ -913,26 +913,39 @@ input.valid {
 	color: rgba(10, 180, 180, 1);
 }
 
-.join-btn {
+
+#join-btn {
 	border: 1px solid rgba(10, 180, 180, 1);
 	background: rgba(20, 20, 20, .6);
 	font-size: 1.3rem;
 	color: white;
-	margin-top: 1em;
+	margin: 1em;
 	padding: 0.5em 3em;
 	cursor: pointer;
 	transition: .4s;
 }
 
-.join-btn:hover {
+#join-btn:hover {
 	background: rgba(20, 20, 20, .8);
 	padding: 0.5em 4em;
 }
 
 .switch {
 	margin: 2em;
+	padding: 1em;
+	background: rgba(20, 20, 20, .6);
 }
 
 .switch a {
 	color: rgba(10, 180, 180, 1);
+}
+
+#flash_message {
+	margin: auto;
+	width: 70%;
+	color: lightcoral;
+	list-style-type: none;
+}
+#flash_message li {
+	list-style-type: none;
 }
