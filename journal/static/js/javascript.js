@@ -47,6 +47,49 @@ document.addEventListener("mousemove", function(e) {
 <--- FOR DREAM PAGE --->
 */
 
+function sprintCountdown() {
+  var countdown = document.getElementById("Countdown");
+  var goals = document.getElementById("Goals");
+  var numDays = 90;
+  var sprintDate = new Date();
+  var ninetyDaysDate = sprintDate.getDay() + numDays;
+  if (sprintDate != ninetyDaysDate) {
+    countdown.style.display = "flex";
+    goals.style.display = "none";
+  } else {
+    countdown.style.display = "none";
+    goals.style.display = "flex";
+  }
+  var currentTime = sprintDate.getTime();
+  var ninetyDays = ninetyDaysDate.getTime();
+
+  var timeLeft = ninetyDays - currentTime;
+
+  var seconds = Math.floor(timeLeft / 1000);
+  var minutes = Math.floor(seconds / 60);
+  var hours = Math.floor(minutes / 60);
+  var days = Math.floor(hours / 24);
+
+  hours %= 24;
+  minutes %= 60;
+  minutes %= 60;
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("days").innerText = days;
+
+  document.getElementById("hours").textContent = days;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+
+  setTimeout(sprintCountdown, 1000);
+}
+
+sprintCountdown();
+
 // If user is on home page
 if (window.location.pathname == "/") {
 
@@ -111,13 +154,13 @@ if (window.location.pathname == "/") {
         });
         // If message was confirmed then submit the form
         document.getElementById("form_for_goals").submit();
+        sprintCountdown();
         return false;
       } else {
         swal("Make sure your goals are thoughtful!");
       }
     });
   }
-  
 
   var currentStep = 0;
   showStep(currentStep);
