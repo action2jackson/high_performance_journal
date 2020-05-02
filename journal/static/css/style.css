@@ -844,3 +844,26 @@ input.valid {
 	}
 }
 /* Font-size changes */
+
+.countdownContainer {
+	display: none;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+}
+
+.countdownTable {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	padding: 2em;
+	background: #171E26;
+	border: 1px solid #171E26;
+	color: #fff;
+	box-shadow: 0 0 10px 5px #171E26;
+}
+
+.countdownInfo {
+	font-size: 5rem;
+}
+
