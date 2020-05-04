@@ -47,48 +47,45 @@ document.addEventListener("mousemove", function(e) {
 <--- FOR DREAM PAGE --->
 */
 
+var timeLeft = 0;
 function sprintCountdown() {
+
   var countdown = document.getElementById("Countdown");
   var goals = document.getElementById("Goals");
-  var numDays = 90;
-  var sprintDate = new Date();
-  var ninetyDaysDate = sprintDate.getDay() + numDays;
-  if (sprintDate != ninetyDaysDate) {
+  
+  if (timeLeft != 7776000000) {
     countdown.style.display = "flex";
     goals.style.display = "none";
   } else {
     countdown.style.display = "none";
     goals.style.display = "flex";
   }
-  var currentTime = sprintDate.getTime();
-  var ninetyDays = ninetyDaysDate.getTime();
 
-  var timeLeft = ninetyDays - currentTime;
+  ++timeLeft;
 
-  var seconds = Math.floor(timeLeft / 1000);
-  var minutes = Math.floor(seconds / 60);
-  var hours = Math.floor(minutes / 60);
-  var days = Math.floor(hours / 24);
+  var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  var hours = Math.floor(timeLeft / 3600);
+  var minutes = Math.floor((timeLeft - hours * 3600) / 60);
+  var seconds = timeLeft - (hours * 3600 + minutes * 60);;
+  console.log(timeLeft);
 
-  hours %= 24;
-  minutes %= 60;
-  minutes %= 60;
-
+  days = (days < 10) ? "0" + days : days;
   hours = (hours < 10) ? "0" + hours : hours;
   minutes = (minutes < 10) ? "0" + minutes : minutes;
   seconds = (seconds < 10) ? "0" + seconds : seconds;
 
+
   document.getElementById("days").textContent = days;
   document.getElementById("days").innerText = days;
 
-  document.getElementById("hours").textContent = days;
+  document.getElementById("hours").textContent = hours;
   document.getElementById("minutes").textContent = minutes;
   document.getElementById("seconds").textContent = seconds;
 
   setTimeout(sprintCountdown, 1000);
 }
 
-sprintCountdown();
+
 
 // If user is on home page
 if (window.location.pathname == "/") {
@@ -154,7 +151,6 @@ if (window.location.pathname == "/") {
         });
         // If message was confirmed then submit the form
         document.getElementById("form_for_goals").submit();
-        sprintCountdown();
         return false;
       } else {
         swal("Make sure your goals are thoughtful!");
@@ -300,3 +296,4 @@ if (window.location.pathname == "/goals/") {
 }
 
 
+sprintCountdown();
