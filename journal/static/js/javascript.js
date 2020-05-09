@@ -48,14 +48,22 @@ document.addEventListener("mousemove", function(e) {
 */
 
 function timerRestart() {
+  goalsAlive = 1;
   timeLeft = 0;
   startTimer = 1;
   localStorage.setItem("timeLeft", timeLeft);
   localStorage.setItem("startTimer", startTimer);
+  localStorage.setItem("goalsAlive", goalsAlive);
+}
+
+function deleteSprint() {
+  goalsAlive = 0;
+  localStorage.setItem("goalsAlive", goalsAlive);
 }
 
 var timeLeft = 0;
 var startTimer = 0;
+var goalsAlive = 1;
 function sprintCountdown() {
   var countdown = document.getElementById("Countdown");
   var goals = document.getElementById("Goals"); 
@@ -65,7 +73,10 @@ function sprintCountdown() {
 
   startTimer = parseInt(localStorage.getItem("startTimer"));
 
-  if (startTimer == 1 && timeLeft < 7776000000) {
+  goalsAlive = parseInt(localStorage.getItem("goalsAlive"));
+  console.log(goalsAlive);
+
+  if (startTimer == 1 && timeLeft < 7776000000 && goalsAlive == 1) {
     countdown.style.display = "flex";
     goals.style.display = "none";
   } else {
@@ -150,9 +161,7 @@ if (window.location.pathname == "/") {
     swal({
       title: "Are you sure?",
       text: "Once submitted, your 90 day sprint will start!",
-      // icon: "warning",
-      buttons: true,
-      // dangerMode: true,
+      buttons: [true, "YES"],
     })
     .then((willDelete) => {
       if (willDelete) {
@@ -255,12 +264,28 @@ if (window.location.pathname == "/") {
 }
 
 
-
 if (window.location.pathname == "/goals/") {
   var deleteGoals = document.getElementsByClassName("delete_goals");
-  var resetGoals = function(e) {
-    // If user chooses to cancel the confirm message then prevent their goals from being deleted
-    if (!confirm('Are you sure you want to delete all your goals and restart your 90 day sprint?')) e.preventDefault();
+  function resetGoals() {
+    swal({
+      title: "Are you sure?",
+      text: "Once submitted, your 90 day sprint will END!",
+      closeOnClickOutside: false,
+      icon: "warning",
+      buttons: [true, "YES"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Deleteing Goals", {
+          icon: "success",
+        });
+        window.location.href = "delete/";
+        deleteSprint();
+      } else {
+        swal("Keep grinding, you got this!");
+      }
+    });
   }
   deleteGoals[0].addEventListener('click', resetGoals, false);
 

@@ -518,16 +518,18 @@ input.valid {
 /* Confirm message styling */
 .swal-text {
 	background-color: #FEFAE3;
-	padding: 17px;
+	padding: 1.75em;
 	border: 1px solid #F0E1A1;
 	display: block;
-	margin: 22px;
+	margin: 1.75em;
 	text-align: center;
 	color: #61534e;
 }
 /* Confirm message styling */
 
 /* GOALS */
+
+
 
 /* Desktops */
 @media screen and (min-width: 2000px) {
