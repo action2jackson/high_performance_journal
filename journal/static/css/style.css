@@ -515,6 +515,38 @@ input.valid {
 /* Edit button for Goals */
 
 
+
+/* 90 day sprint countdown timer */
+.countdownContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+}
+
+.countdownTable {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	padding: 2em;
+	background: rgba(20, 20, 20, .6);;
+	border: 1px solid rgba(10, 180, 180, 1);
+	color: #fff;
+	box-shadow: 0 0 10px 5px rgba(10, 180, 180, 1);
+}
+
+.countdownTitle {
+	font-size: 5rem;
+}
+
+.countdownNumber {
+	font-size: 4rem;
+	border: 1px dotted red;
+}
+/* 90 day sprint countdown timer */
+
+
+
 /* Confirm message styling */
 .swal-text {
 	background-color: #FEFAE3;
@@ -845,30 +877,3 @@ input.valid {
 	}
 }
 /* Font-size changes */
-
-.countdownContainer {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 100vh;
-}
-
-.countdownTable {
-	margin: auto;
-	width: 50%;
-	text-align: center;
-	padding: 2em;
-	background: rgba(20, 20, 20, .6);;
-	border: 1px solid rgba(10, 180, 180, 1);
-	color: #fff;
-	box-shadow: 0 0 10px 5px rgba(10, 180, 180, 1);
-}
-
-.countdownTitle {
-	font-size: 5rem;
-}
-
-.countdownNumber {
-	font-size: 4rem;
-	border: 1px dotted red;
-}
