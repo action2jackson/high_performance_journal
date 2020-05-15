@@ -5,7 +5,6 @@ from django.forms import formset_factory
 from django.contrib.auth.forms import UserCreationForm
 # User model from Django
 from django.contrib.auth.models import User
-from django import forms
 
 
 from crispy_forms.helper import FormHelper
@@ -16,7 +15,7 @@ class GoalForm(forms.ModelForm):
     class Meta:
         model = Goal
         # Excludes Model fields
-        exclude = ('created_date',)
+        exclude = ('created_date', 'user')
         # Includes all Model fields
         fields = '__all__'
         # html attributes 
@@ -63,11 +62,6 @@ class SignupForm(UserCreationForm):
         fields = ['username', 'password1', 'password2']
         widgets = {
             'username': (forms.TextInput(attrs={'placeholder': 'Username', 'class': 'inputFields'})),
-        }
-        help_texts = {
-            'username': None,
-            'password1': None,
-            'password2': None,
         }
 
     def __init__(self, *args, **kwargs):

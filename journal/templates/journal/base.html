@@ -22,6 +22,7 @@
         <div class="inner_header" id="myHeader">
             <!-- HOME PAGE-->
             <div class="logo_container">
+                
                 <h4><a class="fas fa-journal-whills" id="home_page" href="{% url 'index' %}">&nbsp;HIGH PERFORMANCE JOURNAL</a></h4>
             </div>
             <!-- HOME PAGE-->
@@ -38,7 +39,11 @@
             <ul class="navigation_container">
                 <li><a class="nav-link" href="{% url 'goals_list' %}">Goals</a></li>
                 <li><a class="nav-link" href="#">Collection</a></li>
-                <li><a class="nav-link" href="{% url 'signup_page' %}">Sign-up</a></li>
+                {% if user.is_authenticated %}
+                    <li><a class="nav-link" id="logout" href="{% url 'logout_user' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="nav-link" id="login" href="{% url 'login_page' %}">Login</a></li>
+                {% endif %}
             </ul>
             <!-- HEADER LINKS -->
         </div>

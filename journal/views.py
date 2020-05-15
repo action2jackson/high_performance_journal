@@ -12,11 +12,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Goal
 from .forms import GoalForm, SignupForm
 
-@login_required
+
 def login_page(request):
-    # if request.user.is_authenticated:
-    #     return redirect('index')
-    # else:
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -28,20 +25,18 @@ def login_page(request):
             return redirect('index')
         else:
             messages.info(request, 'Username or Password is incorrect')
-            return render(request, 'journal/login.html')
+            return render(request, 'registration/login.html')
 
-    return render(request, 'journal/login.html')
+    context = {}
+    return render(request, 'registration/login.html', context)
 
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    messages.info(request, "Logged out successfully!")
+    return redirect("login_page")
 
 
-@login_required
 def signup_page(request):
-    # if request.user.is_authenticated:
-    #     return redirect('index')
-    # else:
     signupForm = SignupForm()
 
     if request.method == 'POST':
@@ -55,7 +50,7 @@ def signup_page(request):
     stuff_for_frontend = {
         'signupForm': signupForm
     }
-    return render(request, 'journal/signup.html', stuff_for_frontend)
+    return render(request, 'registration/signup.html', stuff_for_frontend)
 
 
     
@@ -70,7 +65,9 @@ def index(request):
         # Loop through Formset to check validation on each form
         for goal in goals:
             if goal.is_valid():
-                goal.save()
+                goalForm = goal.save(commit=False)
+                goalForm.user = request.user
+                goalForm.save()
         return redirect('goals_list')
     else: 
         goals = goalsFormSet()
@@ -82,7 +79,7 @@ def index(request):
 # Filled in 90 day Goals form
 @login_required(login_url='login')
 def goals_list(request):
-    goal_page = Goal.objects.all()
+    goal_page = Goal.objects.filter(user=request.user)
     stuff_for_frontend = {
         'goal_page': goal_page
     }
@@ -109,6 +106,5 @@ def goal_edit(request, pk):
 def goals_delete(request):
     Goal.objects.all().delete()
     return redirect('goals_list')
-
 
     

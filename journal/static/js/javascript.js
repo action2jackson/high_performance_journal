@@ -256,11 +256,10 @@ if (window.location.pathname == "/goals/") {
 }
 
 
-if (window.location.pathname == "/login/") {
-  const input = document.getElementById('password');
+const input = document.getElementById('password');
 
-  input.addEventListener('keydown', () => {
-      input.setAttribute('type', 'password');
-  });
-}
+input.addEventListener('keydown', () => {
+    input.setAttribute('type', 'password');
+});
+
 

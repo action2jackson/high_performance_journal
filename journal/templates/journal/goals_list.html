@@ -9,7 +9,7 @@
         <div class="mySlides fade">
             <div class="my_goals">
                 <div class="goals_form" id="goal_page">
-                    <p class="roadmap">13-Week Roadmap - The big Idea - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
+                    <p class="roadmap">13-Week Roadmap - {{ request.user }} - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
                     <!-- This button deletes all goals -->
                     <a class="delete_goals" href="{% url 'goals_delete' %}">DELETE ALL GOALS</a>
                     <div class="big_goal">
