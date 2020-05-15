@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
+# Needed for creating formsets
 from django.forms import formset_factory
 # Helps with registration
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import authenticate, login, logout
-# Flash message
+# Flash messages
 from django.contrib import messages
 # User authentication import
 from django.contrib.auth.decorators import login_required
@@ -17,13 +18,14 @@ def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        # Check for user information in database
         user = authenticate(request, username=username, password=password)
-
+        # If user exists
         if user is not None:
             login(request, user)
             return redirect('index')
         else:
+            # Send user an error message
             messages.info(request, 'Username or Password is incorrect')
             return render(request, 'registration/login.html')
 
@@ -43,7 +45,9 @@ def signup_page(request):
         signupForm = SignupForm(request.POST)
         if signupForm.is_valid():
             signupForm.save()
+            # Get the users username
             user = signupForm.cleaned_data.get('username')
+            # Custom success message
             messages.success(request, 'Account created successfully for ' + user)
             return redirect('login_page') 
 
@@ -65,8 +69,11 @@ def index(request):
         # Loop through Formset to check validation on each form
         for goal in goals:
             if goal.is_valid():
+                # Wait to save goal form (usaully used to add something)
                 goalForm = goal.save(commit=False)
+                # Get the current user
                 goalForm.user = request.user
+                # Save goal form with data and user info
                 goalForm.save()
         return redirect('goals_list')
     else: 
@@ -79,6 +86,7 @@ def index(request):
 # Filled in 90 day Goals form
 @login_required(login_url='login')
 def goals_list(request):
+    # Get all Goal objects that were created from the current user
     goal_page = Goal.objects.filter(user=request.user)
     stuff_for_frontend = {
         'goal_page': goal_page
@@ -93,9 +101,9 @@ def goal_edit(request, pk):
         # Gets an already instantiated Goal
         goalForm = GoalForm(request.POST, instance=goal)
         if goalForm.is_valid():
-            # post = goalForm.save(commit=False)
-            # post.author = request.user
-            goalForm.save()
+            goal_form = goalForm.save(commit=False)
+            goal_form.user = request.user
+            goal_form.save()
             return redirect('goals_list')
     else:
         goalForm = GoalForm(instance=goal)
@@ -104,7 +112,7 @@ def goal_edit(request, pk):
 
 # Delete 90 day Goals form
 def goals_delete(request):
-    Goal.objects.all().delete()
+    Goal.objects.filter(user=request.user).delete()
     return redirect('goals_list')
 
     

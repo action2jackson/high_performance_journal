@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('journal.urls')),
     path('admin/', admin.site.urls),
+    # Url path for Login and Signup
     path('accounts/', include('django.contrib.auth.urls'))
 ]

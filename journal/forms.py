@@ -55,17 +55,20 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_9': (''),
         }
 
-
+# Using Django UserCreationForm
 class SignupForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
         widgets = {
+            # Customization to username field
             'username': (forms.TextInput(attrs={'placeholder': 'Username', 'class': 'inputFields'})),
         }
 
     def __init__(self, *args, **kwargs):
+        # This basically creates a temporary object of the parent class SignupForm so edits can be made to the already existing password fields
         super(SignupForm, self).__init__(*args, **kwargs)
+        # Same edits as Username
         self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'inputFields'})
         self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'class': 'inputFields'})
 

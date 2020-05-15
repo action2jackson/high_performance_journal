@@ -256,9 +256,9 @@ if (window.location.pathname == "/goals/") {
 }
 
 
-const input = document.getElementById('password');
-
-input.addEventListener('keydown', () => {
+const passwordInput = document.getElementById('password');
+// Sets type of login input to password when user starts typing
+passwordInput.addEventListener('keydown', () => {
     input.setAttribute('type', 'password');
 });
 
