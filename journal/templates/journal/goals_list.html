@@ -11,7 +11,7 @@
                 <div class="goals_form" id="goal_page">
                     <p class="roadmap">13-Week Roadmap - {{ request.user }} - Goal {{ forloop.counter }} - {{ goal.created_date }}</p>
                     <!-- This button deletes all goals -->
-                    <a class="delete_goals" href="{% url 'goals_delete' %}">DELETE ALL GOALS</a>
+                    <a class="delete_goals" href="#">DELETE ALL GOALS</a>
                     <div class="big_goal">
                         <label><h2>My Big Goal #{{ forloop.counter }}</h2></label>
                         <div>

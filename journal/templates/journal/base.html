@@ -40,7 +40,7 @@
                 <li><a class="nav-link" href="{% url 'goals_list' %}">Goals</a></li>
                 <li><a class="nav-link" href="#">Collection</a></li>
                 {% if user.is_authenticated %}
-                    <li><a class="nav-link" id="logout" href="{% url 'logout_user' %}">Logout</a></li>
+                    <li><a class="nav-link" id="logout" href="#">Logout</a></li>
                 {% else %}
                     <li><a class="nav-link" id="login" href="{% url 'login_page' %}">Login</a></li>
                 {% endif %}

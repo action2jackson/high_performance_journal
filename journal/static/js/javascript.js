@@ -47,8 +47,6 @@ document.addEventListener("mousemove", function(e) {
 <--- FOR DREAM PAGE --->
 */
 
-// If user is on home page
-if (window.location.pathname == "/") {
 
 function timerRestart() {
   time = 0;
@@ -275,7 +273,7 @@ if (window.location.pathname == "/goals/") {
   var deleteGoals = document.getElementsByClassName("delete_goals");
   function resetGoals() {
     swal({
-      title: "Are you sure?",
+      title: "WAIT, ARE YOU SURE?!",
       text: "Once submitted, your 90 day sprint will END!",
       closeOnClickOutside: false,
       icon: "warning",
@@ -287,10 +285,10 @@ if (window.location.pathname == "/goals/") {
         swal("Deleteing Goals", {
           icon: "success",
         });
-        // Get delete goals page
-        window.location.href = "delete/";
         // Delete the 90 day countdown sprint
         deleteSprint();
+        // Get delete goals page
+        window.location.href = "delete/";
       } else {
         swal("Keep grinding, you got this!");
       }
@@ -311,7 +309,6 @@ if (window.location.pathname == "/goals/") {
   }
 
   function showSlides(slide) {
-    console.log("start");
     var i;
     var slides = document.getElementsByClassName("mySlides");
     // Return to the first goal if the current slide exceeds the amount of total slides
@@ -333,12 +330,37 @@ if (window.location.pathname == "/goals/") {
   // Inline javascript is at goals_list.html for the slide show
 }
 
+if (window.location.pathname == "/login/") {
+  const passwordInput = document.getElementById('password');
+  // Sets type of login input to password when user starts typing
+  passwordInput.addEventListener('keydown', () => {
+      passwordInput.setAttribute('type', 'password');
+  });
+}
+
+function resetGoalsLogout() {
+  swal({
+    title: "WAIT, ARE YOU SURE?!",
+    text: "Logging out will delete your current sprint progress!",
+    closeOnClickOutside: false,
+    icon: "warning",
+    buttons: [true, "YES"],
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      deleteSprint();
+      window.location.href = "goals/delete/";
+      window.location.href = "logout/";
+    } else {
+      swal("Keep grinding, you got this!");
+    }
+  });
+}
+
+const logout = document.getElementById("logout");
+logout.addEventListener("click", resetGoalsLogout, false);
 
 sprintTimer();
-const passwordInput = document.getElementById('password');
-// Sets type of login input to password when user starts typing
-passwordInput.addEventListener('keydown', () => {
-    input.setAttribute('type', 'password');
-});
 
 
