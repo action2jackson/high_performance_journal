@@ -185,7 +185,7 @@ a {
 }
 
 .nav-link:hover {
-	color: rgba(46, 229, 157, 0.8);
+	color: rgba(10, 180, 180, 1);
 	transform: rotate(360deg);
 }
 
@@ -282,7 +282,7 @@ a {
     color: #FFF;
 	user-select: none;
 	transition: all 0.5s ease 0s;
-	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	box-shadow: 0px 5px 10px rgba(10, 180, 180, 1);
 	word-wrap: 1px;
 }
 
@@ -292,7 +292,6 @@ a {
 	letter-spacing: 0.2rem;
 	transition: all 0.3s ease 0s;
 	background: url(https://images.theconversation.com/files/222720/original/file-20180612-52455-d6et0u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip);
-	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.8);
 	text-shadow: 3px 3px #000, 4px 4px #000, 5px 5px #000, 6px 6px #000;
 }
 
@@ -513,6 +512,16 @@ input.valid {
 	border-radius: 15px;
 	color: #fff;
 }
+/* Edit button for Goals */
+
+
+
+/* 90 day sprint countdown timer */
+.countdownContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
 /* Edit button for Created Goals */
 
 
@@ -538,12 +547,34 @@ input.valid {
 	width: 45%;
 	background: rgba(20, 20, 20, .8);
 	padding: 2em 0;
+
+.countdownTable {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	padding: 2em;
+	background: rgba(20, 20, 20, .6);;
+	border: 1px solid rgba(10, 180, 180, 1);
+	color: #fff;
+	box-shadow: 0 0 10px 5px rgba(10, 180, 180, 1);
 }
 
 .intro_signup h2 {
 	font-weight: 300;
+
+.countdownTitle {
+	font-size: 5rem;
 }
 
+.countdownNumber {
+	font-size: 4rem;
+	border: 1px dotted red;
+}
+/* 90 day sprint countdown timer */
+
+
+
+/* Confirm message styling */
 .icon {
 	font-size: 7em;
 	color: rgba(10, 180, 180, 1);
@@ -627,10 +658,10 @@ input.valid {
 /* Sweet Alerts Message Styling */
 .swal-text {
 	background-color: #FEFAE3;
-	padding: 17px;
+	padding: 1.75em;
 	border: 1px solid #F0E1A1;
 	display: block;
-	margin: 22px;
+	margin: 1.75em;
 	text-align: center;
 	color: #61534e;
 }

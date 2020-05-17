@@ -35,7 +35,7 @@
     </section>
 
     <!-- GOALS FORM -->
-    <section>
+    <section id="Goals">
         <div class="my_goals">
             <form id="form_for_goals" class="goals_form" method="POST" action="{% url 'index' %}" autocomplete="off">
                 {% csrf_token %}
@@ -77,5 +77,30 @@
         </div>
     </section>
     <!-- GOALS FORM -->
+
+    <!-- COUNTDOWN TIMER -->
+    <section class="countdownContainer" id="Countdown">
+        <table class="countdownTable">
+            <!-- TITLE -->
+            <tr class="countdownTitle">
+                <td colspan="4">90 DAY SPRINT</td>
+            </tr>
+            <!-- TIMES -->
+            <tr class="countdownNumber">
+                <td id="days">90</td>
+                <td id="hours">00</td>
+                <td id="minutes">00</td>
+                <td id="seconds">00</td>
+            </tr>
+            <!-- LABELS -->
+            <tr>
+                <td>Days</td>
+                <td>Hours</td>
+                <td>Minutes</td>
+                <td>Seconds</td>
+            </tr>
+        </table>
+    </section>
+    <!-- COUNTDOWN TIMER -->
 
 {% endblock %}

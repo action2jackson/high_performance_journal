@@ -50,6 +50,72 @@ document.addEventListener("mousemove", function(e) {
 // If user is on home page
 if (window.location.pathname == "/") {
 
+function timerRestart() {
+  time = 0;
+  startTimer = 1;
+  localStorage.setItem("time", time);
+  localStorage.setItem("startTimer", startTimer);
+}
+
+function deleteSprint() {
+  startTimer = 0;
+  localStorage.setItem("startTimer", startTimer);
+}
+
+var time = 0;
+var startTimer = 0;
+function sprintTimer() {
+  var countdown = document.getElementById("Countdown");
+  var goals = document.getElementById("Goals"); 
+
+  time = parseInt(localStorage.getItem("time"));
+  // increases time by 1 second 
+  localStorage.setItem("time", time + 1);
+
+  startTimer = parseInt(localStorage.getItem("startTimer"));
+
+  // The timer only needs to be displayed if user is on the home page
+  if (window.location.pathname == "/") {
+    // If the user created their goals and its not been 90 days
+    if (startTimer == 1 && time < 7776000000) {
+      // Display Timer
+      countdown.style.display = "flex";
+      goals.style.display = "none";
+    } else {
+      // Display goals form
+      countdown.style.display = "none";
+      goals.style.display = "flex";
+    }
+
+    // floor function rounds a number down to the lowest integer
+    var days = Math.floor(time / (1000 * 60 * 60 * 24));
+    var hours = Math.floor(time / 3600);
+    var minutes = Math.floor((time - hours * 3600) / 60);
+    var seconds = time - (hours * 3600 + minutes * 60);;
+
+    // Displays double digits even if the number is lower then 10
+    days = (days < 10) ? "0" + days : days;
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    // Display updated time
+    document.getElementById("days").textContent = days;
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  // Count by 1 second
+  setTimeout(sprintTimer, 1000);
+}
+
+
+
+// If user is on home page
+if (window.location.pathname == "/") {
+
   var header = document.getElementById("myHeader");
   var sticky = header.offsetTop;
   var after_header = document.getElementById("AF");
@@ -100,20 +166,19 @@ if (window.location.pathname == "/") {
     swal({
       title: "Are you sure?",
       text: "Once submitted, your 90 day sprint will start!",
-      // icon: "warning",
-      buttons: true,
-      // dangerMode: true,
+      buttons: [true, "YES"],
     })
     .then((willDelete) => {
       if (willDelete) {
         swal("Submitting Form!", {
           icon: "success",
         });
+        timerRestart();
         // If message was confirmed then submit the form
         document.getElementById("form_for_goals").submit();
-        return false;
       } else {
         swal("Make sure your goals are thoughtful!");
+        return false;
       }
     });
   }
@@ -206,12 +271,34 @@ if (window.location.pathname == "/") {
 
 
 if (window.location.pathname == "/goals/") {
+  /* DELETES 90 DAY SPRINT */
   var deleteGoals = document.getElementsByClassName("delete_goals");
-  var resetGoals = function(e) {
-    // If user chooses to cancel the confirm message then prevent their goals from being deleted
-    if (!confirm('Are you sure you want to delete all your goals and restart your 90 day sprint?')) e.preventDefault();
+  function resetGoals() {
+    swal({
+      title: "Are you sure?",
+      text: "Once submitted, your 90 day sprint will END!",
+      closeOnClickOutside: false,
+      icon: "warning",
+      buttons: [true, "YES"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Deleteing Goals", {
+          icon: "success",
+        });
+        // Get delete goals page
+        window.location.href = "delete/";
+        // Delete the 90 day countdown sprint
+        deleteSprint();
+      } else {
+        swal("Keep grinding, you got this!");
+      }
+    });
   }
+  // Delete button located on goals list page
   deleteGoals[0].addEventListener('click', resetGoals, false);
+  /* DELETES 90 DAY SPRINT */
 
 
   var slideIndex = 1;
@@ -219,13 +306,15 @@ if (window.location.pathname == "/goals/") {
  
   // Change the current slide #
   function plusSlides(slide) {
-    showSlides(slideIndex += slide);
+    var currentSlide = slideIndex += slide;
+    showSlides(currentSlide);
   }
 
   function showSlides(slide) {
+    console.log("start");
     var i;
     var slides = document.getElementsByClassName("mySlides");
-    // Return to the first goal if the current slide exceeds the amount of slides total
+    // Return to the first goal if the current slide exceeds the amount of total slides
     if (slide > slides.length) {
       slideIndex = 1;
     }
@@ -240,22 +329,12 @@ if (window.location.pathname == "/goals/") {
     // Display current slide
     slides[slideIndex-1].style.display = "block";
   }
-  
 
-  /* Not working for some reason 
-
-  document.getElementById("PArrow").addEventListener('click', function() {
-    plusSlides(-1);
-  });
-  document.getElementById("NArrow").addEventListener('click', function() {
-    plusSlides(1);
-  });
-
-  */
-
+  // Inline javascript is at goals_list.html for the slide show
 }
 
 
+sprintTimer();
 const passwordInput = document.getElementById('password');
 // Sets type of login input to password when user starts typing
 passwordInput.addEventListener('keydown', () => {
