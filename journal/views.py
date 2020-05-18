@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+import csv
 # Needed for creating formsets
 from django.forms import formset_factory
 # Helps with registration
@@ -115,7 +117,7 @@ def goals_delete(request):
     Goal.objects.filter(user=request.user).delete()
     return redirect('goals_list')
 
-
+# DREAMS
 def dream_list(request):
     order_dreams = Dream.objects.order_by('-created_date')
     dreams = Dream.objects.filter(user=request.user)
@@ -142,6 +144,48 @@ def dream_create(request):
             'dreamForm': dreamForm
         }
         return render(request, 'journal/dream_edit.html', stuff_for_frontend)
+
+
+def dream_edit(request, pk):
+    dream = get_object_or_404(Dream, pk=pk)
+    if request.method == 'POST':
+        dreamForm = DreamForm(request.POST, instance=dream)
+        if dreamForm.is_valid():
+            dream = dreamForm.save(commit=False)
+            dream.user = request.user
+            dream.save()
+        return redirect('dream_detail', pk=dream.pk)
+    else:
+        dreamForm = DreamForm(instance=Dream)
+        stuff_for_frontend = {
+            'dreamForm': dreamForm
+        }
+        return render(request, 'journal/goal_edit.html', stuff_for_frontend)
+
+
+def dream_detail(request, pk):
+    dream = get_object_or_404(Dream, pk=pk)
+    stuff_for_frontend = {
+        'dream': dream
+    }
+    return render(request, 'journal/dream_detail.html', stuff_for_frontend)
+
+
+def dreams_download(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Dreams.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['title','text','created_date'])
+    data = Dream.objects.filter(user=request.user)
+    for row in data:
+        rowobj = [row.column1,row.column2,row.column3]
+        writer.writerow(rowobj)
+    return response 
+
+
+def dreams_delete(request):
+    Dream.objects.filter(user=request.user).delete()
+    return redirect('goals_list')
 
 
 
