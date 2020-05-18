@@ -1,5 +1,5 @@
 from django import forms
-from .models import Goal
+from .models import Goal, Dream
 from django.forms import formset_factory
 # For registration
 from django.contrib.auth.forms import UserCreationForm
@@ -71,4 +71,17 @@ class SignupForm(UserCreationForm):
         # Same edits as Username
         self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'inputFields'})
         self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'class': 'inputFields'})
+
+
+
+class DreamForm(forms.ModelForm):
+    class Meta:
+        model = Dream
+        exclude = ('created_date', 'user')
+        fields = {
+            'title',
+            'text'
+        }
+
+
 

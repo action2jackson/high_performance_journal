@@ -10,8 +10,8 @@ from django.contrib import messages
 # User authentication import
 from django.contrib.auth.decorators import login_required
 
-from .models import Goal
-from .forms import GoalForm, SignupForm
+from .models import Goal, Dream
+from .forms import GoalForm, SignupForm, DreamForm
 
 
 def login_page(request):
@@ -114,5 +114,38 @@ def goal_edit(request, pk):
 def goals_delete(request):
     Goal.objects.filter(user=request.user).delete()
     return redirect('goals_list')
+
+
+def dream_list(request):
+    order_dreams = Dream.objects.order_by('-created_date')
+    dreams = Dream.objects.filter(user=request.user)
+    stuff_for_frontend = {
+        'order_dreams': order_dreams,
+        'dreams': dreams
+    }
+    return render(request, 'journal/dream_list.html', stuff_for_frontend)
+    
+
+def dream_create(request):
+    dreamForm = DreamForm()
+
+    if request.method == 'POST':
+        dreamForm = DreamForm(request.POST)
+        if dreamForm.is_valid():
+            dream = dreamForm.save(commit=False)
+            dream.user = request.user
+            dream.save()
+            return redirect('dream_detail', pk=dream.pk)
+    else:
+        dreamForm = DreamForm()
+        stuff_for_frontend = {
+            'dreamForm': dreamForm
+        }
+        return render(request, 'journal/dream_edit.html', stuff_for_frontend)
+
+
+
+
+
 
     
