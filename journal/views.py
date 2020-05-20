@@ -138,6 +138,9 @@ def dream_create(request):
             dream.user = request.user
             dream.save()
             return redirect('dream_detail', pk=dream.pk)
+        else:
+            messages.error(request, 'Your Dream needs to have a Title and Content!')
+            return render(request, 'journal/dream_edit.html')
     else:
         dreamForm = DreamForm()
         stuff_for_frontend = {

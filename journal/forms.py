@@ -34,7 +34,6 @@ class GoalForm(forms.ModelForm):
             'deeper_progress_7': (forms.TextInput(attrs={'placeholder': 'Create a Linked account', 'required': 'True'})),
             'deeper_progress_8': (forms.TextInput(attrs={'placeholder': 'Create a nice portfolio', 'required': 'True'})),
             'deeper_progress_9': (forms.TextInput(attrs={'placeholder': 'Create a resume', 'required': 'True'})),
-
         }
         # Form labels
         labels = {
@@ -81,6 +80,10 @@ class DreamForm(forms.ModelForm):
         fields = {
             'title',
             'text'
+        }
+        widgets = {
+            'title': (forms.TextInput(attrs={'placeholder': 'Dream Title...', 'required': 'True', 'autofocus': 'autofocus', 'class': 'inputFields', 'id': 'dreamTitle', 'autocomplete': 'off'})),
+            'text': (forms.Textarea(attrs={'placeholder': '“Dream as if you will live forever, live as if you will die today.”', 'required': 'True', 'class': 'inputFields', 'id': 'dreamText', 'autocomplete': 'off'})),
         }
 
 

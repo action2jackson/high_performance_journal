@@ -1,9 +1,17 @@
 {% extends 'journal/base.html' %}
 
-{% block title %}Dreams{% endblock%}
+{% block title %}Create Dream{% endblock%}
 
 {% block content %}
-
-<h1>{{ dreamForm }}</h1>
+    <form method="post" action="">
+        <div class="dream_container">
+            {{ dreamForm.title }}
+            {{ dreamForm.text}}
+        </div>
+        <div class="dream_button_container">
+            <a class="dream_create" id="dreamList" href="{% url 'dream_list' %}">Dream List</a>
+            <a class="dream_create" href="{% url 'dream_create' %}">Create Dream</a>
+        </div>
+    </form>
 
 {% endblock%}
