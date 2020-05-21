@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Goal, Dream
 from .forms import GoalForm, SignupForm, DreamForm
+from .filters import DreamFilter
 
 
 def login_page(request):
@@ -121,9 +122,12 @@ def goals_delete(request):
 def dream_list(request):
     order_dreams = Dream.objects.order_by('-created_date')
     dreams = Dream.objects.filter(user=request.user)
+    dream_filter = DreamFilter(request.GET, queryset=dreams)
+    dreams = dream_filter.qs
     stuff_for_frontend = {
         'order_dreams': order_dreams,
-        'dreams': dreams
+        'dreams': dreams,
+        'dream_filter': dream_filter
     }
     return render(request, 'journal/dream_list.html', stuff_for_frontend)
     
@@ -137,10 +141,7 @@ def dream_create(request):
             dream = dreamForm.save(commit=False)
             dream.user = request.user
             dream.save()
-            return redirect('dream_detail', pk=dream.pk)
-        else:
-            messages.error(request, 'Your Dream needs to have a Title and Content!')
-            return render(request, 'journal/dream_edit.html')
+            return redirect('dream_list')
     else:
         dreamForm = DreamForm()
         stuff_for_frontend = {

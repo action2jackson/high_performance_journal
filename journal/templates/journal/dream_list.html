@@ -4,6 +4,27 @@
 
 {% block content %}
 
-<h1>{{ dreamForm }}</h1>
+    {{ dream_filter.form }}
+    <div class="dream_list_container">
+        <form name="search" action="">
+            <div class="search">
+                <input type="text" name="query" class="searchTerm" placeholder="Search for dream 'title/date/keyword'" value="{{ request.GET.query }}">
+                <button type="submit" class="searchButton" value="search">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+        {% for dream in dreams %}
+            <div class="inputFields" id="displayDreams" onclick="location.href='dream/<int:pk>'">
+                <div class="date">
+                    <p>{{ dream.created_date }}</p>
+                </div>
+                <a class="dream_title" href="{% url 'dream_detail' pk=dream.pk%}">{{ dream.title }}</a>
+                <div></div>
+                <p>{{ dream.text | truncatechars:75 }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 
 {% endblock%}

@@ -1027,6 +1027,8 @@ input.valid {
 }
 
 .dream_create {
+	cursor: pointer;
+	font-size: 1rem;
 	padding: 1em;
 	margin: 0.3em;
 	color: #fff;
@@ -1034,6 +1036,7 @@ input.valid {
 	border-radius: 5px;
 	text-decoration: none;
 	transition: 0.5s ease;
+	border: none;
 }
 
 #dreamList {
@@ -1044,3 +1047,60 @@ input.valid {
 	transition: 0.5s ease;
 	background: #6646a1;
 }
+
+.search {
+	width: 40%;
+	display: flex;
+	margin: auto;
+	padding: 1em;
+}
+
+.searchTerm {
+	width: 100%;
+	border: 3px solid #0CB4B4;
+	border-right: none;
+	padding: 1em;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	font-size: 1rem;
+	color: #000;
+}
+
+.searchTerm:focus{
+	color: #000;
+}
+
+.searchButton {
+	padding: 0.6em;
+	border: 1px solid #0CB4B4;
+	background: #0CB4B4;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 1.5rem;
+	outline: none;
+}
+
+#displayDreams {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin: auto;
+	padding: 2em 1em 1em 1em;
+	cursor: pointer;
+	transition: 0.5s ease;
+}
+
+#displayDreams:hover {
+	background: #0CB4B4;
+	text-align: center;
+	transition: 0.5s ease;
+}
+
+.dream_title {
+	text-decoration: none;
+	color: #fff;
+	font-size: 2rem;
+}
+
