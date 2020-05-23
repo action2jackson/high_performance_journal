@@ -123,7 +123,6 @@ def dream_list(request):
     order_dreams = Dream.objects.order_by('-created_date')
     dreams = Dream.objects.filter(user=request.user)
     dream_filter = DreamFilter(request.GET, queryset=dreams)
-    dreams = dream_filter.qs
     stuff_for_frontend = {
         'order_dreams': order_dreams,
         'dreams': dreams,
@@ -158,21 +157,13 @@ def dream_edit(request, pk):
             dream = dreamForm.save(commit=False)
             dream.user = request.user
             dream.save()
-        return redirect('dream_detail', pk=dream.pk)
+        return redirect('dream_list')
     else:
-        dreamForm = DreamForm(instance=Dream)
+        dreamForm = DreamForm(instance=dream)
         stuff_for_frontend = {
             'dreamForm': dreamForm
         }
-        return render(request, 'journal/goal_edit.html', stuff_for_frontend)
-
-
-def dream_detail(request, pk):
-    dream = get_object_or_404(Dream, pk=pk)
-    stuff_for_frontend = {
-        'dream': dream
-    }
-    return render(request, 'journal/dream_detail.html', stuff_for_frontend)
+        return render(request, 'journal/dream_edit.html', stuff_for_frontend)
 
 
 def dreams_download(request):

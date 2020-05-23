@@ -3,15 +3,15 @@
 {% block title %}Create Dream{% endblock%}
 
 {% block content %}
-    <form method="post" action="{% url 'dream_create' %}">
+    <form method="post" action="">
         {% csrf_token %}
         <div class="dream_container">
             {{ dreamForm.title }}
-            {{ dreamForm.text}}
+            {{ dreamForm.text }}
         </div>
         <div class="dream_button_container">
             <a class="dream_create" id="dreamList" href="{% url 'dream_list' %}">Dream List</a>
-            <button type="submit" class="dream_create">Create Dream</button>
+            <button type="submit" class="dream_create">Save</button>
         </div>
     </form>
 

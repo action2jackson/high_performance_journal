@@ -12,8 +12,7 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout_user'),
     path('dreams/', views.dream_list, name='dream_list'),
     path('dream/new/', views.dream_create, name='dream_create'),
-    path('dream/<int:pk>', views.dream_detail, name='dream_detail'),
-    path('dream/<int:pk>/edit', views.dream_edit, name='dream_edit'),
+    path('dreams/<int:pk>/edit/', views.dream_edit, name='dream_edit'),
     path('dreams/delete/', views.dreams_delete, name='dreams_delete'),
     path(r'dreams/download/', views.dreams_download, name='dreams_download'),
 ]

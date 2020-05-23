@@ -1020,6 +1020,12 @@ input.valid {
 	resize: none;
 }
 
+#dreamTextDetail {
+	width: 80%;
+	border: 1px solid rgba(10, 180, 180, 1);
+	padding-bottom: 20em;
+}
+
 .dream_button_container {
 	display: flex;
 	justify-content: flex-end;
@@ -1051,7 +1057,7 @@ input.valid {
 .search {
 	width: 40%;
 	display: flex;
-	margin: auto;
+	margin: 2em auto;
 	padding: 1em;
 }
 
@@ -1083,12 +1089,12 @@ input.valid {
 }
 
 #displayDreams {
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	width: 70%;
 	margin: auto;
 	padding: 2em 1em 1em 1em;
-	cursor: pointer;
 	transition: 0.5s ease;
 }
 
@@ -1096,6 +1102,15 @@ input.valid {
 	background: #0CB4B4;
 	text-align: center;
 	transition: 0.5s ease;
+}
+
+.edit_dream {
+	color: #fff;
+	font-size: 2rem;
+	position: absolute;
+	right: 0;
+	width: 25%;
+	padding-top: 0.5em;
 }
 
 .dream_title {
