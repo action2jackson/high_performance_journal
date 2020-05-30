@@ -338,7 +338,7 @@ if (window.location.pathname == "/login/") {
   });
 }
 
-if (window.location.pathname == "/dreams/") {
+if (window.location.pathname.startsWith("/dreams/")) {
   expand = document.getElementById("expandSidebar");
   close = document.getElementById("closeSidebar");
 

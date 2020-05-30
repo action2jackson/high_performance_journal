@@ -5,16 +5,16 @@
 {% block content %}
 
     <div class="dream_list_container">
-        <form name="search" action="">
+        <form method="GET" action="{% url 'dream_search' %}" value="{{ request.GET.q }}">
             <div class="search">
-                <input type="text" name="query" class="searchTerm" placeholder="Search for dream 'title/date/keyword'" value="{{ request.GET.query }}">
-                <button type="submit" class="searchButton" value="search">
+                <input type="text" name="q" class="searchTerm" placeholder="Search for dream '2020-05-27/title/keyword'" value="{{ request.GET.q }}">
+                <button type="submit" class="searchButton" value="Search">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
         </form>
         {% for dream in dreams %}
-            <div class="inputFields" id="displayDreams" onclick="location.href='{{ forloop.counter }}/edit/'">
+            <div class="inputFields" id="displayDreams" onclick="location.href='{{ dream.id }}/edit/'">
                 <div class="date">
                     <p>{{ dream.created_date }}</p>
                 </div>

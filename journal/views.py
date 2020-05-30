@@ -12,6 +12,8 @@ from django.contrib import messages
 # User authentication import
 from django.contrib.auth.decorators import login_required
 
+from django.db.models import Q
+
 from .models import Goal, Dream
 from .forms import GoalForm, SignupForm, DreamForm
 
@@ -178,6 +180,26 @@ def dreams_download(request):
 def dreams_delete(request):
     Dream.objects.filter(user=request.user).delete()
     return redirect('dream_list')
+
+
+def dream_search(request):
+    if request.method == 'GET':
+        query = request.GET.get('q')
+
+        querySubmit = request.GET.get('submit')
+
+        if query is not None:
+            lookups= Q(title__icontains=query) | Q(text__icontains=query) | Q(created_date__icontains=query)
+
+            results = Dream.objects.filter(lookups, user=request.user).distinct()
+
+            stuff_for_frontend = {
+                'dreams': results,
+                'querySubmit': querySubmit
+            }
+            return render(request, 'journal/dream_list.html', stuff_for_frontend)         
+    else:
+        return render(request, 'journal/dream_list.html')
 
 
 
