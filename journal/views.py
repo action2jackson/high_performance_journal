@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Goal, Dream
 from .forms import GoalForm, SignupForm, DreamForm
-from .filters import DreamFilter
 
 
 def login_page(request):
@@ -122,11 +121,9 @@ def goals_delete(request):
 def dream_list(request):
     order_dreams = Dream.objects.order_by('-created_date')
     dreams = Dream.objects.filter(user=request.user)
-    dream_filter = DreamFilter(request.GET, queryset=dreams)
     stuff_for_frontend = {
         'order_dreams': order_dreams,
         'dreams': dreams,
-        'dream_filter': dream_filter
     }
     return render(request, 'journal/dream_list.html', stuff_for_frontend)
     
@@ -173,17 +170,14 @@ def dreams_download(request):
     writer.writerow(['title','text','created_date'])
     data = Dream.objects.filter(user=request.user)
     for row in data:
-        rowobj = [row.column1,row.column2,row.column3]
+        rowobj = [row.title,row.text,row.created_date]
         writer.writerow(rowobj)
     return response 
 
 
 def dreams_delete(request):
     Dream.objects.filter(user=request.user).delete()
-    return redirect('goals_list')
-
-
-
+    return redirect('dream_list')
 
 
 

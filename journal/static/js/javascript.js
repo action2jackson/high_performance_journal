@@ -338,6 +338,22 @@ if (window.location.pathname == "/login/") {
   });
 }
 
+if (window.location.pathname == "/dreams/") {
+  expand = document.getElementById("expandSidebar");
+  close = document.getElementById("closeSidebar");
+
+  expand.addEventListener('click', function(){
+    console.log("cool");
+    document.getElementById("dreamSidebar").style.width = "250px";
+    document.getElementById("sidebarFunction").style.marginLeft = "250px";
+  });
+  close.addEventListener('click', function(){
+    console.log("test2")
+    document.getElementById("dreamSidebar").style.width = "0";
+    document.getElementById("sidebarFunction").style.marginLeft = "0";
+  });
+}
+
 function resetGoalsLogout() {
   swal({
     title: "WAIT, ARE YOU SURE?!",
