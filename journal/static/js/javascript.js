@@ -25,28 +25,6 @@ const headerSlide = () => {
 
 headerSlide();
 
-/*
-<--- FOR DREAM PAGE --->
-document.addEventListener("mousemove", function(e) {
-  var body = document.querySelector('body');
-  var stars = document.createElement('span');
-  stars.className += "stars";
-  var x = e.offsetX;
-  var y = e.offsetY;
-  stars.style.left = x + 'px';
-  stars.style.top = y + 'px';
-  var size = Math.random() * 40;
-  stars.style.width = size + 'px';
-  stars.style.height = size + 'px';
-  body.appendChild(stars);
-
-  setTimeout(function(){
-      stars.remove();
-  },4000)
-}) 
-<--- FOR DREAM PAGE --->
-*/
-
 
 function timerRestart() {
   time = 0;
@@ -113,6 +91,7 @@ function sprintTimer() {
 
 // If user is on home page
 if (window.location.pathname == "/") {
+  // document.querySelector('#Goals').scrollIntoView({behavior: 'smooth'});
 
   var header = document.getElementById("myHeader");
   var sticky = header.offsetTop;
@@ -339,13 +318,31 @@ if (window.location.pathname == "/login/") {
 }
 
 if (window.location.pathname.startsWith("/dreams/")) {
+  document.addEventListener("mousemove", function(e) {
+    var body = document.querySelector('body');
+    var stars = document.createElement('span');
+    stars.className += "stars";
+    var x = e.offsetX;
+    var y = e.offsetY;
+    stars.style.left = x + 'px';
+    stars.style.top = y + 'px';
+    var size = Math.random() * 40;
+    stars.style.width = size + 'px';
+    stars.style.height = size + 'px';
+    body.appendChild(stars);
+  
+    setTimeout(function(){
+        stars.remove();
+    },4000)
+  }); 
+
   expand = document.getElementById("expandSidebar");
   close = document.getElementById("closeSidebar");
 
   expand.addEventListener('click', function(){
     console.log("cool");
     document.getElementById("dreamSidebar").style.width = "250px";
-    document.getElementById("sidebarFunction").style.marginLeft = "250px";
+    document.getElementById("sidebarFunction").style.marginLeft = "250";
   });
   close.addEventListener('click', function(){
     console.log("test2")
@@ -375,7 +372,7 @@ function resetGoalsLogout() {
 }
 
 const logout = document.getElementById("logout");
-logout.addEventListener("click", resetGoalsLogout, false);
+logout.addEventListener("click", resetGoalsLogout, true);
 
 sprintTimer();
 

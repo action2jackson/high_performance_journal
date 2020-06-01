@@ -82,7 +82,7 @@ class DreamForm(forms.ModelForm):
             'text'
         }
         widgets = {
-            'title': (forms.TextInput(attrs={'placeholder': 'Dream Title...', 'required': 'True', 'autofocus': 'autofocus', 'class': 'inputFields', 'id': 'dreamTitle', 'autocomplete': 'off'})),
+            'title': (forms.TextInput(attrs={'placeholder': 'Title...', 'required': 'True', 'autofocus': 'autofocus', 'class': 'inputFields', 'id': 'dreamTitle', 'autocomplete': 'off'})),
             'text': (forms.Textarea(attrs={'placeholder': '“Dream as if you will live forever, live as if you will die today.”', 'required': 'True', 'class': 'inputFields', 'id': 'dreamText', 'autocomplete': 'off'})),
         }
 

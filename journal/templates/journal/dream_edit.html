@@ -6,8 +6,8 @@
     <form method="post" action="">
         {% csrf_token %}
         <div class="dream_container">
-            {{ dreamForm.title }}
-            {{ dreamForm.text }}
+            <h2>{{ dreamForm.title }}</h2>
+            <p>{{ dreamForm.text }}</p>
         </div>
         <div class="dream_button_container">
             <a class="dream_create" id="dreamList" href="{% url 'dream_list' %}">Dream List</a>
