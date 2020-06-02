@@ -317,23 +317,21 @@ if (window.location.pathname == "/login/") {
   });
 }
 
-if (window.location.pathname.startsWith("/dreams/")) {
+if (window.location.pathname.startsWith("/dream")) {
   document.addEventListener("mousemove", function(e) {
     var body = document.querySelector('body');
-    var stars = document.createElement('span');
-    stars.className += "stars";
-    var x = e.offsetX;
-    var y = e.offsetY;
-    stars.style.left = x + 'px';
-    stars.style.top = y + 'px';
+    var zzz = document.createElement('span');
+    zzz.className = "zzz";
+    zzz.style.left = e.clientX + 'px';
+    zzz.style.top = e.clientY + 'px';
     var size = Math.random() * 40;
-    stars.style.width = size + 'px';
-    stars.style.height = size + 'px';
-    body.appendChild(stars);
+    zzz.style.width = size + '40px';
+    zzz.style.height = size + '40px';
+    body.appendChild(zzz);
   
-    setTimeout(function(){
-        stars.remove();
-    },4000)
+    setTimeout(function() {
+        zzz.remove();
+    }, 2000)
   }); 
 
   expand = document.getElementById("expandSidebar");

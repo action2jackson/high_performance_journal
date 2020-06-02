@@ -128,17 +128,26 @@ a {
 
 
 
-/*
-<--- FOR DREAM PAGE --->
-.dreams {
+.zzz {
 	position: absolute;
-	background: url('https://i.pinimg.com/236x/f6/75/a8/f675a8b6902fc59508ecd1cb9f159c8f--star-foot-tattoos-star-tattoos-for-men.jpg');
+	background: url('https://www.kindpng.com/picc/m/331-3312242_zzz-emoji-png-sleeping-drooling-emoji-transparent-png.png');
 	background-size: cover;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	animation: animate 2s linear infinite;
 }
-<--- FOR DREAM PAGE --->
-*/
+
+@keyframes animate {
+	0% {
+		transform: translate(-50%, -50%);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-50%, -1000%);
+		opacity: 0;
+	}
+}
 
 
 
