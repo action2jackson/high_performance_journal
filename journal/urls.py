@@ -11,8 +11,9 @@ urlpatterns = [
     path('login/', views.login_page, name='login_page'),
     re_path('logout/$', views.logout_user, name='logout_user'),
     path('dreams/', views.dream_list, name='dream_list'),
-    path('dreams/', views.dream_search, name='dream_search'),
+    path('dreams/search', views.dream_search, name='dream_search'),
     path('dream/new/', views.dream_create, name='dream_create'),
+    # int:pk finds pk value through integers
     path('dreams/<int:pk>/edit/', views.dream_edit, name='dream_edit'),
     path('dreams/delete/', views.dreams_delete, name='dreams_delete'),
     path(r'dreams/download/', views.dreams_download, name='dreams_download'),

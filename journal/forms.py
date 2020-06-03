@@ -72,7 +72,7 @@ class SignupForm(UserCreationForm):
         self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Password (again)', 'class': 'inputFields'})
 
 
-
+# Form for creating a dream
 class DreamForm(forms.ModelForm):
     class Meta:
         model = Dream

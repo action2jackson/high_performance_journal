@@ -119,8 +119,11 @@ def goals_delete(request):
     Goal.objects.filter(user=request.user).delete()
     return redirect('goals_list')
 
+
+
 # DREAMS
 def dream_list(request):
+    # Order dreams by created date and exclude other users dreams
     order_dreams = Dream.objects.order_by('-created_date')
     dreams = Dream.objects.filter(user=request.user)
     stuff_for_frontend = {
@@ -149,8 +152,10 @@ def dream_create(request):
 
 
 def dream_edit(request, pk):
+    # Get specific dream using pk 
     dream = get_object_or_404(Dream, pk=pk)
     if request.method == 'POST':
+        # Get dream instance
         dreamForm = DreamForm(request.POST, instance=dream)
         if dreamForm.is_valid():
             dream = dreamForm.save(commit=False)
@@ -164,38 +169,44 @@ def dream_edit(request, pk):
         }
         return render(request, 'journal/dream_edit.html', stuff_for_frontend)
 
-
+# Downloads the users dreams and places them in a csv file
 def dreams_download(request):
+    # Establishing file type
     response = HttpResponse(content_type='text/csv')
+    # Naming the file
     response['Content-Disposition'] = 'attachment; filename="Dreams.csv"'
     writer = csv.writer(response)
+    # Add the fields that you want
     writer.writerow(['title','text','created_date'])
+    # Filter through the current users dreams
     data = Dream.objects.filter(user=request.user)
     for row in data:
+        # Write the data
         rowobj = [row.title,row.text,row.created_date]
         writer.writerow(rowobj)
+    # Return the file
     return response 
 
-
+# Delete all the users dreams
 def dreams_delete(request):
     Dream.objects.filter(user=request.user).delete()
     return redirect('dream_list')
 
-
+# Search for a dream
 def dream_search(request):
     if request.method == 'GET':
+        # Gets inputted search data from the user
         query = request.GET.get('q')
 
-        querySubmit = request.GET.get('submit')
-
         if query is not None:
-            lookups= Q(title__icontains=query) | Q(text__icontains=query) | Q(created_date__icontains=query)
-
+            # Searchs for keywords in the title and text as well as the created date in the following format: 0000-00-00
+            lookups = Q(title__icontains=query) | Q(text__icontains=query) | Q(created_date__icontains=query)
+            # Search through the current users dreams ( .distinct() returns a new queryset )
             results = Dream.objects.filter(lookups, user=request.user).distinct()
 
             stuff_for_frontend = {
+                # Using 'dreams' as naming convention, so if there was no search, Django would still be able to find the dreams from dream_list function
                 'dreams': results,
-                'querySubmit': querySubmit
             }
             return render(request, 'journal/dream_list.html', stuff_for_frontend)         
     else:

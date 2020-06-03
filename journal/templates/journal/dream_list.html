@@ -5,15 +5,22 @@
 {% block content %}
 
     <div class="dream_list_container">
+        <!-- SEARCH FORM -->
+        <!-- Send requested query to backend -->
         <form method="GET" action="{% url 'dream_search' %}" value="{{ request.GET.q }}">
             <div class="search">
+                <!-- User input is requested and stored for the backend in the name "q" -->
                 <input type="text" name="q" class="searchTerm" placeholder="Search for dream '2020-05-27/title/keyword'" value="{{ request.GET.q }}">
                 <button type="submit" class="searchButton" value="Search">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
         </form>
+        <!-- SEARCH FORM -->
+
+        <!-- DISPLAY DREAMS -->
         {% for dream in dreams %}
+            <!-- When the div is clicked take the user to that specific dream -->
             <div class="inputFields" id="displayDreams" onclick="location.href='{{ dream.id }}/edit/'">
                 <div class="date">
                     <p>{{ dream.created_date }}</p>
@@ -22,10 +29,15 @@
                     <p>EDIT</p>
                 </div>
                 <p class="dream_title">{{ dream.title }}</p>
+                <!-- max 75 characters shown for the text -->
                 <p>{{ dream.text | truncatechars:75 }}</p>
             </div>
         {% endfor %}
+        <!-- DISPLAY DREAMS -->
+
+        <!-- SIDEBAR NAVIGATION -->
         <div id="dreamSidebar" class="dream_sidebar">
+            <!-- href value makes sure when pressing it doesn't try loading something-->
             <a id="closeSidebar" href="javascript:void(0)">&times;</a>
             <a href="{% url 'dream_create' %}">Create</a>
             <a href="{% url 'dreams_download' %}">Download</a>
@@ -34,6 +46,7 @@
         <div id="sidebarFunction">
             <button id="expandSidebar" class="fas fa-arrow-right"></button>
         </div>
+        <!-- SIDEBAR NAVIGATION -->
     </div>
 
 

@@ -128,29 +128,6 @@ a {
 
 
 
-.zzz {
-	position: absolute;
-	background: url('https://www.kindpng.com/picc/m/331-3312242_zzz-emoji-png-sleeping-drooling-emoji-transparent-png.png');
-	background-size: cover;
-	pointer-events: none;
-	transform: translate(-50%, -50%);
-	border-radius: 50%;
-	animation: animate 2s linear infinite;
-}
-
-@keyframes animate {
-	0% {
-		transform: translate(-50%, -50%);
-		opacity: 1;
-	}
-	100% {
-		transform: translate(-50%, -1000%);
-		opacity: 0;
-	}
-}
-
-
-
 /* HEADER */ 
 .header {
 	display: flex;
@@ -821,12 +798,39 @@ input.valid {
 
 
 
+/* DREAM PAGE */
+
+/* Mousemove image trail animation */
+.zzz {
+	position: absolute;
+	background: url('https://www.kindpng.com/picc/m/331-3312242_zzz-emoji-png-sleeping-drooling-emoji-transparent-png.png');
+	background-size: cover;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+	0% {
+		transform: translate(-50%, -50%);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-50%, -1000%);
+		opacity: 0;
+	}
+}
+/* Mousemove image trail animation */
+
+/* Dream Create Page */
 .dream_container {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
 	width: 70%;
 }
+/* Id's are being used to override inputFields class */
 #dreamTitle {
 	width: 40%;
 }
@@ -880,10 +884,9 @@ input.valid {
 	transition: 0.5s ease;
 	background: #6646a1;
 }
+/* Dream Create Page */
 
-
-
-
+/* Dream List Search Bar */
 .search {
 	width: 40%;
 	display: flex;
@@ -917,10 +920,9 @@ input.valid {
 	font-size: 1.5rem;
 	outline: none;
 }
+/* Dream List Search Bar */
 
-
-
-
+/* Dream List */
 #displayDreams {
 	cursor: pointer;
 	display: flex;
@@ -956,11 +958,9 @@ input.valid {
 	color: #fff;
 	font-size: 2rem;
 }
+/* Dream List */
 
-
-
-
-
+/* Dream List Sidebar */
 .dream_sidebar {
 	height: 100%;
 	width: 0;
@@ -1008,6 +1008,11 @@ input.valid {
 	border: none;
 	outline: none;
 }
+/* Dream List Sidebar */
+
+/* DREAM PAGE */
+
+
 
 /* iMac */
 @media only screen and (max-width: 1920) {

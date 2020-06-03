@@ -317,19 +317,24 @@ if (window.location.pathname == "/login/") {
   });
 }
 
+// All the dream page urls start with "/dream"
 if (window.location.pathname.startsWith("/dream")) {
   document.addEventListener("mousemove", function(e) {
     var body = document.querySelector('body');
     var zzz = document.createElement('span');
     zzz.className = "zzz";
+    // client is relative to the upper edge of the content area
+    // Where ever the mouse is add that in px
     zzz.style.left = e.clientX + 'px';
     zzz.style.top = e.clientY + 'px';
+    // Randomize the size of span max being 40px
     var size = Math.random() * 40;
     zzz.style.width = size + '40px';
     zzz.style.height = size + '40px';
     body.appendChild(zzz);
   
     setTimeout(function() {
+        // Remove created span every 2000 milliseconds
         zzz.remove();
     }, 2000)
   }); 
@@ -337,13 +342,13 @@ if (window.location.pathname.startsWith("/dream")) {
   expand = document.getElementById("expandSidebar");
   close = document.getElementById("closeSidebar");
 
+  // When clicked, expand the sidebar 
   expand.addEventListener('click', function(){
-    console.log("cool");
     document.getElementById("dreamSidebar").style.width = "250px";
-    document.getElementById("sidebarFunction").style.marginLeft = "250";
+    document.getElementById("sidebarFunction").style.marginLeft = "250px";
   });
+  // When clicked, close the sidebar 
   close.addEventListener('click', function(){
-    console.log("test2")
     document.getElementById("dreamSidebar").style.width = "0";
     document.getElementById("sidebarFunction").style.marginLeft = "0";
   });

@@ -25,9 +25,10 @@ class Goal(models.Model):
     def __str__(self):
         return self.user
 
+
 class Dream(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=30)
     text = models.TextField(null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
