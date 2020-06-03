@@ -14,6 +14,11 @@ from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 
+from django.views import generic
+from datetime import datetime
+from django.utils.safestring import mark_safe
+from .utils import Calendar
+
 from .models import Goal, Dream, Event
 from .forms import GoalForm, SignupForm, DreamForm
 
@@ -211,3 +216,26 @@ def dream_search(request):
             return render(request, 'journal/dream_list.html', stuff_for_frontend)         
     else:
         return render(request, 'journal/dream_list.html')
+    
+
+
+class CalendarView(generic.ListView):
+    model = Event
+    template_name = 'journal/monthly_journal.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        d = get_date(self.request.GET.get('day', None))
+
+        cal = Calendar(d.year, d.month)
+
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        return context
+
+def get_date(req_day):
+    if req_day:
+        year, month = (int(x) for x in req_day.split('-'))
+        return datetime(year, month, day=1)
+    return datetime.today()

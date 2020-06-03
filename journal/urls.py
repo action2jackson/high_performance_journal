@@ -18,4 +18,5 @@ urlpatterns = [
     path('dreams/<int:pk>/edit/', views.dream_edit, name='dream_edit'),
     path('dreams/delete/', views.dreams_delete, name='dreams_delete'),
     path(r'dreams/download/', views.dreams_download, name='dreams_download'),
+    url(r'^monthly/journal/$', views.CalendarView.as_view(), name='calendar'),
 ]
