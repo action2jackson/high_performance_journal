@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 
-from .models import Goal, Dream
+from .models import Goal, Dream, Event
 from .forms import GoalForm, SignupForm, DreamForm
 
 
@@ -211,7 +211,3 @@ def dream_search(request):
             return render(request, 'journal/dream_list.html', stuff_for_frontend)         
     else:
         return render(request, 'journal/dream_list.html')
-
-
-
-    
