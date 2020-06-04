@@ -1284,3 +1284,63 @@ input.valid {
 	}
 }
 /* Font-size changes */
+  
+
+
+.calendar {
+	width: 80%;
+	margin: auto;
+	font-size: 1rem;
+	color: #fff;
+}
+
+.calendar tr, .calendar td {
+	border: 1px solid #0CB4B4;
+}
+
+.calendar th {
+	border: 1px solid #0CB4B4;
+	padding: 0.6em;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+.calendar td {
+	width: 10%;
+	height: 15vh;
+	padding: 20px 0px 0px 5px;
+}
+
+.calendar ul {
+	height: 100%;
+}
+
+
+.prev_month {
+	float: left;
+}
+
+.next_month {
+	float: right;
+}
+
+#month {
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid #0CB4B4;
+	padding: 0.5em;
+	border-radius: 15px;
+	background-color: transparent;
+	box-shadow: 2 2 2 2;
+	transition: ease 0.5s;
+}
+
+#month:hover {
+	background: #0CB4B4;
+	transition: ease 0.5s;
+	border-radius: none;
+}
+
+.calendar_btn_container {
+	margin: 1em;
+}
