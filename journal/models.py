@@ -37,7 +37,7 @@ class Dream(models.Model):
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=40)
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()

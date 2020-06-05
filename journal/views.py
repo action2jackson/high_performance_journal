@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 import csv
 # Needed for creating formsets
 from django.forms import formset_factory
@@ -21,7 +21,7 @@ from .utils import Calendar
 import calendar
 
 from .models import Goal, Dream, Event
-from .forms import GoalForm, SignupForm, DreamForm
+from .forms import GoalForm, SignupForm, DreamForm, EventForm
 
 
 def login_page(request):
@@ -255,3 +255,17 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+
+
+def event(request, event_id=None):
+    instance = Event()
+    if event_id:
+        instance = get_object_or_404(Event, pk=event_id)
+    else:
+        instance = Event()
+    
+    eventForm = EventForm(request.POST or None, instance=instance)
+    if request.POST and eventForm.is_valid():
+        eventForm.save()
+        return HttpResponseRedirect(reverse('calendar'))
+    return render(request, 'journal/event.html', {'eventForm': eventForm})

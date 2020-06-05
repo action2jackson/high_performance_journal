@@ -19,4 +19,6 @@ urlpatterns = [
     path('dreams/delete/', views.dreams_delete, name='dreams_delete'),
     path(r'dreams/download/', views.dreams_download, name='dreams_download'),
     url(r'^monthly/journal/$', views.CalendarView.as_view(), name='calendar'),
+    url(r'^event/new/$', views.event, name='event_new'),
+    url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
 ]
