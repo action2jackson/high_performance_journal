@@ -1362,3 +1362,32 @@ input.valid {
 .calendar_btn_container {
 	margin: 1em;
 }
+
+
+.event_form {
+	padding: 2em;
+}
+
+.event_form input, .event_form textarea, .event_form select{
+	color: #000;
+	border-radius: 5px;
+	border: 1px solid grey;
+	outline: none;
+	background: #fff;
+	padding: 5px;
+	width: 100%;
+}
+
+.event_form label {
+	color: #fff;
+}
+
+.event_form input::placeholder{
+	color: #000;
+}
+
+.event_submit {
+	float: right;
+	margin-top: 1em;
+	cursor: pointer;
+}
