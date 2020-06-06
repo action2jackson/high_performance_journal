@@ -1312,7 +1312,19 @@ input.valid {
 }
 
 .calendar ul {
+	color: #0CB4B4;
 	height: 100%;
+	margin-left: 1.25em;
+}
+
+.calendar_container a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.calendar_container a:hover {
+	color: #0CB4B4;
+	font-weight: bold;
 }
 
 
