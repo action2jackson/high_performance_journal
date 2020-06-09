@@ -354,6 +354,7 @@ if (window.location.pathname.startsWith("/dream")) {
   });
 }
 
+
 function resetGoalsLogout() {
   swal({
     title: "WAIT, ARE YOU SURE?!",

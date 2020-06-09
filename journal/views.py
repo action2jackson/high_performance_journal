@@ -268,4 +268,11 @@ def event(request, event_id=None):
     if request.POST and eventForm.is_valid():
         eventForm.save()
         return HttpResponseRedirect(reverse('calendar'))
-    return render(request, 'journal/event.html', {'eventForm': eventForm})
+    return render(request, 'journal/event.html', {'eventForm': eventForm, 'event_id': event_id})
+
+
+def event_delete(request, event_id):
+    event = get_object_or_404(Event, user=request.user, pk=event_id)
+    event.delete()
+    return HttpResponseRedirect(reverse('calendar'))
+    

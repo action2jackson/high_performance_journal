@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event
+import datetime as dt
 
 
 class Calendar(HTMLCalendar):
@@ -18,7 +19,7 @@ class Calendar(HTMLCalendar):
 			d += f'<li> {event.get_html_url} </li>'
 
 		if day != 0:
-			return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+			return f"<td><span>{day}</span><ul> {d} </ul></td>"
 		return '<td></td>'
 
 	# formats a week as a tr 

@@ -38,6 +38,7 @@ class Dream(models.Model):
 
 
 class Event(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
     title = models.CharField(max_length=40)
     description = models.TextField()
     start_time = models.DateTimeField()

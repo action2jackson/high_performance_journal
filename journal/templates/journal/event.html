@@ -5,6 +5,9 @@
 {% block content %}
     <div class="calendar_btn_container">
         <a id="month" href="{% url 'calendar' %}"><i class="fas fa-arrow-left"></i></a>
+        {% if event_id %}
+            <a class="event_delete" id="month" href="{% url 'event_delete' event_id %}"> Delete </a>
+        {% endif %}        
     </div>
     
     <form method="post">

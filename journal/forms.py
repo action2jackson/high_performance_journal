@@ -91,6 +91,7 @@ class DreamForm(forms.ModelForm):
 class EventForm(ModelForm):
   class Meta:
     model = Event
+    exclude = ('user',)
     fields = '__all__'
     # datetime-local is a HTML5 input type, format to make date time show on fields
     widgets = {

@@ -8,7 +8,7 @@
         <a class="btn btn-info prev_month" id="month" href="{% url 'calendar' %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i> Prev Month </a>
         <a class="btn btn-info next_month" id="month" href="{% url 'calendar' %}?{{ next_month }}"> Next Month <i class="fas fa-arrow-right"></i></a>
     </div>
-    <a class="btn btn-info new_event" id="" href="{% url 'event_new' %}"><h3 class="fas fa-calendar-day"> New Event <i class="fas fa-calendar-day"></i></h3></a>
+    <a class="btn btn-info new_event" href="{% url 'event_new' %}"><h3 class="fas fa-calendar-day"> New Event <i class="fas fa-calendar-day"></i></h3></a>
     <div class="calendar_container">
         {{ calendar }}
     </div>
