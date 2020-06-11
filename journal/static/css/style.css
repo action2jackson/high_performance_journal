@@ -1014,6 +1014,150 @@ input.valid {
 
 
 
+/* CALENDAR */
+
+.calendar {
+	width: 80%;
+	margin: auto;
+	font-size: 1rem;
+	color: #fff;
+}
+
+/* Calendar border lines */
+.calendar tr, .calendar td {
+	border: 1px solid #0CB4B4;
+}
+
+/* Month section */
+.calendar th {
+	border: 1px solid #0CB4B4;
+	padding: 0.6em;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+/* Day section */
+.calendar td {
+	width: 10%;
+	height: 15vh;
+	padding: 20px 0px 0px 5px;
+}
+
+/* Calendar event display */
+.calendar ul {
+	color: #0CB4B4;
+	height: 100%;
+	margin-left: 1.25em;
+}
+
+.calendar_container a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.calendar_container a:hover {
+	color: #0CB4B4;
+	font-weight: bold;
+}
+/* Calendar event display */
+
+/* Month change buttons */
+.prev_month {
+	float: left;
+}
+
+.next_month {
+	float: right;
+}
+
+.calendar_btn_container {
+	margin: 1em;
+}
+
+/* New event button */
+.new_event {
+	display: flex;
+	justify-content: center;
+	width: 50%;
+	margin: auto;
+	border-top: 1px solid #0CB4B4;
+	text-decoration: none;
+	color: #fff;
+	padding: 1em;
+	transition: ease 0.6s;
+}
+
+.new_event:hover {
+	width: 80%;
+	border: 1px 1px 0 1px solid #0CB4B4;
+	background: #0CB4B4;
+}
+
+#calendarButtons {
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid #0CB4B4;
+	padding: 0.5em;
+	border-radius: 15px;
+	background-color: transparent;
+	box-shadow: 2 2 2 2;
+	transition: ease 0.5s;
+}
+
+#calendarButtons:hover {
+	background: #0CB4B4;
+	transition: ease 0.5s;
+	border-radius: none;
+}
+
+/* CALENDAR */
+
+
+
+/* EVENTFORM */
+
+.event_form {
+	padding: 2em;
+}
+
+.event_buttons_container {
+	display: flex;
+}
+
+.event_form label {
+	color: #fff;
+}
+
+.event_form input::placeholder{
+	color: #000;
+}
+
+.event_form input, .event_form textarea, .event_form select{
+	color: #000;
+	border-radius: 5px;
+	border: 1px solid grey;
+	outline: none;
+	background: #fff;
+	padding: 5px;
+	width: 100%;
+	resize: none;
+}
+
+.event_submit {
+	float: right;
+	margin-top: 1em;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+.event_delete {
+	margin-left: 1em;
+}
+
+/* EVENTFORM */
+
+
+
 /* iMac */
 @media only screen and (max-width: 1920) {
 
@@ -1284,135 +1428,3 @@ input.valid {
 	}
 }
 /* Font-size changes */
-  
-
-
-.calendar {
-	width: 80%;
-	margin: auto;
-	font-size: 1rem;
-	color: #fff;
-}
-
-.calendar tr, .calendar td {
-	border: 1px solid #0CB4B4;
-}
-
-.calendar th {
-	border: 1px solid #0CB4B4;
-	padding: 0.6em;
-	text-align: center;
-	font-size: 1.2rem;
-}
-
-.calendar td {
-	width: 10%;
-	height: 15vh;
-	padding: 20px 0px 0px 5px;
-}
-
-.calendar ul {
-	color: #0CB4B4;
-	height: 100%;
-	margin-left: 1.25em;
-}
-
-.calendar_container a {
-	color: #fff;
-	text-decoration: none;
-}
-
-.calendar_container a:hover {
-	color: #0CB4B4;
-	font-weight: bold;
-}
-
-
-.prev_month {
-	float: left;
-}
-
-.next_month {
-	float: right;
-}
-
-.new_event {
-	display: flex;
-	justify-content: center;
-	width: 50%;
-	margin: auto;
-	border-top: 1px solid #0CB4B4;
-	text-decoration: none;
-	color: #fff;
-	padding: 1em;
-	transition: ease 0.6s;
-}
-
-.new_event:hover {
-	width: 80%;
-	border: 1px 1px 0 1px solid #0CB4B4;
-	background: #0CB4B4;
-}
-
-#month {
-	text-decoration: none;
-	color: #fff;
-	border: 1px solid #0CB4B4;
-	padding: 0.5em;
-	border-radius: 15px;
-	background-color: transparent;
-	box-shadow: 2 2 2 2;
-	transition: ease 0.5s;
-}
-
-#month:hover {
-	background: #0CB4B4;
-	transition: ease 0.5s;
-	border-radius: none;
-}
-
-.calendar_btn_container {
-	margin: 1em;
-}
-
-
-.event_form {
-	padding: 2em;
-}
-
-.event_form input, .event_form textarea, .event_form select{
-	color: #000;
-	border-radius: 5px;
-	border: 1px solid grey;
-	outline: none;
-	background: #fff;
-	padding: 5px;
-	width: 100%;
-}
-
-.event_form label {
-	color: #fff;
-}
-
-.event_form input::placeholder{
-	color: #000;
-}
-
-.date {
-	color: red;
-}
-
-.event_buttons_container {
-	display: flex;
-}
-
-.event_submit {
-	float: right;
-	margin-top: 1em;
-	cursor: pointer;
-	font-size: 1rem;
-}
-
-.event_delete {
-	margin-left: 1em;
-}

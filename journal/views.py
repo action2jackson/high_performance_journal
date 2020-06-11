@@ -11,15 +11,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 # User authentication import
 from django.contrib.auth.decorators import login_required
-
+# Used for searching
 from django.db.models import Q
-
+# Used for class base views
 from django.views import generic
+# timedelta represents difference between 2 dates or times
 from datetime import datetime, timedelta
+# Makes a string safe for output purposes
 from django.utils.safestring import mark_safe
-from .utils import Calendar
 import calendar
 
+from .utils import Calendar
 from .models import Goal, Dream, Event
 from .forms import GoalForm, SignupForm, DreamForm, EventForm
 
@@ -220,6 +222,8 @@ def dream_search(request):
     
 
 
+
+# CALENDAR
 class CalendarView(generic.ListView):
     model = Event
     template_name = 'journal/monthly_journal.html'
@@ -228,10 +232,11 @@ class CalendarView(generic.ListView):
         context = super().get_context_data(**kwargs)
 
         d = get_date(self.request.GET.get('month', None))
-
+        # Get utils.py Calendar class
         cal = Calendar(d.year, d.month)
-
+        # Call formatmonth function from Calendar class
         html_cal = cal.formatmonth(withyear=True)
+        # Add calendar data to context
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
@@ -239,12 +244,15 @@ class CalendarView(generic.ListView):
 
 def get_date(req_day):
     if req_day:
+        # Gets current month and year
         year, month = (int(x) for x in req_day.split('-'))
+        # Returns current date
         return datetime(year, month, day=1)
     return datetime.today()
 
 def prev_month(d):
     first = d.replace(day=1)
+    # timdelta parameter is 1 so it basically subtracts 1 from the current month (first)
     prev_month = first - timedelta(days=1)
     month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
     return month
@@ -259,6 +267,7 @@ def next_month(d):
 
 def event(request, event_id=None):
     instance = Event()
+    # If event already exists get its id
     if event_id:
         instance = get_object_or_404(Event, pk=event_id)
     else:
@@ -267,10 +276,11 @@ def event(request, event_id=None):
     eventForm = EventForm(request.POST or None, instance=instance)
     if request.POST and eventForm.is_valid():
         eventForm.save()
+        # reverse gets the calendar url tag
         return HttpResponseRedirect(reverse('calendar'))
     return render(request, 'journal/event.html', {'eventForm': eventForm, 'event_id': event_id})
 
-
+# Delete Event
 def event_delete(request, event_id):
     event = get_object_or_404(Event, user=request.user, pk=event_id)
     event.delete()

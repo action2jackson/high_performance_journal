@@ -4,9 +4,10 @@
 
 {% block content %}
     <div class="calendar_btn_container">
-        <a id="month" href="{% url 'calendar' %}"><i class="fas fa-arrow-left"></i></a>
+        <a id="calendarButtons" href="{% url 'calendar' %}"><i class="fas fa-arrow-left"></i></a>
+        <!-- If the event already exists, display delete button-->
         {% if event_id %}
-            <a class="event_delete" id="month" href="{% url 'event_delete' event_id %}"> Delete </a>
+            <a class="event_delete" id="calendarButtons" href="{% url 'event_delete' event_id %}"> Delete </a>
         {% endif %}        
     </div>
     
@@ -14,7 +15,7 @@
         {% csrf_token %}
         <table class="event_form">
             {{ eventForm }}
-            <tr><td colspan="2"><button class="event_submit" type="submit" id="month"> Submit </button></td></tr>
+            <tr><td colspan="2"><button class="event_submit" type="submit" id="calendarButtons"> Submit </button></td></tr>
         </table>
     </form>
     

@@ -45,6 +45,8 @@ class Event(models.Model):
     end_time = models.DateTimeField()
 
     @property
+    # Cant add this to html template because events are created from the calendar form
     def get_html_url(self):
+        # Get event_edit url 
         url = reverse('event_edit', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
