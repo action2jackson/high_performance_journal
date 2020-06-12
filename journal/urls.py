@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^event/new/$', views.event, name='event_new'),
     url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
     url(r'^event/delete/(?P<event_id>\d+)/$', views.event_delete, name='event_delete'),
-    path('weekly/journal', views.weekly_journal, name='weekly_journal'),
+    path('notes/journal', views.notes_journal, name='notes_journal'),
 ]

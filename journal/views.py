@@ -290,6 +290,6 @@ def event_delete(request, event_id):
     
 
 
-def weekly_journal(request):
-    return render(request, 'journal/weekly_journal.html')
+def notes_journal(request):
+    return render(request, 'journal/notes_journal.html')
 

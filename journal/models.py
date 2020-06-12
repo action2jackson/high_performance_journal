@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 
 class Goal(models.Model):
@@ -50,3 +51,5 @@ class Event(models.Model):
         # Get event_edit url 
         url = reverse('event_edit', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+
+    
