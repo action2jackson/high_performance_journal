@@ -22,8 +22,8 @@ from django.utils.safestring import mark_safe
 import calendar
 
 from .utils import Calendar
-from .models import Goal, Dream, Event
-from .forms import GoalForm, SignupForm, DreamForm, EventForm
+from .models import Goal, Dream, Event, Note
+from .forms import GoalForm, SignupForm, DreamForm, EventForm, NoteForm
 
 
 def login_page(request):
@@ -291,5 +291,11 @@ def event_delete(request, event_id):
 
 
 def notes_journal(request):
+    order_notes = Note.objects.order_by('-created_date')
+    notes = Note.objects.filter(user=request.user)
+    stuff_for_frontend = {
+        'order_notes': order_notes,
+        'notes': notes,
+    }
     return render(request, 'journal/notes_journal.html')
 

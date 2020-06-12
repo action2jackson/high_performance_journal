@@ -1428,38 +1428,3 @@ input.valid {
 	}
 }
 /* Font-size changes */
-
-
-.main_header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.main_header h1 {
-	margin-left: 2em;
-}
-
-.week_table {
-	margin: 2em auto;
-	border-collapse: collapse;
-}
-
-.week_header th {
-	color: #fff;
-	padding: 0 1em;
-	font-size: 1.5rem;
-	border: 1px solid #0CB4B4;
-	border-top: none;
-}
-
-#activityButton {
-	padding: 1em;
-	color: #0CB4B4;
-	text-decoration: none;
-}
-
-.week_body td {
-	border: 1px solid #0CB4B4;
-	text-align: center;
-}

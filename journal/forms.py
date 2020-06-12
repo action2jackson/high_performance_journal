@@ -1,5 +1,5 @@
 from django import forms
-from .models import Goal, Dream, Event
+from .models import Goal, Dream, Event, Note
 from django.forms import formset_factory, ModelForm, DateInput
 # For registration
 from django.contrib.auth.forms import UserCreationForm
@@ -106,3 +106,15 @@ class EventForm(ModelForm):
     # input_formats to parse HTML5 datetime-local input to datetime field
     self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
     self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+
+
+
+class NoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        exclude = ('user', 'created_date')
+        fields = '__all__'
+        widgets = {
+            'title': (forms.TextInput(attrs={'placeholder': 'Note Title', 'required': 'True', 'autofocus': 'autofocus', 'class': 'note_title', 'autocomplete': 'off'})),
+            'text': (forms.Textarea(attrs={'placeholder': '“Dream as if you will live forever, live as if you will die today.”', 'class': 'note_text', 'autocomplete': 'off'})),
+        }
