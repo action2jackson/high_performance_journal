@@ -1428,3 +1428,30 @@ input.valid {
 	}
 }
 /* Font-size changes */
+
+
+.note_container {
+	background: #f7c800;
+	display: flex;
+	flex-direction: column;
+	margin: 2em auto;
+	width: 70%;
+	padding: 2em;
+	border-radius: 10px;
+}
+
+.note_title, .note_text {
+	padding: 1em;
+	background: #f7c800;
+	border: none;
+	outline: none;
+}
+
+.note_title {
+	padding-bottom: 2em;
+}
+
+.note_text {
+	height: 50vh;
+	resize: none;
+}

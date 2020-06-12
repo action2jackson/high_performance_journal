@@ -297,5 +297,42 @@ def notes_journal(request):
         'order_notes': order_notes,
         'notes': notes,
     }
-    return render(request, 'journal/notes_journal.html')
+    return render(request, 'journal/notes_journal.html', stuff_for_frontend)
 
+
+
+def note_create(request):
+    noteForm = NoteForm()
+
+    if request.method == 'POST':
+        noteForm = NoteForm(request.POST)
+        if noteForm.is_valid():
+            note = noteForm.save(commit=False)
+            note.user = request.user
+            note.save()
+            return redirect('notes_journal')
+    else:
+        noteForm = NoteForm()
+        stuff_for_frontend = {
+            'noteForm': noteForm
+        }
+        return render(request, 'journal/note_create.html', stuff_for_frontend)
+
+
+def note_edit(request, pk):
+    # Get specific dream using pk 
+    note = get_object_or_404(Note, pk=pk)
+    if request.method == 'POST':
+        # Get dream instance
+        noteForm = NoteForm(request.POST, instance=note)
+        if noteForm.is_valid():
+            note = noteForm.save(commit=False)
+            note.user = request.user
+            note.save()
+        return redirect('notes_journal')
+    else:
+        noteForm = NoteForm(instance=note)
+        stuff_for_frontend = {
+            'noteForm': noteForm
+        }
+        return render(request, 'journal/note_create.html', stuff_for_frontend)

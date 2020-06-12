@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
     url(r'^event/delete/(?P<event_id>\d+)/$', views.event_delete, name='event_delete'),
     path('notes/journal', views.notes_journal, name='notes_journal'),
+    path('note/new/', views.note_create, name='note_create'),
+    path('note/<int:pk>/edit/', views.note_edit, name='note_edit'),
 ]

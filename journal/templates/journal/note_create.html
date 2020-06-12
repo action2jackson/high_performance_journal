@@ -3,9 +3,12 @@
 {% block title %}New Note{% endblock %}
 
 {% block content %}
-
-    <div class="note_container">
-        
-    </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="note_container">
+            {{ noteForm }}
+            <button type="submit" class="dream_create">Save Note</button>
+        </div>
+    </form> 
 
 {% endblock %}

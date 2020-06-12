@@ -3,9 +3,16 @@
 {% block title %}Notes{% endblock %}
 
 {% block content %}
-
-    <div class="notes_list">
-
-    </div>
+    {% for note in notes %}
+        <a href="{% url 'note_create' %}">New Note</a>
+        <ul class="note_list_container">
+            <li class="note_list">
+                <a class="note" href="{% url 'note_edit' pk=note.pk %}">
+                    <h2>{{ note.title }} #{{ note.id }}</h2>
+                    <p>{{ note.text }} #{{ note.id }}</p>
+                </a>
+            </li>
+        </ul>
+    {% endfor %}
 
 {% endblock %}

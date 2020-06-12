@@ -115,6 +115,6 @@ class NoteForm(forms.ModelForm):
         exclude = ('user', 'created_date')
         fields = '__all__'
         widgets = {
-            'title': (forms.TextInput(attrs={'placeholder': 'Note Title', 'required': 'True', 'autofocus': 'autofocus', 'class': 'note_title', 'autocomplete': 'off'})),
-            'text': (forms.Textarea(attrs={'placeholder': '“Dream as if you will live forever, live as if you will die today.”', 'class': 'note_text', 'autocomplete': 'off'})),
+            'title': (forms.TextInput(attrs={'placeholder': 'Work', 'required': 'True', 'autofocus': 'autofocus', 'class': 'note_title', 'autocomplete': 'off'})),
+            'text': (forms.Textarea(attrs={'placeholder': 'Get ready for the huge giveaway!', 'class': 'note_text', 'autocomplete': 'off'})),
         }
