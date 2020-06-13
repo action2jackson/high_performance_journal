@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="new_note">
-        <a href="{% url 'note_create' %}">New Note</a>
+        <em><a href="{% url 'note_create' %}">New Note</a><em>
     </div>
     <div class="note_list_container">
         {% for note in notes %}

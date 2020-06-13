@@ -1456,6 +1456,33 @@ input.valid {
 	resize: none;
 }
 
+.delete_note {
+	position: absolute;
+	font-size: 2rem;
+	color: #000;
+	text-decoration: none;
+	right: 20%;
+}
+
+
+
+.new_note {
+	display: flex;
+	justify-content: center;
+	margin: 2em auto;
+}
+
+.new_note a {
+	color: #000;
+	text-decoration: none;
+	background: #fff;
+	border: 4px inset #fff;
+	padding: 1em 2.5em;  
+}
+
+.new_note a:hover {
+	border: 4px outset #fff;
+}
 
 
 .note_list_container {
@@ -1463,7 +1490,7 @@ input.valid {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	margin: 2em auto;
+	margin: 0 auto;
 	width: 80%;
 }
 

@@ -6,6 +6,9 @@
     <form method="POST" action="">
         {% csrf_token %}
         <div class="note_container">
+            {% if note.pk %}
+                <a class="delete_note" href="{% url 'note_delete' pk=note.pk %}">&times;</a>
+            {% endif %}
             {{ noteForm }}
             <button type="submit" class="dream_create">Save Note</button>
         </div>

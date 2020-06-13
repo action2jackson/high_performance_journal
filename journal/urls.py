@@ -25,4 +25,5 @@ urlpatterns = [
     path('notes/journal', views.notes_journal, name='notes_journal'),
     path('note/new/', views.note_create, name='note_create'),
     path('note/<int:pk>/edit/', views.note_edit, name='note_edit'),
+    path('note/<int:pk>/delete/', views.note_delete, name='note_delete'),    
 ]

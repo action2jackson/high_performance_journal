@@ -333,6 +333,13 @@ def note_edit(request, pk):
     else:
         noteForm = NoteForm(instance=note)
         stuff_for_frontend = {
-            'noteForm': noteForm
+            'noteForm': noteForm,
+            'note': note
         }
         return render(request, 'journal/note_create.html', stuff_for_frontend)
+
+
+def note_delete(request, pk):
+    note = Note.objects.get(user=request.user, pk=pk)
+    note.delete()
+    return redirect('notes_journal')
