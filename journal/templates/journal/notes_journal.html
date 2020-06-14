@@ -9,10 +9,8 @@
     <div class="note_list_container">
         {% for note in notes %}
             <a class="note_list" href="{% url 'note_edit' pk=note.pk %}">
-                <h4 class="note_number">Note: {{ note.id }}</h2>
                 <h6>{{ note.created_date }}</h6>
                 <p class="note"><em><strong>{{ note.title }}</strong></em></p>
-                <p>{{ note.text | truncatechars:40 }}</p>
             </a>
         {% endfor %}
     </div>

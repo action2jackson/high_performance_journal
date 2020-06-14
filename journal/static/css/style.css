@@ -1431,7 +1431,7 @@ input.valid {
 
 
 .note_container {
-	background: #f7c800;
+	background: #12FFF7;
 	display: flex;
 	flex-direction: column;
 	margin: 2em auto;
@@ -1440,9 +1440,20 @@ input.valid {
 	border-radius: 10px;
 }
 
+.home_note_button {
+	position: absolute;
+	padding-left: 3em;
+	color: #12FFF7;
+}
+
+
+.note_container h6 {
+	text-align: center;
+}
+
 .note_title, .note_text {
 	padding: 1em;
-	background: #f7c800;
+	background: #12FFF7;
 	border: none;
 	outline: none;
 }
@@ -1464,8 +1475,6 @@ input.valid {
 	right: 20%;
 }
 
-
-
 .new_note {
 	display: flex;
 	justify-content: center;
@@ -1484,7 +1493,6 @@ input.valid {
 	border: 4px outset #fff;
 }
 
-
 .note_list_container {
 	display: flex;
 	flex-direction: row;
@@ -1495,13 +1503,16 @@ input.valid {
 }
 
 .note_list {
-	background: #f7c800;
+	background: linear-gradient(#B3FFAB, #12FFF7);
 	margin: 2em;
 	padding: 1em;
 	width: 25%;
+	min-width: 25%;
+	height: 25vh;
 	border-radius: 10px;
 	text-decoration: none;
-	border: #f7c800 solid 3px;
+	text-align: center;
+	border: linear-gradient(#B3FFAB, #12FFF7) solid 3px;
 	transition: ease 0.5s;
 }
 
@@ -1511,14 +1522,9 @@ input.valid {
 	transform: scale(1.2);
 }
 
-.note_number {
-	color: #000;
-	text-decoration: underline;
-}
-
 .note_list p {
 	color: #000;
-	padding: 1em;
+	padding: 3em 1em 1em 1em;
 }
 
 .note_list h6 {
@@ -1526,5 +1532,5 @@ input.valid {
 }
 
 .note {
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 }

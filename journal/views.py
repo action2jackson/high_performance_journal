@@ -280,7 +280,7 @@ def event(request, event_id=None):
         event.save()
         # reverse gets the calendar url tag
         return HttpResponseRedirect(reverse('calendar'))
-    return render(request, 'journal/event.html', {'eventForm': event, 'event_id': event_id})
+    return render(request, 'journal/event.html', {'eventForm': eventForm, 'event_id': event_id})
 
 # Delete Event
 def event_delete(request, event_id):
