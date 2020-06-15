@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator 
 
+# from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Goal(models.Model):
     # Model fields for 90 day goals
@@ -56,7 +58,8 @@ class Event(models.Model):
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    text = models.TextField(null=True)
+    # text = RichTextField(null=True)
+    text = RichTextUploadingField(null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

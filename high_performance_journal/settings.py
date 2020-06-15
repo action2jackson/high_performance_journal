@@ -39,7 +39,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'journal',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+'''
+CKEDITOR_CONFIGS = {
+    'default': {},
+    'special': {
+        'toolbar': 'Special',
+        'toolbar_Special': [
+            ['all', 'CodeSnippet'],
+        ],
+        'extraPlugins': 'codesnippet',
+    }
+}
+'''
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -122,3 +139,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
