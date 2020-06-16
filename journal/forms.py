@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
+from ckeditor.widgets import CKEditorWidget
+
 
 class GoalForm(forms.ModelForm):
     class Meta:
@@ -110,11 +112,14 @@ class EventForm(ModelForm):
 
 
 class NoteForm(forms.ModelForm):
+
     class Meta:
         model = Note
         exclude = ('user', 'created_date')
         fields = '__all__'
         widgets = {
             'title': (forms.TextInput(attrs={'placeholder': 'Work', 'required': 'True', 'autofocus': 'autofocus', 'class': 'note_title', 'autocomplete': 'off'})),
-            'text': (forms.Textarea(attrs={'placeholder': 'Get ready for the huge giveaway!', 'class': 'note_text', 'autocomplete': 'off'})),
+        }
+        labels = {
+            'text': ''
         }

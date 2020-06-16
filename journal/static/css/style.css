@@ -1440,6 +1440,14 @@ input.valid {
 	border-radius: 10px;
 }
 
+.note_container .note_title, label {
+	font-weight: 500;
+}
+
+.note_container .note_text {
+	padding: 2em;
+}
+
 .home_note_button {
 	position: absolute;
 	padding-left: 3em;
@@ -1472,7 +1480,7 @@ input.valid {
 	font-size: 2rem;
 	color: #000;
 	text-decoration: none;
-	right: 20%;
+	right: 18%;
 }
 
 .new_note {
@@ -1493,6 +1501,11 @@ input.valid {
 	border: 4px outset #fff;
 }
 
+#noteSave {
+	margin-top: 2em;
+}
+
+
 .note_list_container {
 	display: flex;
 	flex-direction: row;
@@ -1507,8 +1520,9 @@ input.valid {
 	margin: 2em;
 	padding: 1em;
 	width: 25%;
-	min-width: 25%;
 	height: 25vh;
+	min-width: 250px;
+	min-height: 200px;
 	border-radius: 10px;
 	text-decoration: none;
 	text-align: center;

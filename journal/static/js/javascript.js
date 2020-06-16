@@ -43,6 +43,7 @@ var startTimer = 0;
 function sprintTimer() {
   var countdown = document.getElementById("Countdown");
   var goals = document.getElementById("Goals"); 
+  var goalLink = document.getElementById("Goal"); 
 
   time = parseInt(localStorage.getItem("time"));
   // increases time by 1 second 
@@ -55,10 +56,12 @@ function sprintTimer() {
     // If the user created their goals and its not been 90 days
     if (startTimer == 1 && time < 7776000000) {
       // Display Timer
+      goalLink.href = "goals/";
       countdown.style.display = "flex";
       goals.style.display = "none";
     } else {
       // Display goals form
+      goalLink.href = "";
       countdown.style.display = "none";
       goals.style.display = "flex";
     }
@@ -336,7 +339,7 @@ if (window.location.pathname.startsWith("/dream")) {
     setTimeout(function() {
         // Remove created span every 2000 milliseconds
         zzz.remove();
-    }, 2000)
+    }, 1000)
   }); 
 
   expand = document.getElementById("expandSidebar");

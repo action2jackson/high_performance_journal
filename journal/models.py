@@ -33,7 +33,7 @@ class Goal(models.Model):
 class Dream(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    text = models.TextField(null=True)
+    text = models.TextField(blank=True, default=None)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -43,9 +43,9 @@ class Dream(models.Model):
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
     title = models.CharField(max_length=40)
-    description = models.TextField()
+    description = models.TextField(blank=True, default=None)
     start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    end_time = models.DateTimeField(null=True, blank=True, default=None)
 
     @property
     # Cant add this to html template because events are created from the calendar form
@@ -59,7 +59,7 @@ class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     # text = RichTextField(null=True)
-    text = RichTextUploadingField(null=True)
+    text = RichTextUploadingField(blank=True, default=None)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
