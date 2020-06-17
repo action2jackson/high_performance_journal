@@ -6,7 +6,9 @@
     {{ noteForm.media }}
     <form method="POST" action="">
         {% csrf_token %}
-        <a class="home_note_button" href="{% url 'notes_journal' %}"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+        <div class="home_note_mobile">
+            <a class="home_note_button" href="{% url 'notes_journal' %}"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+        </div>
         <div class="note_container">
             {% if note.pk %}
                 <h6>{{ note.created_date }}</h6>

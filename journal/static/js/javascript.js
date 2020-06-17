@@ -312,13 +312,6 @@ if (window.location.pathname == "/goals/") {
   // Inline javascript is at goals_list.html for the slide show
 }
 
-if (window.location.pathname == "/login/") {
-  const passwordInput = document.getElementById('password');
-  // Sets type of login input to password when user starts typing
-  passwordInput.addEventListener('keydown', () => {
-      passwordInput.setAttribute('type', 'password');
-  });
-}
 
 // All the dream page urls start with "/dream"
 if (window.location.pathname.startsWith("/dream")) {
@@ -341,7 +334,9 @@ if (window.location.pathname.startsWith("/dream")) {
         zzz.remove();
     }, 1000)
   }); 
+}
 
+if (window.location.pathname == "/dreams/") {
   expand = document.getElementById("expandSidebar");
   close = document.getElementById("closeSidebar");
 
@@ -357,6 +352,19 @@ if (window.location.pathname.startsWith("/dream")) {
   });
 }
 
+
+if (window.location.pathname.startsWith("/note/")) {
+  CKEDITOR.addCss('.cke_editable img { max-width: 100% !important; height: auto !important; }');
+}
+
+
+if (window.location.pathname == "/login/") {
+  const passwordInput = document.getElementById('password');
+  // Sets type of login input to password when user starts typing
+  passwordInput.addEventListener('keydown', () => {
+      passwordInput.setAttribute('type', 'password');
+  });
+}
 
 function resetGoalsLogout() {
   swal({
@@ -382,5 +390,3 @@ const logout = document.getElementById("logout");
 logout.addEventListener("click", resetGoalsLogout, true);
 
 sprintTimer();
-
-

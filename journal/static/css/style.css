@@ -1237,6 +1237,21 @@ input.valid {
 		font-size: 3rem;
 		right: 5em;
 	}
+
+
+	.new_note {
+		font-size: 1.8rem;
+	}
+	.note_list p {
+		font-size: 2.1rem;
+	}
+	.note_list h6 {
+		font-size: 1rem;
+	}
+
+	.note_container, .note_container input {
+		font-size: 2rem;
+	}
 }
 /* Just for Ipad Pro */
 
@@ -1417,6 +1432,18 @@ input.valid {
 		right: 1em
 	}
 
+
+	.home_note_mobile {
+		display: flex;
+		margin-bottom: 4em;
+	}
+	.note_container h6 {
+		padding-bottom: 2em;
+	}
+	.delete_note {
+		margin-top: 0.75em;
+	}
+
 	.swal-text {
 		font-size: 0.75rem;
 	}
@@ -1486,7 +1513,7 @@ input.valid {
 .new_note {
 	display: flex;
 	justify-content: center;
-	margin: 2em auto;
+	margin: 3em auto;
 }
 
 .new_note a {
@@ -1521,7 +1548,7 @@ input.valid {
 	padding: 1em;
 	width: 25%;
 	height: 25vh;
-	min-width: 250px;
+	min-width: 240px;
 	min-height: 200px;
 	border-radius: 10px;
 	text-decoration: none;
