@@ -28,5 +28,4 @@ urlpatterns = [
     path('note/<int:pk>/delete/', views.note_delete, name='note_delete'),   
     path('daily/journal/', views.daily_journal, name="daily_journal"), 
     path('task/<int:pk>/delete/', views.task_delete, name="task_delete"), 
-
 ]

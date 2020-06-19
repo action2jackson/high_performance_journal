@@ -21,15 +21,16 @@
                 <p>{{ taskForm.title }}</p>
                 <input style="display: none" type="submit" value="Enter">
             </form>
-            <div class="task_display">
-                {% for task in tasks %}
-                    <div>
-                        <!-- Add JS to make delete fade nice -->
-                        <input type="checkbox" id="taskCheck">
-                        {{ task }}
-                    </div>
-                {% endfor %}
-            </div>
+            {% for task in tasks %}
+                <div class="todo_list">
+                    <!-- Add JS to make delete fade nice -->
+                    <a href="{% url 'task_delete' pk=task.pk %}">
+                        <p class="far fa-square"></p>
+                        <p class="far fa-check-square"></p>
+                    </a>
+                    {{ task }}
+                </div>
+            {% endfor %}
         </div>
     </div>
 

@@ -1610,3 +1610,21 @@ input.valid {
 	border-left: 3px solid #0CB4B4;
 	height: 70vh;
 }
+
+.todo_list a {
+	cursor: default;
+	color: #0CB4B4;
+	text-decoration: none;
+}
+
+.todo_list a p:last-child {
+	display: none;
+}
+
+.todo_list a:hover p:last-child {
+	display: inline-block;
+}
+
+.todo_list a:hover p:first-child {
+	display: none;
+}

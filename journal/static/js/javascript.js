@@ -359,7 +359,20 @@ if (window.location.pathname.startsWith("/note/")) {
 
 
 if (window.location.pathname == "/daily/journal/") {
-  
+  // var taskComplete = document.querySelectorAll("#taskComplete");
+  // var taskList = document.getElementsByClassName("todoList");
+
+  // taskComplete.forEach(item => {
+  //   item.addEventListener('click', () => {
+  //     for (j = 0; j < taskComplete.length; j++) {
+  //       console.log("cool")
+  //       if (taskComplete[j].checked == true) {
+  //           window.location.href = "task/" + j + "/delete";
+  //           taskList[j].innerHTML = '<del>' + '{{ task }}' + '</del>';
+  //       }
+  //     }
+  //   })
+  // })
 
   // var taskSubmit = document.getElementsByClassName("task_submit");
   // var taskInput = document.getElementById("taskCreate");
