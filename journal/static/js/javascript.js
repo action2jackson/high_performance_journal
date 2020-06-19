@@ -358,6 +358,21 @@ if (window.location.pathname.startsWith("/note/")) {
 }
 
 
+if (window.location.pathname == "/daily/journal/") {
+  
+
+  // var taskSubmit = document.getElementsByClassName("task_submit");
+  // var taskInput = document.getElementById("taskCreate");
+  // taskInput.addEventListener('focusin', () => {
+
+  //   taskSubmit[0].style.display = "block";
+  // });
+  // taskInput.addEventListener('focusout', () => {
+  //   taskSubmit[0].style.display = "none";
+  // });
+}
+
+
 if (window.location.pathname == "/login/") {
   const passwordInput = document.getElementById('password');
   // Sets type of login input to password when user starts typing

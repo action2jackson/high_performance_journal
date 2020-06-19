@@ -15,20 +15,19 @@
             <span></span>
         </div>
         <div class="task_container">
-            <h1>ToDo</h1>
+            <h1>To Do</h1>
             <form method="POST" action="{% url 'daily_journal' %}">
                 {% csrf_token %}
-                {{ taskForm.title }}
-                <input type="submit">
+                <p>{{ taskForm.title }}</p>
+                <input style="display: none" type="submit" value="Enter">
             </form>
             <div class="task_display">
                 {% for task in tasks %}
-                    <form action="">
-                        <div>
-                            {{ taskForm.complete }}
-                            {{ task }}
-                        </div>
-                    </form>
+                    <div>
+                        <!-- Add JS to make delete fade nice -->
+                        <input type="checkbox" id="taskCheck">
+                        {{ task }}
+                    </div>
                 {% endfor %}
             </div>
         </div>

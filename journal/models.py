@@ -69,7 +69,6 @@ class Note(models.Model):
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
     title = models.CharField(max_length=100)
-    complete = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

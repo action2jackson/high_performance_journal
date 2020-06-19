@@ -365,3 +365,9 @@ def daily_journal(request):
         'taskForm': taskForm,
     }
     return render(request, 'journal/daily_journal.html', stuff_for_frontend)
+
+
+def task_delete(request, pk):
+    task = Task.objects.get(user=request.user, pk=pk)
+    task.delete()
+    return redirect('daily_journal')

@@ -129,8 +129,7 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = {'title', 'complete'}
+        fields = {'title'}
         widgets = {
-            'title': (forms.TextInput(attrs={'required': 'True', 'autofocus': 'autofocus', 'class': 'task_title', 'autocomplete': 'off'})),
-            'complete': (forms.CheckboxInput(attrs={'class': 'task_complete'}))
+            'title': (forms.TextInput(attrs={'placeholder': 'Enter To Do', 'required': 'True', 'class': 'inputFields','id': 'taskCreate', 'autocomplete': 'off'})),
         }
