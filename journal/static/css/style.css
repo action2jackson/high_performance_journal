@@ -1575,3 +1575,42 @@ input.valid {
 .note {
 	font-size: 1.25rem;
 }
+
+
+
+.daily_journal_header {
+	display: flex;
+	justify-content: center;
+	margin: 4em auto;
+	width: 60%;
+	border-bottom: 1px solid #0CB4B4;
+}
+
+.daily_journal_container {
+	display: flex;
+	flex-direction: row;
+	width: 60%;
+	margin: auto;
+	color: #fff;
+}
+
+.journal_container {
+	flex-direction: column;
+	flex: 2;
+}
+
+.journal_spacing {
+	display: flex; 
+	justify-content: center;
+	flex: 1;
+}
+.journal_spacing span {
+	border: 3px solid #0CB4B4;
+	height: 70vh;
+}
+
+.task_container {
+	flex-direction: column;
+	justify-content: center;
+	flex: 2;
+}

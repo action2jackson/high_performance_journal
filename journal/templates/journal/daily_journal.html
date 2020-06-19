@@ -1,0 +1,37 @@
+{% extends 'journal/base.html' %}
+
+{% block title %}Daily Journal{% endblock %}
+
+{% block content %}
+
+    <div class="daily_journal_header">
+        <!-- Date + Day of the week + Day of 90 day sprint -->
+    </div>
+    <div class="daily_journal_container">
+        <div class="journal_container">
+            <h1>Daily Schedule</h1>
+        </div>
+        <div class="journal_spacing">
+            <span></span>
+        </div>
+        <div class="task_container">
+            <h1>ToDo</h1>
+            <form method="POST" action="{% url 'daily_journal' %}">
+                {% csrf_token %}
+                {{ taskForm.title }}
+                <input type="submit">
+            </form>
+            <div class="task_display">
+                {% for task in tasks %}
+                    <form action="">
+                        <div>
+                            {{ taskForm.complete }}
+                            {{ task }}
+                        </div>
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

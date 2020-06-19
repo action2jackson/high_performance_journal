@@ -22,8 +22,8 @@ from django.utils.safestring import mark_safe
 import calendar
 
 from .utils import Calendar
-from .models import Goal, Dream, Event, Note
-from .forms import GoalForm, SignupForm, DreamForm, EventForm, NoteForm
+from .models import Goal, Dream, Event, Note, Task
+from .forms import GoalForm, SignupForm, DreamForm, EventForm, NoteForm, TaskForm
 
 
 def login_page(request):
@@ -343,3 +343,25 @@ def note_delete(request, pk):
     note = Note.objects.get(user=request.user, pk=pk)
     note.delete()
     return redirect('notes_journal')
+
+
+
+def daily_journal(request):
+    taskForm = TaskForm()
+
+    if request.method == 'POST':
+        taskForm = TaskForm(request.POST)
+        if taskForm.is_valid():
+            task = taskForm.save(commit=False)
+            task.user = request.user
+            task.save()
+        return redirect('daily_journal')
+
+    order_tasks = Task.objects.order_by('-created_date')
+    tasks = Task.objects.filter(user=request.user)
+    stuff_for_frontend = {
+        'order_tasks': order_tasks,
+        'tasks': tasks,
+        'taskForm': taskForm,
+    }
+    return render(request, 'journal/daily_journal.html', stuff_for_frontend)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Goal, Dream, Event, Note
+from .models import Goal, Dream, Event, Note, Task
 from django.forms import formset_factory, ModelForm, DateInput
 # For registration
 from django.contrib.auth.forms import UserCreationForm
@@ -122,4 +122,15 @@ class NoteForm(forms.ModelForm):
         }
         labels = {
             'text': ''
+        }
+
+
+class TaskForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        fields = {'title', 'complete'}
+        widgets = {
+            'title': (forms.TextInput(attrs={'required': 'True', 'autofocus': 'autofocus', 'class': 'task_title', 'autocomplete': 'off'})),
+            'complete': (forms.CheckboxInput(attrs={'class': 'task_complete'}))
         }
