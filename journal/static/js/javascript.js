@@ -418,3 +418,6 @@ const logout = document.getElementById("logout");
 logout.addEventListener("click", resetGoalsLogout, true);
 
 sprintTimer();
+
+
+scheduler.init('scheduler_here', new Date(),"month");

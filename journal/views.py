@@ -265,6 +265,25 @@ def next_month(d):
     return month
 
 
+# class CalendarView(generic.ListView):
+#     model = Event
+#     template_name = 'journal/daily_journal.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+
+#         d = get_date(self.request.GET.get('month', None))
+#         # Get utils.py Calendar class
+#         cal = Calendar(d.year, d.month)
+#         # Call formatmonth function from Calendar class
+#         html_cal = cal.formatmonth(withyear=True)
+#         # Add calendar data to context
+#         context['calendar'] = mark_safe(html_cal)
+#         context['prev_month'] = prev_month(d)
+#         context['next_month'] = next_month(d)
+#         return context
+
+
 def event(request, event_id=None):
     instance = Event()
     # If event already exists get its id

@@ -1,7 +1,7 @@
 /* GENERAL STYLES */
 body {
-	font-family: 'Poppins', sans-serif;
 	overflow-x: hidden;
+	font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -1578,7 +1578,7 @@ input.valid {
 
 
 
-.daily_journal_header {
+/* .daily_journal_header {
 	display: flex;
 	justify-content: center;
 	margin: 4em auto;
@@ -1616,15 +1616,33 @@ input.valid {
 	color: #0CB4B4;
 	text-decoration: none;
 }
-
 .todo_list a p:last-child {
 	display: none;
 }
-
 .todo_list a:hover p:last-child {
 	display: inline-block;
 }
-
 .todo_list a:hover p:first-child {
 	display: none;
+} */
+
+
+#scheduler_here {
+	width: 100%;
+	height: 90vh;
+	background: none;
+}
+
+#calendarTab {
+	color: #fff;
+	border-color: #0CB4B4;
+}
+#calendarTab:hover {
+	background: #0CB4B4;
+}
+#calendarTab.active {
+	background: #0CB4B4;
+}
+#dd {
+	color: #fff;
 }

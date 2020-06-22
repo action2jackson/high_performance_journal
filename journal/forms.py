@@ -131,5 +131,5 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = {'title'}
         widgets = {
-            'title': (forms.TextInput(attrs={'placeholder': 'Enter To Do', 'required': 'True', 'class': 'inputFields', 'autocomplete': 'off', 'autofocus': 'autofocus'})),
+            'title': (forms.TextInput(attrs={'placeholder': 'Enter Task', 'required': 'True', 'class': 'inputFields', 'autocomplete': 'off', 'autofocus': 'autofocus'})),
         }

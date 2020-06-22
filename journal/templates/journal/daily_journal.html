@@ -4,34 +4,48 @@
 
 {% block content %}
 
-    <div class="daily_journal_header">
-        <!-- Date + Day of the week + Day of 90 day sprint -->
+    <div id="scheduler_here" class="dhx_cal_container">
+        <div class="dhx_cal_navline">
+            <div class="dhx_cal_prev_button">&nbsp;</div>
+            <div class="dhx_cal_next_button">&nbsp;</div>
+            <div class="dhx_cal_today_button"></div>
+            <div class="dhx_cal_date" id="dd"></div>
+            <div class="dhx_cal_tab" id="calendarTab" name="day_tab" style="right: 204px; "></div>
+            <div class="dhx_cal_tab" id="calendarTab" name="week_tab" style="right: 140px;"></div>
+            <div class="dhx_cal_tab" id="calendarTab" name="month_tab" style="right: 76px;"></div>
+        </div>
+        <div class="dhx_cal_header"></div>
+        <div class="dhx_cal_data"></div>       
     </div>
-    <div class="daily_journal_container">
-        <div class="journal_container">
-            <h1>Daily Schedule</h1>
-        </div>
-        <div class="journal_spacing">
-            <span></span>
-        </div>
-        <div class="task_container">
-            <h1>To Do</h1>
-            <form method="POST" action="{% url 'daily_journal' %}">
-                {% csrf_token %}
-                <p>{{ taskForm.title }}</p>
-                <input style="display: none" type="submit" value="Enter">
-            </form>
-            {% for task in tasks %}
-                <div class="todo_list">
-                    <!-- Add JS to make delete fade nice -->
-                    <a href="{% url 'task_delete' pk=task.pk %}">
-                        <p class="far fa-square"></p>
-                        <p class="far fa-check-square"></p>
-                    </a>
-                    {{ task }}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+
+    <!-- <div class="daily_journal_header">
+        Date + Day of the week + Day of 90 day sprint 
+    </div> -->
+        <!-- <div class="daily_journal_container">
+            <div class="journal_container">
+                <h1>Daily Schedule</h1>
+            </div>
+            <div class="journal_spacing">
+                <span></span>
+            </div>
+            <div class="task_container">
+                <h1>To Do</h1>
+                <form method="POST" action="{% url 'daily_journal' %}">
+                    {% csrf_token %}
+                    <p>{{ taskForm.title }}</p>
+                    <input style="display: none" type="submit" value="Enter">
+                </form>
+                {% for task in tasks %}
+                    <div class="todo_list">
+                        Add JS to make delete fade nice
+                        <a href="{% url 'task_delete' pk=task.pk %}">
+                            <p class="far fa-square"></p>
+                            <p class="far fa-check-square"></p>
+                        </a>
+                        {{ task }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div> -->
 
 {% endblock %}
