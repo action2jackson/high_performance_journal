@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'journal',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'fullcalendar',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -56,6 +57,9 @@ CKEDITOR_CONFIGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+TEXT_ADDITIONAL_TAGS = ('iframe',)
+TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

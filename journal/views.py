@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import csv
 # Needed for creating formsets
 from django.forms import formset_factory
@@ -22,7 +22,7 @@ from django.utils.safestring import mark_safe
 import calendar
 
 from .utils import Calendar
-from .models import Goal, Dream, Event, Note, Task
+from .models import Goal, Dream, Event, Note, Task, Events
 from .forms import GoalForm, SignupForm, DreamForm, EventForm, NoteForm, TaskForm
 
 
@@ -81,7 +81,7 @@ def index(request):
         # Loop through Formset to check validation on each form
         for goal in goals:
             if goal.is_valid():
-                # Wait to save goal form (usaully used to add something)
+                # Wait to save goal form (usaully used to add somescheduler)
                 goalForm = goal.save(commit=False)
                 # Get the current user
                 goalForm.user = request.user
@@ -265,25 +265,6 @@ def next_month(d):
     return month
 
 
-# class CalendarView(generic.ListView):
-#     model = Event
-#     template_name = 'journal/daily_journal.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-
-#         d = get_date(self.request.GET.get('month', None))
-#         # Get utils.py Calendar class
-#         cal = Calendar(d.year, d.month)
-#         # Call formatmonth function from Calendar class
-#         html_cal = cal.formatmonth(withyear=True)
-#         # Add calendar data to context
-#         context['calendar'] = mark_safe(html_cal)
-#         context['prev_month'] = prev_month(d)
-#         context['next_month'] = next_month(d)
-#         return context
-
-
 def event(request, event_id=None):
     instance = Event()
     # If event already exists get its id
@@ -390,3 +371,45 @@ def task_delete(request, pk):
     task = Task.objects.get(user=request.user, pk=pk)
     task.delete()
     return redirect('daily_journal')
+
+
+
+def calendar(request):
+    all_events = Events.objects.all()
+    context = {
+        "events":all_events,
+    }
+    return render(request,'journal/daily_journal.html',context)
+
+def add_event(request):
+    start = request.GET.get("start", None)
+    end = request.GET.get("end", None)
+    title = request.GET.get("title", None)
+    event = Events(name=str(title), start=start, end=end)
+    event.save()
+    data = {}
+    return JsonResponse(data)
+
+
+def update(request):
+    start = request.GET.get("start", None)
+    end = request.GET.get("end", None)
+    title = request.GET.get("title", None)
+    id = request.GET.get("id", None)
+    event = Events.objects.get(id=id)
+    event.start = start
+    event.end = end
+    event.name = title
+    event.save()
+    event.refresh_from_db()
+    data = {}
+    return JsonResponse(data)
+
+
+def remove(request):
+    id = request.GET.get("id", None)
+    event = Events.objects.get(id=id)
+    event.delete()
+    data = {}
+    return JsonResponse(data)
+
