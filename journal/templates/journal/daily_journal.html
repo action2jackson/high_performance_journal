@@ -19,8 +19,8 @@
                     {% for event in events %}
                         {
                             title: "{{ event.name }}",
-                            start: '{{ event.start|date:"Y-m-d" }}',
-                            end: '{{ event.end|date:"Y-m-d" }}',
+                            start: '{{ event.start|date:"Y-m-d H:i:s" }}',
+                            end: '{{ event.end|date:"Y-m-d H:i:s" }}',
                             id: '{{ event.id }}',
                         },
                     {% endfor %} 
@@ -29,25 +29,24 @@
                 selectHelper: true,
                 editable: true,
                 eventLimit: true,
-                defaultView: 'month',
+                defaultView: 'agendaWeek',
                 allDayDefault: false,
-                timeFormat: '',
                 allDaySlot: false,
-                lazyFetching: true,
+                slotMinutes: 15,
+                nextDayThreshold: '00:00:00',
+                defaultEventMinutes: 0, 
                 select: function (start, end, allDay) {
                     var title = prompt("Enter Event Title");
                     if (title) {
-                        var startFormat = moment(start).format('YYYY-MM-DD HH:mm:ssZ');
-                        var endFormat = moment(end).format('YYYY-MM-DD HH:mm:ssZ');
-                        var start = $.fullCalendar.formatDate(start, startFormat);
-                        var end = $.fullCalendar.formatDate(end, endFormat);
+                        var start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd HH:mm:ss');
+                        var end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd HH:mm:ss');
                         $.ajax({
                             type: "GET",
                             url: '/add_event',
                             data: {'title': title, 'start': start, 'end': end},
                             dataType: "json",
                             success: function (data) {
-                                calendar.fullCalendar('refetchEvents');
+                                $('#calendar').fullCalendar('addEventSource', data);
                                 alert("Added Successfully");
                             },
                             failure: function (data) {
@@ -57,8 +56,8 @@
                     }
                 },
                 eventResize: function (event) {
-                    var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                    var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
+                    var end = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd HH:mm:ss');
                     var title = event.title;
                     var id = event.id;
                     $.ajax({
@@ -67,8 +66,7 @@
                         data: {'title': title, 'start': start, 'end': end, 'id': id},
                         dataType: "json",
                         success: function (data) {
-                            calendar.fullCalendar('refetchEvents');
-                            alert('Event Update');
+                            $('#calendar').fullCalendar('addEventSource', data);
                         },
                         failure: function (data) {
                             alert('There is a problem!!!');
@@ -77,8 +75,8 @@
                 },
 
                 eventDrop: function (event) {
-                    var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                    var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
+                    var end = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd HH:mm:ss');
                     var title = event.title;
                     var id = event.id;
                     $.ajax({
@@ -87,8 +85,7 @@
                         data: {'title': title, 'start': start, 'end': end, 'id': id},
                         dataType: "json",
                         success: function (data) {
-                            calendar.fullCalendar('refetchEvents');
-                            alert('Event Update');
+                            $('#calendar').fullCalendar('addEventSource', data);
                         },
                         failure: function (data) {
                             alert('There is a problem!!!');
@@ -105,7 +102,7 @@
                             data: {'id': id},
                             dataType: "json",
                             success: function (data) {
-                                calendar.fullCalendar('refetchEvents');
+                                $('#calendar').fullCalendar('addEventSource', data);
                                 alert('Event Removed');
                             },
                             failure: function (data) {
