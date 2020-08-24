@@ -375,9 +375,9 @@ def task_delete(request, pk):
 
 
 def calendar(request):
-    all_events = Events.objects.all()
+    all_events = Events.objects.filter(user=request.user)
     context = {
-        "events":all_events,
+        "events": all_events,
     }
     return render(request,'journal/daily_journal.html',context)
 
@@ -385,7 +385,7 @@ def add_event(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
-    event = Events(name=str(title), start=start, end=end)
+    event = Events(name=str(title), start=start, end=end, user=request.user)
     event.save()
     data = {}
     return JsonResponse(data)
@@ -400,15 +400,15 @@ def update(request):
     event.start = start
     event.end = end
     event.name = title
+    event.user = request.user
     event.save()
-    event.refresh_from_db()
     data = {}
     return JsonResponse(data)
 
 
 def remove(request):
     id = request.GET.get("id", None)
-    event = Events.objects.get(id=id)
+    event = Events.objects.get(user=request.user, id=id)
     event.delete()
     data = {}
     return JsonResponse(data)
