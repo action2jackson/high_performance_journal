@@ -56,10 +56,34 @@
                 //     else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
                 // },
                 select: function (start, end, allDay) {
-                    var title = prompt("Enter Event Title");
-                    var eventData;
-                    if (title) { 
-                        eventData = {
+                    var title = null;
+                    swal({
+                        title: "Event Form",
+                        content: {
+                            element: "input",
+                            attributes: {
+                                placeholder: "Title",
+                                type: "text",
+                            },
+                        },
+                        buttons: {
+                            cancel: true,
+                            event: {
+                                text: "Event",
+                            },
+                            reminder: {
+                                text: "Reminder",
+                            },
+                            task: {
+                                text: "Task",
+                            },
+                        },
+                    })
+                    .then(function(value) {
+                        title = value;
+                    });
+                    if (title != null) { 
+                        var eventData = {
                             title: title,
                             start: start,
                             end: end,
@@ -159,7 +183,21 @@
         {% fullcalendar_jquery_ui %}
         {% fullcalendar_javascript %}
 
-        
+        <form action="" autocomplete="off" class="EventForm">
+            <h1>Event Form</h1>
+            <input type="text" name="title" placeholder="Title" class="inputFields" id="eventTitle">
+            <input type="textarea" name="description" placeholder="Description" class="inputFields" id="eventDescription">
+            <input type="datetime-local" name="start" class="inputFields" id="eventStartDate">
+            <input type="datetime-local" name="end" class="inputFields" id="eventEndDate">
+            <div>
+                <button class="eventButtons" id="taskButton">Task</button>
+                <button class="eventButtons" id="reminderButton">Reminder</button>
+                <button class="eventButtons" id="eventButton">Event</button>
+                <div>
+                    <button class="eventButtons" id="cancelButton">Cancel</button>
+                </div>
+            </div>
+        </form>
         <div class="container">
             <div id="calendar" style="background-color: white"></div>
         </div>

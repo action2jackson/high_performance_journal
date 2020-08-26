@@ -1631,7 +1631,47 @@ input.valid {
 	background: #0CB4B4;
 }
 
+.EventForm {
+	color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999;
+	background: rgba(0,0,0,0.8);
+	padding: 2em;
+	margin: 0 auto;
+	text-align: center;
+}
 
+.eventButtons {
+	border: 1px solid rgba(10, 180, 180, 1);
+	background: rgba(20, 20, 20, .6);
+	font-size: 1.3rem;
+	margin: 1em;
+	color: white;
+	padding: 0.5em 3em;
+	cursor: pointer;
+	transition: .4s;
+}
 
+.eventButtons:hover {
+	background: rgba(20, 20, 20, 1);
+}
 
+#eventTitle::placeholder {
+	color: #fff;
+}
+#eventDescription::placeholder {
+	color: #fff;
+}
+
+#cancelButton {
+	width: 100%;
+	margin: auto;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
 
