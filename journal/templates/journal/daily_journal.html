@@ -22,6 +22,7 @@
                             start: '{{ event.start|date:"Y-m-d H:i:s" }}',
                             end: '{{ event.end|date:"Y-m-d H:i:s" }}',
                             id: '{{ event.id }}',
+                            value: '{{ event.value }}',
                         },
                     {% endfor %} 
                 ],
@@ -55,19 +56,20 @@
                 //     }
                 //     else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
                 // },
-                select: function (start, end, allDay) {
-                    var title = null;
+                select: function (start, end) {
+                    var title;
+                    start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd HH:mm:ss');
+                    end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd HH:mm:ss');
+                    var eventData = {}
+                    var eventTitle = document.createElement('input');
+                    eventTitle.setAttribute("placeholder", "Title");
                     swal({
                         title: "Event Form",
-                        content: {
-                            element: "input",
-                            attributes: {
-                                placeholder: "Title",
-                                type: "text",
-                            },
-                        },
+                        content: eventTitle,
                         buttons: {
-                            cancel: true,
+                            bigevent: {
+                                text: "Big event",
+                            },
                             event: {
                                 text: "Event",
                             },
@@ -79,38 +81,99 @@
                             },
                         },
                     })
-                    .then(function(value) {
-                        title = value;
-                    });
-                    if (title != null) { 
-                        var eventData = {
-                            title: title,
-                            start: start,
-                            end: end,
-                        };
-                        var start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd HH:mm:ss');
-                        var end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd HH:mm:ss');
-                        console.log("beast mode")
-                        $.ajax({
-                            type: "GET",
-                            url: '{% url "add_event" %}',
-                            data: {'title': title, 'start': start, 'end': end},
-                            dataType: "json",
-                            success: function (data) {
-                                $('#calendar').fullCalendar('renderEvent', eventData, true);
-                            },
-                            failure: function (data) {
-                                alert('There is a problem!!!');
+                    .then((value) => {
+                        title = eventTitle.value;
+                        if (title) { 
+                            if (value == "bigevent") {
+                                var eventStartDate = document.createElement('input');
+                                eventStartDate.setAttribute("type", "datetime-local");
+                                eventStartDate.setAttribute("placeholder", "Start Date");
+                                swal({
+                                    title: "Event Start Date",
+                                    content: eventStartDate,
+                                    buttons: {
+                                        done: {
+                                            text: "Done",
+                                        },
+                                    },
+                                })
+                                .then((value) => {
+                                    if (eventStartDate.value.length == 16) {
+                                        start = eventStartDate.value
+                                    }
+                                    var eventEndDate = document.createElement('input');
+                                    eventEndDate.setAttribute("type", "datetime-local");
+                                    eventEndDate.setAttribute("placeholder", "End Date");
+                                    swal({
+                                        title: "Event End Date",
+                                        content: eventEndDate,
+                                        buttons: {
+                                            done: {
+                                                text: "Done",
+                                            },
+                                        },
+                                    })
+                                    .then((value) => {
+                                        if (eventEndDate.value.length == 16) {
+                                            end = eventEndDate.value
+                                        }
+                                        eventData = {
+                                            title: title,
+                                            start: start,
+                                            end: end,
+                                            value: value
+                                        };
+                                        $.ajax({
+                                            type: "GET",
+                                            url: '{% url "add_event" %}',
+                                            data: {'title': title, 'start': start, 'end': end, 'value': value},
+                                            dataType: "json",
+                                            success: function (data) {
+                                                $('#calendar').fullCalendar('renderEvent', eventData, true);
+                                            },
+                                            failure: function (data) {
+                                                alert('There is a problem!!!');
+                                            }
+                                        });
+                                    })
+                                })
+                            } 
+                            else { 
+                                eventData = {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    value: value
+                                };
+                                $.ajax({
+                                    type: "GET",
+                                    url: '{% url "add_event" %}',
+                                    data: {'title': title, 'start': start, 'end': end, 'value': value},
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $('#calendar').fullCalendar('renderEvent', eventData, true);
+                                    },
+                                    failure: function (data) {
+                                        alert('There is a problem!!!');
+                                    }
+                                });
                             }
-                        });
-                    }
+                        }
+                    });
                 },
-                eventRender: function(event, element) {
-                    if(event.title == "reminder") {
-                        element.css('background-color', '#000');
+                eventAfterRender: function(event, element, value) {
+                    if (event.value == "event") {
+                        element.css("background", "rgba(0,0,0,0.9)")
+                        element.css("border-color", "rgba(0,0,0,0.9)")
                     }
-                    element.css('background-color', '#0CB4B4');
-                    element.css('border-color', '#0CB4B4');
+                    else if (event.value == "reminder") {
+                        element.css("background", "red")
+                        element.css("border-color", "red")
+                    } 
+                    else {
+                        element.css("background", "#0CB4B4")
+                        element.css("border-color", "#0CB4B4")                        
+                    }
                 },
                 eventResize: function (event) {
                     var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
@@ -152,18 +215,14 @@
                 },
 
                 eventClick: function (event) {
-                    console.log(event.id);
                     if (confirm("Are you sure you want to remove it?")) {
                         var id = event.id;
-                        console.log(event.end);
-                        console.log(event.start);
                         $.ajax({
                             type: "GET",
                             url: '/remove',
                             data: {'id': id},
                             dataType: "json",
                             success: function (data) {
-                                console.log(id);
                                 $('#calendar').fullCalendar('removeEvents', id);  
                             },
                             failure: function (data) {
@@ -183,21 +242,23 @@
         {% fullcalendar_jquery_ui %}
         {% fullcalendar_javascript %}
 
-        <form action="" autocomplete="off" class="EventForm">
+        <!-- <form action="" method="POST" autocomplete="off" class="EventForm" id="EventForm">
+            {% csrf_token %}
             <h1>Event Form</h1>
-            <input type="text" name="title" placeholder="Title" class="inputFields" id="eventTitle">
-            <input type="textarea" name="description" placeholder="Description" class="inputFields" id="eventDescription">
-            <input type="datetime-local" name="start" class="inputFields" id="eventStartDate">
-            <input type="datetime-local" name="end" class="inputFields" id="eventEndDate">
+            <input type="text" placeholder="Title" class="inputFields" id="eventTitle" autofocus>
+            <input type="textarea" placeholder="Description" class="inputFields" id="eventDescription">
+            <input type="datetime-local" class="inputFields" id="eventStartDate">
+            <input type="datetime-local" class="inputFields" id="eventEndDate">
             <div>
                 <button class="eventButtons" id="taskButton">Task</button>
                 <button class="eventButtons" id="reminderButton">Reminder</button>
                 <button class="eventButtons" id="eventButton">Event</button>
                 <div>
-                    <button class="eventButtons" id="cancelButton">Cancel</button>
+                    <a class="eventButtons" id="cancelButton">Cancel</a>
                 </div>
             </div>
-        </form>
+        </form> -->
+
         <div class="container">
             <div id="calendar" style="background-color: white"></div>
         </div>

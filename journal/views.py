@@ -385,7 +385,8 @@ def add_event(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
-    event = Events(name=str(title), start=start, end=end, user=request.user)
+    value = request.GET.get("value", None)
+    event = Events(name=str(title), start=start, end=end, value=value, user=request.user)
     event.save()
     data = {}
     return JsonResponse(data)
@@ -396,7 +397,9 @@ def update(request):
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
     id = request.GET.get("id", None)
+    value = request.GET.get("value", None)
     event = Events.objects.get(id=id)
+    event.value = value
     event.start = start
     event.end = end
     event.name = title
