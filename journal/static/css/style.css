@@ -1627,6 +1627,25 @@ input.valid {
 } */
 
 
+.swal-footer {
+	text-align: center;
+}
+
+.swal-button--bigevent:hover {
+	background: red !important;
+}
+
+.swal-button--task:hover {
+	background-color: #0CB4B4 !important;
+}
+.swal-button--reminder:hover {
+	background: red !important;
+}
+
+.swal-button--event:hover, .swal-button--bigevent:hover {
+	background: rgba(0, 0, 0, 0.9) !important;
+}
+
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: rgba(0, 0, 0, 0);
     opacity: 1;

@@ -63,8 +63,10 @@
                     var eventData = {}
                     var eventTitle = document.createElement('input');
                     eventTitle.setAttribute("placeholder", "Title");
+                    eventTitle.className = "swal-content__input";
+                    eventTitle.autofocus = true;
                     swal({
-                        title: "Event Form",
+                        title: "Calendar Form",
                         content: eventTitle,
                         buttons: {
                             bigevent: {
@@ -88,6 +90,7 @@
                                 var eventStartDate = document.createElement('input');
                                 eventStartDate.setAttribute("type", "datetime-local");
                                 eventStartDate.setAttribute("placeholder", "Start Date");
+                                eventStartDate.className = "swal-content__input";
                                 swal({
                                     title: "Event Start Date",
                                     content: eventStartDate,
@@ -104,6 +107,7 @@
                                     var eventEndDate = document.createElement('input');
                                     eventEndDate.setAttribute("type", "datetime-local");
                                     eventEndDate.setAttribute("placeholder", "End Date");
+                                    eventEndDate.className = "swal-content__input";
                                     swal({
                                         title: "Event End Date",
                                         content: eventEndDate,
@@ -161,30 +165,31 @@
                         }
                     });
                 },
-                eventAfterRender: function(event, element, value) {
-                    if (event.value == "event") {
-                        element.css("background", "rgba(0,0,0,0.9)")
-                        element.css("border-color", "rgba(0,0,0,0.9)")
+                eventRender: function(event, element, value) {
+                    if (event.value == "task") {
+                        element.css("background", "#0CB4B4")
+                        element.css("border-color", "#0CB4B4")   
                     }
                     else if (event.value == "reminder") {
                         element.css("background", "red")
                         element.css("border-color", "red")
                     } 
                     else {
-                        element.css("background", "#0CB4B4")
-                        element.css("border-color", "#0CB4B4")                        
+                        element.css("background", "rgba(0,0,0,0.9)")
+                        element.css("border-color", "rgba(0,0,0,0.9)")                      
                     }
                 },
                 eventResize: function (event) {
                     var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
                     var end = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd HH:mm:ss');
                     var title = event.title;
+                    var value = event.value
                     var id = event.id;
                     calendar.fullCalendar('unselect');
                     $.ajax({
                         type: "GET",
                         url: '/update',
-                        data: {'title': title, 'start': start, 'end': end, 'id': id},
+                        data: {'title': title, 'start': start, 'end': end, 'value': value, 'id': id},
                         dataType: "json",
                         success: function (data) {
                             calendar.fullCalendar('refetchEvents');
@@ -199,10 +204,11 @@
                     var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
                     var end = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd HH:mm:ss');
                     var title = event.title;
+                    var value = event.value
                     var id = event.id;
                     $.ajax({
                         type: "GET",
-                        data: {'title': title, 'start': start, 'end': end, 'id': id},
+                        data: {'title': title, 'start': start, 'end': end, 'value': value, 'id': id},
                         dataType: "json",
                         url: '/update',
                         success: function (data) {
@@ -215,21 +221,27 @@
                 },
 
                 eventClick: function (event) {
-                    if (confirm("Are you sure you want to remove it?")) {
-                        var id = event.id;
-                        $.ajax({
-                            type: "GET",
-                            url: '/remove',
-                            data: {'id': id},
-                            dataType: "json",
-                            success: function (data) {
-                                $('#calendar').fullCalendar('removeEvents', id);  
-                            },
-                            failure: function (data) {
-                                alert('There is a problem!!!');
-                            }
-                        });
-                    }
+                    var id = event.id;
+                    swal({
+                        dangerMode: true,
+                        buttons: ["Keep it!", "DELETE FROM CALENDAR"],
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: "GET",
+                                url: '/remove',
+                                data: {'id': id},
+                                dataType: "json",
+                                success: function (data) {
+                                    $('#calendar').fullCalendar('removeEvents', id);  
+                                },
+                                failure: function (data) {
+                                    alert('There is a problem!!!');
+                                }
+                            });
+                        }
+                    });
                 },
             });
         });
