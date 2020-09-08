@@ -1626,9 +1626,57 @@ input.valid {
 	display: none;
 } */
 
+#eventTaskReminder {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.inputContainer label {
+	float: left;
+	margin: none;
+}
+
+.inputContainer input {
+	background: lightgray;
+}
+
+.radioContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.swal2-input {
+	border: none;
+}
+
+
+input[type=radio] {
+    border: none;
+    width: 3em;
+    height: 3em;
+}
+
+#EventTitle {
+	display: none;
+}
 
 .swal-footer {
 	text-align: center;
+}
+
+.swal-modal {
+	width: 50%;
+}
+
+.swal-button {
+	transition: ease 0.2s;
+	font-size: 1.25rem;
+}
+.swal-button:hover {
+	-webkit-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
 }
 
 .swal-button--bigevent:hover {
@@ -1643,7 +1691,11 @@ input.valid {
 }
 
 .swal-button--event:hover, .swal-button--bigevent:hover {
-	background: rgba(0, 0, 0, 0.9) !important;
+	background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.swal-content__input {
+	font-size: 1.25rem;
 }
 
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {

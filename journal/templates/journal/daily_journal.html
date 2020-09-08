@@ -34,6 +34,7 @@
                 allDaySlot: false,
                 allDayDefault: false,
                 axisFormat: 'h(:mm)tt',
+                timeFormat: 'h(:mm)tt{ - h(:mm)tt}',
                 defaultEventMinutes: 1440,
                 dragOpacity: {
                     agenda: .5
@@ -58,91 +59,38 @@
                 // },
                 select: function (start, end) {
                     var title;
+                    var value;
                     start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd HH:mm:ss');
                     end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd HH:mm:ss');
                     var eventData = {}
-                    var eventTitle = document.createElement('input');
-                    eventTitle.setAttribute("placeholder", "Title");
-                    eventTitle.className = "swal-content__input";
-                    eventTitle.autofocus = true;
-                    swal({
-                        title: "Calendar Form",
-                        content: eventTitle,
-                        buttons: {
-                            bigevent: {
-                                text: "Big event",
-                            },
-                            event: {
-                                text: "Event",
-                            },
-                            reminder: {
-                                text: "Reminder",
-                            },
-                            task: {
-                                text: "Task",
-                            },
-                        },
-                    })
-                    .then((value) => {
-                        title = eventTitle.value;
-                        if (title) { 
-                            if (value == "bigevent") {
-                                var eventStartDate = document.createElement('input');
-                                eventStartDate.setAttribute("type", "datetime-local");
-                                eventStartDate.setAttribute("placeholder", "Start Date");
-                                eventStartDate.className = "swal-content__input";
-                                swal({
-                                    title: "Event Start Date",
-                                    content: eventStartDate,
-                                    buttons: {
-                                        done: {
-                                            text: "Done",
-                                        },
-                                    },
-                                })
-                                .then((value) => {
-                                    if (eventStartDate.value.length == 16) {
-                                        start = eventStartDate.value
-                                    }
-                                    var eventEndDate = document.createElement('input');
-                                    eventEndDate.setAttribute("type", "datetime-local");
-                                    eventEndDate.setAttribute("placeholder", "End Date");
-                                    eventEndDate.className = "swal-content__input";
-                                    swal({
-                                        title: "Event End Date",
-                                        content: eventEndDate,
-                                        buttons: {
-                                            done: {
-                                                text: "Done",
-                                            },
-                                        },
-                                    })
-                                    .then((value) => {
-                                        if (eventEndDate.value.length == 16) {
-                                            end = eventEndDate.value
-                                        }
-                                        eventData = {
-                                            title: title,
-                                            start: start,
-                                            end: end,
-                                            value: value
-                                        };
-                                        $.ajax({
-                                            type: "GET",
-                                            url: '{% url "add_event" %}',
-                                            data: {'title': title, 'start': start, 'end': end, 'value': value},
-                                            dataType: "json",
-                                            success: function (data) {
-                                                $('#calendar').fullCalendar('renderEvent', eventData, true);
-                                            },
-                                            failure: function (data) {
-                                                alert('There is a problem!!!');
-                                            }
-                                        });
-                                    })
-                                })
-                            } 
-                            else { 
+                    Swal.fire({
+                        html:
+                            '<div class="inputContainer"><label>Title</label><input type="text" placeholder="Title" id="eventTitle" class="swal2-input"></div>' +
+                            '<div class="inputContainer"><label>Start Date</label><input type="datetime-local" id="eventStartDate" class="swal2-input"></div>' +
+                            '<div class="inputContainer"><label>End Date</label><input type="datetime-local" id="eventEndDate" class="swal2-input"></div>' +
+                            '<div id="eventTaskReminder">' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="swal2-input"><label>event</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="swal2-input"><label>task</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="swal2-input"><label>reminder</label></div>' +
+                            '</div>',
+                        focusConfirm: false,
+                        showConfirmButton: true,
+                        preConfirm: function () {
+                            var radioInputs = document.getElementsByName('EventTaskReminder');
+                            for (var i=0; i<radioInputs.length; i++) {
+                                if (radioInputs[i].checked) {
+                                    value = radioInputs[i].id;
+                                    break;
+                                } 
+                            }
+                            if($("#eventTitle").val() && value) {
+                                title = document.getElementById("eventTitle").value
+                                if ($("#eventStartDate").val()) {
+                                    start = document.getElementById("eventStartDate").value
+                                }
+                                if ($("#eventEndDate").val()) {
+                                    end = document.getElementById("eventEndDate").value
+                                }
                                 eventData = {
                                     title: title,
                                     start: start,
@@ -162,8 +110,17 @@
                                     }
                                 });
                             }
-                        }
-                    });
+                            // if(document.getElementById('taskRadio').checked == true) {
+                            //     value = document.getElementById('taskRadio').value
+                            // }
+                            // else if (document.getElementById('reminderRadio').clicked == true) {
+                            //     value = document.getElementById('reminderRadio').value                         
+                            // }
+                            // else {
+                            //     value = document.getElementById('eventRadio').value                             
+                            // }
+                        },
+                    })
                 },
                 eventRender: function(event, element, value) {
                     if (event.value == "task") {
@@ -222,12 +179,15 @@
 
                 eventClick: function (event) {
                     var id = event.id;
-                    swal({
-                        dangerMode: true,
-                        buttons: ["Keep it!", "DELETE FROM CALENDAR"],
+                    Swal.fire({
+                        showConfirmButton: true,
+                        confirmButtonText: 'DELETE FROM CALENDAR',
+                        confirmButtonColor: 'red',
+                        showCancelButton: true,
+                        cancelButtonText: 'Keep it!',
                     })
                     .then((willDelete) => {
-                        if (willDelete) {
+                        if (willDelete.isConfirmed) {
                             $.ajax({
                                 type: "GET",
                                 url: '/remove',
