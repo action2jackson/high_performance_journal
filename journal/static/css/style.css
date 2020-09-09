@@ -1638,64 +1638,77 @@ input.valid {
 }
 
 .inputContainer input {
-	background: lightgray;
+	border: 1px solid grey;
 }
 
-.radioContainer {
-	display: flex;
-	flex-direction: column;
-}
-
-.swal2-input {
+.swal2-input:after {
 	border: none;
 }
 
-
-input[type=radio] {
-    border: none;
-    width: 3em;
-    height: 3em;
-}
-
-#EventTitle {
-	display: none;
-}
-
-.swal-footer {
+.radioContainer {
+	display: inline-block;
+	width: 6em;
 	text-align: center;
 }
 
-.swal-modal {
-	width: 50%;
+.radio {
+	margin: 1em auto;
+	border: none;
+    width: 5em;
+    height: 5em;
 }
 
-.swal-button {
-	transition: ease 0.2s;
-	font-size: 1.25rem;
-}
-.swal-button:hover {
-	-webkit-transform: scale(0.9);
-	-ms-transform: scale(0.9);
-	transform: scale(0.9);
-}
-
-.swal-button--bigevent:hover {
-	background: red !important;
+.radio:after {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	content: '';
+	visibility: visible;
+	border: 1px solid grey;
+	transition: ease 0.5s;
+	border-radius: 35px;
 }
 
-.swal-button--task:hover {
-	background-color: #0CB4B4 !important;
-}
-.swal-button--reminder:hover {
-	background: red !important;
-}
-
-.swal-button--event:hover, .swal-button--bigevent:hover {
-	background: rgba(0, 0, 0, 0.8) !important;
+.radio:checked:after {
+	width: 100%;
+	height: 100%;
+	content: '';
+	display: inline-block;
+	visibility: visible;
 }
 
-.swal-content__input {
-	font-size: 1.25rem;
+#event:after {
+	border: 1px solid rgba(0,0,0);
+}
+.eventLabel {
+	color:rgba(0,0,0);
+}
+#event:checked:after {
+	background:rgba(0,0,0);
+}
+#task:after {
+	border: 1px solid #0CB4B4;
+}
+.taskLabel {
+	color:#0CB4B4;
+}
+#task:checked:after {
+	background:#0CB4B4;
+}
+#reminder:after {
+	border: 1px solid red;
+}
+.reminderLabel {
+	color: red;
+}
+#reminder:checked:after {
+	background:red;
+}
+
+.swal2-confirm {
+	width: 100%;
+	padding: 1em;
 }
 
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
@@ -1706,48 +1719,6 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     width: 20px;
     height: 20px;
     border-width: thin;
-}
-
-.EventForm {
-	display: none;
-	color: #fff;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 99999;
-	background: rgba(0,0,0,0.8);
-	padding: 2em;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.eventButtons {
-	border: 1px solid rgba(10, 180, 180, 1);
-	background: rgba(20, 20, 20, .6);
-	font-size: 1.3rem;
-	margin: 1em;
-	color: white;
-	padding: 0.5em 3em;
-	cursor: pointer;
-	transition: .4s;
-}
-
-.eventButtons:hover {
-	background: rgba(20, 20, 20, 1);
-}
-
-#eventTitle::placeholder {
-	color: #fff;
-}
-#eventDescription::placeholder {
-	color: #fff;
-}
-
-#cancelButton {
-	width: 100%;
-	margin: 2em auto;
-	padding: 0.75em 10em;
 }
 
 ::-webkit-calendar-picker-indicator {

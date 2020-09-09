@@ -78,7 +78,7 @@ class Task(models.Model):
 class Events(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=3)
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255,null=True,blank=True)
+    name = models.CharField(max_length=40,null=True,blank=True)
     start = models.DateTimeField(null=True,blank=True)
     end = models.DateTimeField(null=True,blank=True)
     value = models.CharField(null=True, max_length=300, default=4)

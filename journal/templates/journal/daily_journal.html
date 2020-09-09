@@ -65,16 +65,17 @@
                     var eventData = {}
                     Swal.fire({
                         html:
-                            '<div class="inputContainer"><label>Title</label><input type="text" placeholder="Title" id="eventTitle" class="swal2-input"></div>' +
-                            '<div class="inputContainer"><label>Start Date</label><input type="datetime-local" id="eventStartDate" class="swal2-input"></div>' +
-                            '<div class="inputContainer"><label>End Date</label><input type="datetime-local" id="eventEndDate" class="swal2-input"></div>' +
+                            '<div class="inputContainer"><input type="text" placeholder="Title" id="eventTitle" class="swal2-input"></div>' +
+                            '<div class="inputContainer"><label>Start Date (optional)</label><input type="datetime-local" id="eventStartDate" class="swal2-input"></div>' +
+                            '<div class="inputContainer"><label>End Date (optional)</label><input type="datetime-local" id="eventEndDate" class="swal2-input"></div>' +
                             '<div id="eventTaskReminder">' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="swal2-input"><label>event</label></div>' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="swal2-input"><label>task</label></div>' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="swal2-input"><label>reminder</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="radio"><label class="eventLabel">EVENT</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="radio"><label class="taskLabel">TASK</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="radio"><label class="reminderLabel">REMINDER</label></div>' +
                             '</div>',
                         focusConfirm: false,
                         showConfirmButton: true,
+                        confirmButtonText: "CREATE",
                         preConfirm: function () {
                             var radioInputs = document.getElementsByName('EventTaskReminder');
                             for (var i=0; i<radioInputs.length; i++) {
@@ -110,15 +111,6 @@
                                     }
                                 });
                             }
-                            // if(document.getElementById('taskRadio').checked == true) {
-                            //     value = document.getElementById('taskRadio').value
-                            // }
-                            // else if (document.getElementById('reminderRadio').clicked == true) {
-                            //     value = document.getElementById('reminderRadio').value                         
-                            // }
-                            // else {
-                            //     value = document.getElementById('eventRadio').value                             
-                            // }
                         },
                     })
                 },
