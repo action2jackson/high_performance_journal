@@ -69,9 +69,9 @@
                             '<div class="inputContainer"><label>Start Date (optional)</label><input type="datetime-local" id="eventStartDate" class="swal2-input"></div>' +
                             '<div class="inputContainer"><label>End Date (optional)</label><input type="datetime-local" id="eventEndDate" class="swal2-input"></div>' +
                             '<div id="eventTaskReminder">' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="radio"><label class="eventLabel">EVENT</label></div>' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="radio"><label class="taskLabel">TASK</label></div>' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="radio"><label class="reminderLabel">REMINDER</label></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="radio"></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="radio"></div>' +
+                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="radio"></div>' +
                             '</div>',
                         focusConfirm: false,
                         showConfirmButton: true,
@@ -206,57 +206,8 @@
         {% fullcalendar_jquery_ui %}
         {% fullcalendar_javascript %}
 
-        <!-- <form action="" method="POST" autocomplete="off" class="EventForm" id="EventForm">
-            {% csrf_token %}
-            <h1>Event Form</h1>
-            <input type="text" placeholder="Title" class="inputFields" id="eventTitle" autofocus>
-            <input type="textarea" placeholder="Description" class="inputFields" id="eventDescription">
-            <input type="datetime-local" class="inputFields" id="eventStartDate">
-            <input type="datetime-local" class="inputFields" id="eventEndDate">
-            <div>
-                <button class="eventButtons" id="taskButton">Task</button>
-                <button class="eventButtons" id="reminderButton">Reminder</button>
-                <button class="eventButtons" id="eventButton">Event</button>
-                <div>
-                    <a class="eventButtons" id="cancelButton">Cancel</a>
-                </div>
-            </div>
-        </form> -->
-
         <div class="container">
-            <div id="calendar" style="background-color: white"></div>
+            <div id="calendar"></div>
         </div>
     </div>
-
-
-    <!-- <div class="daily_journal_header">
-        Date + Day of the week + Day of 90 day sprint 
-    </div> -->
-        <!-- <div class="daily_journal_container">
-            <div class="journal_container">
-                <h1>Daily Schedule</h1>
-            </div>
-            <div class="journal_spacing">
-                <span></span>
-            </div>
-            <div class="task_container">
-                <h1>To Do</h1>
-                <form method="POST" action="{% url 'daily_journal' %}">
-                    {% csrf_token %}
-                    <p>{{ taskForm.title }}</p>
-                    <input style="display: none" type="submit" value="Enter">
-                </form>
-                {% for task in tasks %}
-                    <div class="todo_list">
-                        Add JS to make delete fade nice
-                        <a href="{% url 'task_delete' pk=task.pk %}">
-                            <p class="far fa-square"></p>
-                            <p class="far fa-check-square"></p>
-                        </a>
-                        {{ task }}
-                    </div>
-                {% endfor %}
-            </div>
-        </div> -->
-
 {% endblock %}

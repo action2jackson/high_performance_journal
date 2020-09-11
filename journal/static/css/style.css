@@ -1626,6 +1626,12 @@ input.valid {
 	display: none;
 } */
 
+#calendar {
+	margin: auto;
+	width: 75%;
+	background-color: #fff;
+}
+
 #eventTaskReminder {
 	display: flex;
 	flex-direction: row;
@@ -1646,64 +1652,64 @@ input.valid {
 }
 
 .radioContainer {
-	display: inline-block;
-	width: 6em;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
 }
 
 .radio {
 	margin: 1em auto;
-	border: none;
-    width: 5em;
-    height: 5em;
+    width: 7em;
+	height: 5em;
 }
 
 .radio:after {
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	height: 100%;
-	background-color: white;
-	content: '';
+	background-color: #fff;
+	font-size: 1rem;
 	visibility: visible;
-	border: 1px solid grey;
 	transition: ease 0.5s;
-	border-radius: 35px;
+	border-radius: 50px;
 }
 
 .radio:checked:after {
 	width: 100%;
 	height: 100%;
-	content: '';
-	display: inline-block;
 	visibility: visible;
 }
 
 #event:after {
-	border: 1px solid rgba(0,0,0);
-}
-.eventLabel {
-	color:rgba(0,0,0);
+	color: rgba(0,0,0);
+	border: 2px solid rgba(0,0,0);
+	content: 'Event';
 }
 #event:checked:after {
 	background:rgba(0,0,0);
+	color: #fff;
+	border-radius: none;
 }
+
 #task:after {
-	border: 1px solid #0CB4B4;
-}
-.taskLabel {
-	color:#0CB4B4;
+	color: #0CB4B4;	
+	border: 2px solid #0CB4B4;
+	content: 'Task';
 }
 #task:checked:after {
 	background:#0CB4B4;
+	color: #fff;
 }
+
 #reminder:after {
-	border: 1px solid red;
-}
-.reminderLabel {
-	color: red;
+	color: red;	
+	border: 2px solid red;
+	content: 'Reminder';
 }
 #reminder:checked:after {
 	background:red;
+	color: #fff;
 }
 
 .swal2-confirm {
