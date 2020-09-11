@@ -1578,54 +1578,6 @@ input.valid {
 
 
 
-/* .daily_journal_header {
-	display: flex;
-	justify-content: center;
-	margin: 4em auto;
-	width: 60%;
-	border-bottom: 1px solid #0CB4B4;
-}
-
-.daily_journal_container {
-	display: flex;
-	flex-direction: row;
-	width: 70%;
-	margin: auto;
-	color: #fff;
-}
-
-.journal_container {
-	flex-direction: column;
-	flex: 2;
-}
-
-.journal_container h1 {
-	text-align: center;
-}
-
-.task_container {
-	flex-direction: column;
-	flex: 2;
-	padding-left: 1em;
-	border-left: 3px solid #0CB4B4;
-	height: 70vh;
-}
-
-.todo_list a {
-	cursor: default;
-	color: #0CB4B4;
-	text-decoration: none;
-}
-.todo_list a p:last-child {
-	display: none;
-}
-.todo_list a:hover p:last-child {
-	display: inline-block;
-}
-.todo_list a:hover p:first-child {
-	display: none;
-} */
-
 #calendar {
 	margin: auto;
 	width: 75%;
@@ -1731,3 +1683,52 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
+
+
+.daily_journal_header {
+	display: flex;
+	justify-content: center;
+	margin: 4em auto;
+	width: 60%;
+	border-bottom: 1px solid #0CB4B4;
+}
+
+.daily_journal_container {
+	display: flex;
+	flex-direction: row;
+	width: 70%;
+	margin: auto;
+	color: #fff;
+}
+
+.journal_container {
+	flex-direction: column;
+	flex: 2;
+}
+
+.journal_container h1 {
+	text-align: center;
+}
+
+.task_container {
+	flex-direction: column;
+	flex: 2;
+	padding-left: 1em;
+	border-left: 3px solid #0CB4B4;
+	height: 70vh;
+}
+
+.todo_list a {
+	cursor: default;
+	color: #0CB4B4;
+	text-decoration: none;
+}
+.todo_list a p:last-child {
+	display: none;
+}
+.todo_list a:hover p:last-child {
+	display: inline-block;
+}
+.todo_list a:hover p:first-child {
+	display: none;
+}

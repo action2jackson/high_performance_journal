@@ -14,16 +14,10 @@ from django.contrib.auth.decorators import login_required
 # Used for searching
 from django.db.models import Q
 # Used for class base views
-from django.views import generic
-# timedelta represents difference between 2 dates or times
-from datetime import datetime, timedelta
-# Makes a string safe for output purposes
-from django.utils.safestring import mark_safe
-import calendar
+from datetime import datetime
 
-from .utils import Calendar
-from .models import Goal, Dream, Event, Note, Task, Events
-from .forms import GoalForm, SignupForm, DreamForm, EventForm, NoteForm, TaskForm
+from .models import Goal, Dream, Note, Task, Events
+from .forms import GoalForm, SignupForm, DreamForm, NoteForm, TaskForm
 
 
 def login_page(request):
@@ -219,75 +213,6 @@ def dream_search(request):
             return render(request, 'journal/dream_list.html', stuff_for_frontend)         
     else:
         return render(request, 'journal/dream_list.html')
-    
-
-
-
-# CALENDAR
-class CalendarView(generic.ListView):
-    model = Event
-    template_name = 'journal/monthly_journal.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        d = get_date(self.request.GET.get('month', None))
-        # Get utils.py Calendar class
-        cal = Calendar(d.year, d.month)
-        # Call formatmonth function from Calendar class
-        html_cal = cal.formatmonth(withyear=True)
-        # Add calendar data to context
-        context['calendar'] = mark_safe(html_cal)
-        context['prev_month'] = prev_month(d)
-        context['next_month'] = next_month(d)
-        return context
-
-def get_date(req_day):
-    if req_day:
-        # Gets current month and year
-        year, month = (int(x) for x in req_day.split('-'))
-        # Returns current date
-        return datetime(year, month, day=1)
-    return datetime.today()
-
-def prev_month(d):
-    first = d.replace(day=1)
-    # timdelta parameter is 1 so it basically subtracts 1 from the current month (first)
-    prev_month = first - timedelta(days=1)
-    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
-    return month
-
-def next_month(d):
-    days_in_month = calendar.monthrange(d.year, d.month)[1]
-    last = d.replace(day=days_in_month)
-    next_month = last + timedelta(days=1)
-    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
-    return month
-
-
-def event(request, event_id=None):
-    instance = Event()
-    # If event already exists get its id
-    if event_id:
-        instance = get_object_or_404(Event, pk=event_id)
-    else:
-        instance = Event()
-    
-    eventForm = EventForm(request.POST or None, instance=instance)
-    if request.POST and eventForm.is_valid():
-        event = eventForm.save(commit=False)
-        event.user = request.user
-        event.save()
-        # reverse gets the calendar url tag
-        return HttpResponseRedirect(reverse('calendar'))
-    return render(request, 'journal/event.html', {'eventForm': eventForm, 'event_id': event_id})
-
-# Delete Event
-def event_delete(request, event_id):
-    event = get_object_or_404(Event, user=request.user, pk=event_id)
-    event.delete()
-    return HttpResponseRedirect(reverse('calendar'))
-    
 
 
 def notes_journal(request):
@@ -364,7 +289,7 @@ def daily_journal(request):
         'tasks': tasks,
         'taskForm': taskForm,
     }
-    return render(request, 'journal/daily_journal.html', stuff_for_frontend)
+    return render(request, 'journal/todo_journal.html', stuff_for_frontend)
 
 
 def task_delete(request, pk):

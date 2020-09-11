@@ -1,5 +1,5 @@
 from django import forms
-from .models import Goal, Dream, Event, Note, Task
+from .models import Goal, Dream, Note, Task
 from django.forms import formset_factory, ModelForm, DateInput
 # For registration
 from django.contrib.auth.forms import UserCreationForm
@@ -87,28 +87,6 @@ class DreamForm(forms.ModelForm):
             'title': (forms.TextInput(attrs={'placeholder': 'Title...', 'required': 'True', 'autofocus': 'autofocus', 'class': 'inputFields', 'id': 'dreamTitle', 'autocomplete': 'off'})),
             'text': (forms.Textarea(attrs={'placeholder': '“Dream as if you will live forever, live as if you will die today.”', 'required': 'True', 'class': 'inputFields', 'id': 'dreamText', 'autocomplete': 'off'})),
         }
-
-
-
-class EventForm(ModelForm):
-  class Meta:
-    model = Event
-    exclude = ('user',)
-    fields = '__all__'
-    # datetime-local is a HTML5 input type, format to make date time show on fields
-    widgets = {
-      'title': forms.TextInput(attrs={'placeholder': 'Title of Event', 'autofocus': 'autofocus'}),
-      'description': forms.Textarea(attrs={'placeholder': 'Description of Event'}),   
-      'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
-      'end_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
-    }
-
-  def __init__(self, *args, **kwargs):
-    super(EventForm, self).__init__(*args, **kwargs)
-    # input_formats to parse HTML5 datetime-local input to datetime field
-    self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
-    self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
-
 
 
 class NoteForm(forms.ModelForm):

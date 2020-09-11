@@ -40,21 +40,6 @@ class Dream(models.Model):
         return self.title
 
 
-class Event(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
-    title = models.CharField(max_length=40)
-    description = models.TextField(blank=True, default=None)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField(null=True, blank=True, default=None)
-
-    @property
-    # Cant add this to html template because events are created from the calendar form
-    def get_html_url(self):
-        # Get event_edit url 
-        url = reverse('event_edit', args=(self.id,))
-        return f'<a href="{url}"> {self.title} </a>'
-
-
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
