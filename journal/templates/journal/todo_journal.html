@@ -10,7 +10,7 @@
         <div class="daily_journal_container">
             <div class="journal_container">
                 <h1>Daily Recap</h1>
-                <form action="{% url 'daily_journal' %}" method="POST" class="recapForm">
+                <form action="" method="POST" class="recapForm">
                     {% csrf_token %}
                     <div class="recapContainer">
                         <div class="gratitudeList">
@@ -29,6 +29,9 @@
                                 <li>{{ recapForm.win2 }}</li>
                             </ol>
                         </div>
+                        <div class="recapSubmit">
+                            <a href="{% url 'daily_journal' %}">Submit Daily Recap</a>
+                        </div>
                     </div>
                     <div class="recapContainer">
                         <div class="favoriteThing">
@@ -39,12 +42,11 @@
                             <h3>Lessons Learned Today?</h3>
                             {{ recapForm.lessonsLearned }}
                         </div>
-                        <div class="doBetter">
-                            <h3>How Am I Going To do Better Tomorrow?</h3>
+                        <div class="beBetter">
+                            <h3>How Can I be Better Tomorrow?</h3>
                             {{ recapForm.betterTomorrow }}
                         </div>
                     </div>
-                    <button type="submit">cool</button>
                 </form>
             </div>
             <div class="journal_spacing">

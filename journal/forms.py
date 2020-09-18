@@ -121,10 +121,13 @@ class RecapForm(forms.ModelForm):
         exclude = ('user', 'created_date')
         fields = '__all__'
         widgets = {
-            'gratitude1': (forms.TextInput(attrs={'class': 'inputFields'})),
-            'gratitude2': (forms.TextInput(attrs={'class': 'inputFields'})),
-            'gratitude3': (forms.TextInput(attrs={'class': 'inputFields'})),
-            'win1': (forms.TextInput(attrs={'class': 'inputFields'})),
-            'win2': (forms.TextInput(attrs={'class': 'inputFields'})),
-            'win3': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'gratitude1': (forms.TextInput(attrs={'class': 'recapLists', 'placeholder': 'Nice weather'})),
+            'gratitude2': (forms.TextInput(attrs={'class': 'recapLists'})),
+            'gratitude3': (forms.TextInput(attrs={'class': 'recapLists'})),
+            'win1': (forms.TextInput(attrs={'class': 'recapLists', 'placeholder': 'Had a great workout'})),
+            'win2': (forms.TextInput(attrs={'class': 'recapLists'})),
+            'win3': (forms.TextInput(attrs={'class': 'recapLists'})),
+            'favoriteThing': (forms.Textarea(attrs={'class': 'recapTextArea', 'placeholder': '(OPTIONAL)'})),
+            'lessonsLearned': (forms.Textarea(attrs={'class': 'recapTextArea', 'placeholder': '(OPTIONAL)'})),
+            'betterTomorrow': (forms.Textarea(attrs={'class': 'recapTextArea', 'placeholder': '(OPTIONAL)'})),
         }
