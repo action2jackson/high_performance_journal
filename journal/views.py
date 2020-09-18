@@ -13,11 +13,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # Used for searching
 from django.db.models import Q
-# Used for class base views
-from datetime import datetime
 
-from .models import Goal, Dream, Note, Task, Events
-from .forms import GoalForm, SignupForm, DreamForm, NoteForm, TaskForm
+from .models import Goal, Dream, Note, Task, Events, Recap
+from .forms import GoalForm, SignupForm, DreamForm, NoteForm, TaskForm, RecapForm
 
 
 def login_page(request):
@@ -271,34 +269,6 @@ def note_delete(request, pk):
 
 
 
-def daily_journal(request):
-    taskForm = TaskForm()
-
-    if request.method == 'POST':
-        taskForm = TaskForm(request.POST)
-        if taskForm.is_valid():
-            task = taskForm.save(commit=False)
-            task.user = request.user
-            task.save()
-        return redirect('daily_journal')
-
-    order_tasks = Task.objects.order_by('-created_date')
-    tasks = Task.objects.filter(user=request.user)
-    stuff_for_frontend = {
-        'order_tasks': order_tasks,
-        'tasks': tasks,
-        'taskForm': taskForm,
-    }
-    return render(request, 'journal/todo_journal.html', stuff_for_frontend)
-
-
-def task_delete(request, pk):
-    task = Task.objects.get(user=request.user, pk=pk)
-    task.delete()
-    return redirect('daily_journal')
-
-
-
 def calendar(request):
     all_events = Events.objects.filter(user=request.user)
     context = {
@@ -341,3 +311,100 @@ def remove(request):
     data = {}
     return JsonResponse(data)
 
+
+
+
+# def daily_journal(request):
+#     taskForm = TaskForm()
+
+#     if request.method == 'POST':
+#         taskForm = TaskForm(request.POST)
+#         if taskForm.is_valid():
+#             task = taskForm.save(commit=False)
+#             task.user = request.user
+#             task.save()
+#         return redirect('daily_journal')
+
+#     order_tasks = Task.objects.order_by('-created_date')
+#     tasks = Task.objects.filter(user=request.user)
+#     stuff_for_frontend = {
+#         'order_tasks': order_tasks,
+#         'tasks': tasks,
+#         'taskForm': taskForm,
+#     }
+#     return render(request, 'journal/todo_journal.html', stuff_for_frontend)
+
+
+def task_delete(request, pk):
+    task = Task.objects.get(user=request.user, pk=pk)
+    task.delete()
+    return redirect('daily_journal')
+
+
+def daily_journal(request):
+    recapForm = RecapForm()
+    taskForm = TaskForm()
+    if request.method == 'POST':
+        recapForm = RecapForm(request.POST)
+        taskForm = TaskForm(request.POST)
+        if taskForm.is_valid():
+            task = taskForm.save(commit=False)
+            task.user = request.user
+            task.save()
+            return redirect('daily_journal')
+        else:
+            recap = recapForm.save(commit=False)
+            recap.user = request.user
+            recap.save()
+            return redirect('collection')
+    else:
+        order_tasks = Task.objects.order_by('-created_date')
+        tasks = Task.objects.filter(user=request.user)
+        stuff_for_frontend = {
+            'order_tasks': order_tasks,
+            'tasks': tasks,
+            'taskForm': taskForm,
+            'recapForm': recapForm
+        }
+        return render(request, 'journal/todo_journal.html', stuff_for_frontend)
+
+
+def collection(request):
+    order = Recap.objects.order_by('-created_date')
+    recapData = Recap.objects.filter(user=request.user)
+    stuff_for_frontend = {
+        'order': order,
+        'recapData': recapData,
+    }
+    return render(request, 'journal/collection.html', stuff_for_frontend)
+    
+    
+    
+
+# def daily_recap(request):
+#     if request.method == 'POST':
+#         gratitude1 = request.POST.get('gratitude1', None)
+#         gratitude2 = request.POST.get('gratitude2', None)
+#         gratitude3 = request.POST.get('gratitude3', None)
+#         win1 = request.POST.get('win1', None)
+#         win2 = request.POST.get('win2', None)
+#         win3 = request.POST.get('win3', None)
+#         favoriteThing = request.POST.get('favoriteThing', None)
+#         lessonsLearned = request.POST.get('lessonsLearned', None)
+#         betterTomorrow = request.POST.get('betterTomorrow', None)
+#         recap = Recap(gratitude1=gratitude1, gratitude2=gratitude2, gratitude3=gratitude3, win1=win1, win2=win2, win3=win3, favoriteThing=favoriteThing, lessonsLearned=lessonsLearned, betterTomorrow=betterTomorrow)
+#         recap.save()
+#         order_recapdata = Recap.objects.order_by('-created_date')
+#         recapData = {
+#             'recap': recap,
+#             'order': order_recapdata
+#         }
+#         return redirect('collection')
+#     else:
+#         recapAll = Recap.objects.filter(user=request.user)
+#         order_recapdata = Recap.objects.order_by('-created_date')
+#         recapData = {
+#             'recapAll': recapAll,
+#             'order': order_recapdata
+#         }
+#         return render(request, 'journal/collection.html', recapData)

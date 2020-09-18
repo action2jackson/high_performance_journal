@@ -1,5 +1,5 @@
 from django import forms
-from .models import Goal, Dream, Note, Task
+from .models import Goal, Dream, Note, Task, Recap
 from django.forms import formset_factory, ModelForm, DateInput
 # For registration
 from django.contrib.auth.forms import UserCreationForm
@@ -110,4 +110,21 @@ class TaskForm(forms.ModelForm):
         fields = {'title'}
         widgets = {
             'title': (forms.TextInput(attrs={'placeholder': 'Enter Task', 'required': 'True', 'class': 'inputFields', 'autocomplete': 'off', 'autofocus': 'autofocus'})),
+        }
+
+
+
+class RecapForm(forms.ModelForm):
+
+    class Meta:
+        model = Recap
+        exclude = ('user', 'created_date')
+        fields = '__all__'
+        widgets = {
+            'gratitude1': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'gratitude2': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'gratitude3': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'win1': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'win2': (forms.TextInput(attrs={'class': 'inputFields'})),
+            'win3': (forms.TextInput(attrs={'class': 'inputFields'})),
         }

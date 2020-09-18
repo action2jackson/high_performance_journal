@@ -1703,7 +1703,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 .journal_container {
 	flex-direction: column;
-	flex: 2;
+	flex: 3;
 }
 
 .journal_container h1 {
@@ -1731,4 +1731,18 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 .todo_list a:hover p:first-child {
 	display: none;
+}
+
+
+
+.recapForm {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 2em auto;
+}
+
+.recapContainer {
+	display: flex;
+	flex-direction: column;	
 }

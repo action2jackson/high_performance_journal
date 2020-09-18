@@ -70,3 +70,18 @@ class Events(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Recap(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=4)
+    gratitude1 = models.CharField(max_length=40, null=True, blank=True)
+    gratitude2 = models.CharField(max_length=40, null=True, blank=True)
+    gratitude3 = models.CharField(max_length=40, null=True, blank=True)
+    win1 = models.CharField(max_length=40, null=True, blank=True)
+    win2 = models.CharField(max_length=40, null=True, blank=True)
+    win3 = models.CharField(max_length=40, null=True, blank=True)
+    favoriteThing = models.TextField(max_length=150, null=True, blank=True)
+    lessonsLearned = models.TextField(max_length=150, null=True, blank=True)
+    betterTomorrow = models.TextField(max_length=150, null=True, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)

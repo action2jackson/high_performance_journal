@@ -1,0 +1,10 @@
+{% extends 'journal/base.html' %}
+
+{% block title %}Daily Recap Collection{% endblock %}
+
+{% block content %}
+    {% for data in recapData %}
+        <h1 style="color: white;">{{ data.win1 }}</h1>
+    {% endfor %}
+
+{% endblock %}

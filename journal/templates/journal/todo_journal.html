@@ -9,7 +9,43 @@
     </div>
         <div class="daily_journal_container">
             <div class="journal_container">
-                <h1>Daily Schedule</h1>
+                <h1>Daily Recap</h1>
+                <form action="{% url 'daily_journal' %}" method="POST" class="recapForm">
+                    {% csrf_token %}
+                    <div class="recapContainer">
+                        <div class="gratitudeList">
+                            <h3>Gratitude List</h3>
+                            <ol>
+                                <li>{{ recapForm.gratitude1 }}</li>
+                                <li>{{ recapForm.gratitude2 }}</li>
+                                <li>{{ recapForm.gratitude3 }}</li>
+                            </ol>
+                        </div>
+                        <div class="dailyWins">
+                            <h3>My Daily Wins</h3>
+                            <ol>
+                                <li>{{ recapForm.win1 }}</li>
+                                <li>{{ recapForm.win2 }}</li>
+                                <li>{{ recapForm.win2 }}</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="recapContainer">
+                        <div class="favoriteThing">
+                            <h3>Favorite Thing About Today?</h3>
+                            {{ recapForm.favoriteThing }}
+                        </div>
+                        <div class="lessonsLearned">
+                            <h3>Lessons Learned Today?</h3>
+                            {{ recapForm.lessonsLearned }}
+                        </div>
+                        <div class="doBetter">
+                            <h3>How Am I Going To do Better Tomorrow?</h3>
+                            {{ recapForm.betterTomorrow }}
+                        </div>
+                    </div>
+                    <button type="submit">cool</button>
+                </form>
             </div>
             <div class="journal_spacing">
                 <span></span>
