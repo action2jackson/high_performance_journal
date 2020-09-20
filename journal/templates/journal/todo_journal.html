@@ -5,11 +5,40 @@
 {% block content %}
 
     <div class="daily_journal_header">
-        Date + Day of the week + Day of 90 day sprint 
+        <div class="dateContainer">
+            <h2 style="color: #fff;" id="theDate"></h2>
+        </div>
+        <div class="theCurrentDay">
+            <h2 style="color: #fff;" id="theDay"></h2>
+        </div>
+        <div class="dateContainer">
+            <h2 style="color: #fff;" id="theDays"></h2>
+        </div>
+        <script>
+            var days = ['Sun ','Mon ','Tue ','Wed ','Thu ','Fri ','Sat'];
+            var fullDays = ['Sunday', 'Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            n =  new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+            document.getElementById("theDate").innerHTML = m + "/" + d + "/" + y;
+            var day = days[n.getDay()];
+            for(var i = 0; i < days.length; i++) {
+                if (day == days[i]) {
+                    document.getElementById("theDay").style.color = '#0CB4B4'
+                    document.getElementById("theDay").innerHTML = fullDays[i]
+                } else {
+                    document.getElementById("theDays").innerHTML += days[i]
+                }
+            }
+        </script>
     </div>
         <div class="daily_journal_container">
             <div class="journal_container">
                 <h1>Daily Recap</h1>
+                <div class="openFormContainer">
+                    <button id="openRecapForm">Fill In Daily Recap Form</button>
+                </div>
                 <form action="" method="POST" class="recapForm">
                     {% csrf_token %}
                     <div class="recapContainer">
@@ -30,7 +59,7 @@
                             </ol>
                         </div>
                         <div class="recapSubmit">
-                            <a href="{% url 'daily_journal' %}">Submit Daily Recap</a>
+                            <a href="{% url 'daily_journal' %}" id="submitDailyRecap">Submit Daily Recap</a>
                         </div>
                     </div>
                     <div class="recapContainer">

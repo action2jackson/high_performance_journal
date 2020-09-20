@@ -357,35 +357,6 @@ if (window.location.pathname.startsWith("/note/")) {
   CKEDITOR.addCss('.cke_editable img { max-width: 100% !important; height: auto !important; }');
 }
 
-
-if (window.location.pathname == "/daily/journal/") {
-  // var taskComplete = document.querySelectorAll("#taskComplete");
-  // var taskList = document.getElementsByClassName("todoList");
-
-  // taskComplete.forEach(item => {
-  //   item.addEventListener('click', () => {
-  //     for (j = 0; j < taskComplete.length; j++) {
-  //       console.log("cool")
-  //       if (taskComplete[j].checked == true) {
-  //           window.location.href = "task/" + j + "/delete";
-  //           taskList[j].innerHTML = '<del>' + '{{ task }}' + '</del>';
-  //       }
-  //     }
-  //   })
-  // })
-
-  // var taskSubmit = document.getElementsByClassName("task_submit");
-  // var taskInput = document.getElementById("taskCreate");
-  // taskInput.addEventListener('focusin', () => {
-
-  //   taskSubmit[0].style.display = "block";
-  // });
-  // taskInput.addEventListener('focusout', () => {
-  //   taskSubmit[0].style.display = "none";
-  // });
-}
-
-
 if (window.location.pathname == "/login/") {
   const passwordInput = document.getElementById('password');
   // Sets type of login input to password when user starts typing
