@@ -9,7 +9,7 @@
             <h2 style="color: #fff;" id="theDate"></h2>
         </div>
         <div class="theCurrentDay">
-            <h2 style="color: #fff;" id="theDay"></h2>
+            <h2 id="theDay"></h2>
         </div>
         <div class="dateContainer">
             <h2 style="color: #fff;" id="theDays"></h2>
@@ -36,10 +36,10 @@
         <div class="daily_journal_container">
             <div class="journal_container">
                 <h1>Daily Recap</h1>
-                <div class="openFormContainer">
+                <div class="openFormContainer" id="OpenFormContainer">
                     <button id="openRecapForm">Fill In Daily Recap Form</button>
                 </div>
-                <form action="" method="POST" class="recapForm">
+                <form action="" method="POST" class="recapForm" id="RecapForm">
                     {% csrf_token %}
                     <div class="recapContainer">
                         <div class="gratitudeList">
@@ -82,7 +82,7 @@
                 <span></span>
             </div>
             <div class="task_container">
-                <h1>To Do</h1>
+                <h1>To Do List</h1>
                 <form method="POST" action="{% url 'daily_journal' %}">
                     {% csrf_token %}
                     <p>{{ taskForm.title }}</p>
@@ -100,5 +100,6 @@
                 {% endfor %}
             </div>
         </div>
+        <a class="next_btn" href="{% url 'calendarr' %}"><i class="fas fa-chevron-right"></i></a>
 
 {% endblock %}

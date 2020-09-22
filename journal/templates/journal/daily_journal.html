@@ -207,7 +207,9 @@
         {% fullcalendar_javascript %}
 
         <div class="container">
-            <div id="calendar"></div>
+            <div id="calendar">
+            </div>
         </div>
     </div>
+    <a class="next_btn" href="{% url 'daily_journal' %}"><i class="fas fa-chevron-right"></i></a>
 {% endblock %}

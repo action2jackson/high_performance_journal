@@ -1832,3 +1832,24 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 .recapSubmit a:hover{
 	background: rgb(16, 158, 153);
 }
+
+
+ /* Change this name */
+.next_btn {
+	background: #fff;
+	padding: 1em;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.25rem;
+	box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
+	z-index: 50;
+	cursor: pointer;
+	transition: 400ms;
+	right: 0;
+}
+
+.next_btn:hover {
+	background: #0CB4B4;
+	box-shadow: none;
+}

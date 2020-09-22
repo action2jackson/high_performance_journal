@@ -357,6 +357,35 @@ if (window.location.pathname.startsWith("/note/")) {
   CKEDITOR.addCss('.cke_editable img { max-width: 100% !important; height: auto !important; }');
 }
 
+if (window.location.pathname.startsWith("/daily/journal/")) {
+  document.getElementById("openRecapForm").addEventListener('click', function(){
+    document.getElementById("OpenFormContainer").style.display = "none"
+    document.getElementById("RecapForm").style.display = "flex"
+  })
+  document.getElementById("submitDailyRecap").addEventListener('submit', function(){
+    swal({
+      title: "Submit Daily Recap?",
+      closeOnClickOutside: false,
+      icon: "warning",
+      buttons: [true, "YES"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Deleteing Goals", {
+          icon: "success",
+        });
+        document.getElementById("OpenFormContainer").style.display = "flex"
+        document.getElementById("RecapForm").style.display = "none"
+      } else {
+        swal("Keep grinding, you got this!");
+      }
+    });
+  })
+}
+
+
+
 if (window.location.pathname == "/login/") {
   const passwordInput = document.getElementById('password');
   // Sets type of login input to password when user starts typing
