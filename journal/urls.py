@@ -8,6 +8,7 @@ urlpatterns = [
     # Need a pk value for getting instances
     path('goal/edit/<str:pk>/', views.goal_edit, name='goal_edit'),
     path('goals/delete/', views.goals_delete, name='goals_delete'),
+    path(r'goals/download/', views.goals_download, name='goals_download'),
     path('signup/', views.signup_page, name='signup_page'),
     path('login/', views.login_page, name='login_page'),
     re_path('logout/$', views.logout_user, name='logout_user'),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('daily/journal/', views.daily_journal, name="daily_journal"), 
     path('task/<int:pk>/delete/', views.task_delete, name="task_delete"),  
     path('collection/', views.collection, name='collection'),
+    path(r'collection/download/', views.collection_download, name='collection_download'),
 ]

@@ -249,8 +249,17 @@ if (window.location.pathname == "/") {
   }
 }
 
+if (window.location.pathname == "/collection/") {
+  var logoutLink = document.getElementById("logout")
+  logoutLink.innerHTML = "Download"
+  logoutLink.href = 'download'
+}
 
 if (window.location.pathname == "/goals/") {
+  var logoutLink = document.getElementById("logout")
+  logoutLink.innerHTML = "Download"
+  logoutLink.href = 'download'
+  
   /* DELETES 90 DAY SPRINT */
   var deleteGoals = document.getElementsByClassName("delete_goals");
   function resetGoals() {
