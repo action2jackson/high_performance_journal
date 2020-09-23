@@ -5,57 +5,110 @@
 {% block content %}
 
     <!-- Add a query search bar here -->
-
     {% for data in recapData %}
-    <!-- Im using the same format for "daily recap" as I did with "my goals" page -->
-        <div class="my_goals">
-            <div class="goals_form" id="goal_page" style="color: #000;">
-                <p>{{ request.user }} - Daily Recap #{{ forloop.counter }} - {{ data.created_date }}</p>
+        <!-- Im using the same format for "daily recap" as I did with "my goals" page -->
+        <div class="daily_recap_class">
+            <div class="goals_form" id="collection_page">
+                <p id="recapNumber">{{ request.user }} - Daily Recap #{{ forloop.counter }} - {{ data.created_date }}</p>
                 <div>
                     <label><h3>My Gratitude List</h3></label>
                     <ul class="progress_list">
-                        <li class="space"> 
-                            {{ data.gratitude1 }}
-                        </li>
-                        <li class="space"> 
-                            {{ data.gratitude2 }}                
-                        </li>
-                        <li class="space"> 
-                            {{ data.gratitude3 }}
-                        </li>
+                        {% if data.gratitude1 %}
+                            <li class="space"> 
+                                {{ data.gratitude1 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
+                        {% if data.gratitude2 %}
+                            <li class="space"> 
+                                {{ data.gratitude2 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
+                        {% if data.gratitude3 %}
+                            <li class="space"> 
+                                {{ data.gratitude3 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div>
                     <label><h3>My Wins</h3></label>
                     <ul class="progress_list">
-                        <li class="space"> 
-                            {{ data.win1}}
-                        </li>
-                        <li class="space"> 
-                            {{ data.win2 }}                
-                        </li>
-                        <li class="space"> 
-                            {{ data.win3 }}
-                        </li>
+                        {% if data.win1 %}
+                            <li class="space"> 
+                                {{ data.win1 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
+                        {% if data.win2 %}
+                            <li class="space"> 
+                                {{ data.win2 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
+                        {% if data.win3 %}
+                            <li class="space"> 
+                                {{ data.win3 }}
+                            </li>
+                        {% else %}
+                            <li class="space"> 
+                                <p>----------</p>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="big_goal">
                     <label><h3>My Favorite Thing About Today</h3></label>
-                    <div>
-                        {{ data.favoriteThing}}
-                    </div>
+                    {% if data.favoriteThing %}
+                        <div>
+                            {{ data.favoriteThing}}
+                        </div>
+                    {% else %}
+                        <div> 
+                            <p>----------</p>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="big_goal">
-                <label><h3>Lessons Learned Today</h3></label>
-                    <div>
-                        {{ data.lessonsLearned}}
-                    </div>
+                    <label><h3>Lessons Learned Today</h3></label>
+                    {% if data.lessonsLearned %}
+                        <div>
+                            {{ data.lessonsLearned}}
+                        </div>
+                    {% else %}
+                        <div> 
+                            <p>----------</p>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="big_goal">
-                <label><h3>How I Can Do Better Tomorrow</h3></label>
-                    <div>
-                        {{ data.lessonsLearned}}
-                    </div>
+                    <label><h3>How I Can Do Better Tomorrow</h3></label>
+                    {% if data.betterTomorrow %}
+                        <div>
+                            {{ data.betterTomorrow}}
+                        </div>
+                    {% else %}
+                        <div> 
+                            <p>----------</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

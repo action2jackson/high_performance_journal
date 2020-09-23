@@ -39,7 +39,7 @@
                 <div class="openFormContainer" id="OpenFormContainer">
                     <button id="openRecapForm">Fill In Daily Recap Form</button>
                 </div>
-                <form action="" method="POST" class="recapForm" id="RecapForm">
+                <form action="{% url 'daily_journal' %}" method="POST" class="recapForm" id="RecapForm">
                     {% csrf_token %}
                     <div class="recapContainer">
                         <div class="gratitudeList">
@@ -59,7 +59,7 @@
                             </ol>
                         </div>
                         <div class="recapSubmit">
-                            <a href="{% url 'daily_journal' %}" id="submitDailyRecap">Submit Daily Recap</a>
+                            <button id="submitDailyRecap">Submit Daily Recap</button>
                         </div>
                     </div>
                     <div class="recapContainer">

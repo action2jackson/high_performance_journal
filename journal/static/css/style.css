@@ -1815,10 +1815,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	justify-content: center;
 }
 
-.recapSubmit a {
+.recapSubmit button {
 	text-decoration: none;
 	text-align: center;
 	color: #fff;
+	font-size: 1rem;
 	background: #0CB4B4;
 	margin: 2em auto;
 	padding: .8em;
@@ -1827,10 +1828,13 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	transition: 0.5s ease;
 	cursor: pointer;
 	outline: none;
+	border: none;
 }
 
-.recapSubmit a:hover{
-	background: rgb(16, 158, 153);
+.recapSubmit button:hover {
+	-webkit-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
+	-moz-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
+	box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
 }
 
 
@@ -1852,4 +1856,14 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 .next_btn:hover {
 	background: #0CB4B4;
 	box-shadow: none;
+}
+
+
+.daily_recap_class {
+	margin: 1em auto;
+}
+
+#collection_page {
+	padding: 3em;
+	height: 75vh;
 }

@@ -357,6 +357,7 @@ if (window.location.pathname.startsWith("/note/")) {
   CKEDITOR.addCss('.cke_editable img { max-width: 100% !important; height: auto !important; }');
 }
 
+
 if (window.location.pathname.startsWith("/daily/journal/")) {
   document.getElementById("openRecapForm").addEventListener('click', function(){
     document.getElementById("OpenFormContainer").style.display = "none"

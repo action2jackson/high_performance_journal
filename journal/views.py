@@ -377,34 +377,3 @@ def collection(request):
         'recapData': recapData,
     }
     return render(request, 'journal/collection.html', stuff_for_frontend)
-    
-    
-    
-
-# def daily_recap(request):
-#     if request.method == 'POST':
-#         gratitude1 = request.POST.get('gratitude1', None)
-#         gratitude2 = request.POST.get('gratitude2', None)
-#         gratitude3 = request.POST.get('gratitude3', None)
-#         win1 = request.POST.get('win1', None)
-#         win2 = request.POST.get('win2', None)
-#         win3 = request.POST.get('win3', None)
-#         favoriteThing = request.POST.get('favoriteThing', None)
-#         lessonsLearned = request.POST.get('lessonsLearned', None)
-#         betterTomorrow = request.POST.get('betterTomorrow', None)
-#         recap = Recap(gratitude1=gratitude1, gratitude2=gratitude2, gratitude3=gratitude3, win1=win1, win2=win2, win3=win3, favoriteThing=favoriteThing, lessonsLearned=lessonsLearned, betterTomorrow=betterTomorrow)
-#         recap.save()
-#         order_recapdata = Recap.objects.order_by('-created_date')
-#         recapData = {
-#             'recap': recap,
-#             'order': order_recapdata
-#         }
-#         return redirect('collection')
-#     else:
-#         recapAll = Recap.objects.filter(user=request.user)
-#         order_recapdata = Recap.objects.order_by('-created_date')
-#         recapData = {
-#             'recapAll': recapAll,
-#             'order': order_recapdata
-#         }
-#         return render(request, 'journal/collection.html', recapData)
