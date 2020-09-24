@@ -29,6 +29,7 @@ urlpatterns = [
     url('^remove', views.remove, name='remove'),
     path('daily/journal/', views.daily_journal, name="daily_journal"), 
     path('task/<int:pk>/delete/', views.task_delete, name="task_delete"),  
-    path('collection/', views.collection, name='collection'),
+    path('collection/', views.collection, name='collection'), 
     path(r'collection/download/', views.collection_download, name='collection_download'),
+    path('sprint/finish/', views.ninety_day_sprint_finish, name='sprint_finish'),
 ]

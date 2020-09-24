@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 # Used for searching
 from django.db.models import Q
 
+from datetime import datetime
+from django.utils import formats
+
 from .models import Goal, Dream, Note, Task, Events, Recap
 from .forms import GoalForm, SignupForm, DreamForm, NoteForm, TaskForm, RecapForm
 
@@ -121,14 +124,16 @@ def goals_delete(request):
 
 def goals_download(request):
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="Daily Recaps.csv"'
+    response['Content-Disposition'] = 'attachment; filename="90 Day Goals.csv"'
     writer = csv.writer(response)
 
-    writer.writerow(['Goal #', 'My Big Goal', 'Why This Goal Is Important', 'Progress Goal #1', 'Progress Goal #2', 'Progress Goal #3', 'Based On Progress Goal #1', 'Based On Progress Goal #2', 'Based On Progress Goal #3', 'Based On Progress Goal #4', 'Based On Progress Goal #5', 'Based On Progress Goal #6', 'Based On Progress Goal #7', 'Based On Progress Goal #8', 'Based On Progress Goal #9', 'Created Date'])
+    writer.writerow(['Date' 'Goal #', 'My Big Goal', 'Why This Goal Is Important', 'Progress Goal #1', 'Progress Goal #2', 'Progress Goal #3', 'Based On Progress Goal #1', 'Based On Progress Goal #2', 'Based On Progress Goal #3', 'Based On Progress Goal #4', 'Based On Progress Goal #5', 'Based On Progress Goal #6', 'Based On Progress Goal #7', 'Based On Progress Goal #8', 'Based On Progress Goal #9'])
 
     goalsData = Goal.objects.filter(user=request.user)
     for goalData in goalsData:
-        goalRow = [goalData.id, goalData.goal, goalData.goal_important, goalData.progress_1, goalData.progress_2, goalData.progress_3, goalData.deeper_progress_1, goalData.deeper_progress_2, goalData.deeper_progress_3, goalData.deeper_progress_4, goalData.deeper_progress_5, goalData.deeper_progress_6, goalData.deeper_progress_7, goalData.deeper_progress_8, goalData.deeper_progress_9, goalData.created_date]
+        date = goalData.created_date
+        formatted_date = formats.date_format(date, "SHORT_DATETIME_FORMAT")
+        goalRow = [formatted_date, goalData.goal, goalData.goal_important, goalData.progress_1, goalData.progress_2, goalData.progress_3, goalData.deeper_progress_1, goalData.deeper_progress_2, goalData.deeper_progress_3, goalData.deeper_progress_4, goalData.deeper_progress_5, goalData.deeper_progress_6, goalData.deeper_progress_7, goalData.deeper_progress_8, goalData.deeper_progress_9]
         writer.writerow(goalRow)
     
     return response
@@ -188,7 +193,7 @@ def dreams_download(request):
     # Establishing file type
     response = HttpResponse(content_type='text/csv')
     # Naming the file
-    response['Content-Disposition'] = 'attachment; filename="Dreams.csv"'
+    response['Content-Disposition'] = 'attachment; filename="90 Day Dreams.csv"'
     writer = csv.writer(response)
     # Add the fields that you want
     writer.writerow(['title','text','created_date'])
@@ -395,14 +400,28 @@ def collection(request):
 
 def collection_download(request):
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="Daily Recaps.csv"'
+    response['Content-Disposition'] = 'attachment; filename="90 Day Recaps.csv"'
     writer = csv.writer(response)
 
-    writer.writerow(['Daily Recap #', '#1 Gratitude Point', '#2 Gratitude Point', '#3 Gratitude Point', 'Win #1', 'Win #2', 'Win #3', 'My Favorite Thing About Today', 'Lessons Learned Today', 'How I Can Do Better Tomorrow'])
+    writer.writerow(['Date', '#1 Gratitude Point', '#2 Gratitude Point', '#3 Gratitude Point', 'Win #1', 'Win #2', 'Win #3', 'My Favorite Thing About Today', 'Lessons Learned Today', 'How I Can Do Better Tomorrow'])
 
     recapsData = Recap.objects.filter(user=request.user)
     for recapData in recapsData:
-        recapRow = [recapData.id, recapData.gratitude1, recapData.gratitude2, recapData.gratitude3, recapData.win1, recapData.win2, recapData.win3, recapData.favoriteThing, recapData.lessonsLearned, recapData.betterTomorrow, recapData.created_date]
+        date = recapData.created_date
+        formatted_date = formats.date_format(date, "SHORT_DATETIME_FORMAT")
+        recapRow = [formatted_date, recapData.gratitude1, recapData.gratitude2, recapData.gratitude3, recapData.win1, recapData.win2, recapData.win3, recapData.favoriteThing, recapData.lessonsLearned, recapData.betterTomorrow]
         writer.writerow(recapRow)
 
     return response 
+
+
+def ninety_day_sprint_finish(request):
+    tasks = Task.objects.filter(user=request.user)
+    dreams = Dream.objects.filter(user=request.user)
+    recaps = Recap.objects.filter(user=request.user)
+    goals = Goal.objects.filter(user=request.user)
+    tasks.delete()
+    dreams.delete()
+    recaps.delete()
+    goals.delete()
+    return redirect('/')

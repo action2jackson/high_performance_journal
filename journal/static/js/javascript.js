@@ -392,8 +392,18 @@ if (window.location.pathname.startsWith("/daily/journal/")) {
       }
     });
   })
+  // var todo_journal = document.getElementById("todoJournal")
+  // todo_journal.addEventListener("mouseover", function(){
+  //   todo_journal.innerHTML += " Main Journal";
+  // }, true);
 }
 
+// if (window.location.pathname.startsWith("/calendar/")) {
+//   var main_journal = document.getElementById("mainJournal")
+//   main_journal.addEventListener("mouseover", function(){
+//     main_journal.innerHTML += " Todo Journal";
+//   }, true); 
+// }
 
 
 if (window.location.pathname == "/login/") {
@@ -405,23 +415,26 @@ if (window.location.pathname == "/login/") {
 }
 
 function resetGoalsLogout() {
-  swal({
-    title: "WAIT, ARE YOU SURE?!",
-    text: "Logging out will delete your current sprint progress!",
-    closeOnClickOutside: false,
-    icon: "warning",
-    buttons: [true, "YES"],
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      deleteSprint();
-      window.location.href = "goals/delete/";
-      window.location.href = "logout/";
-    } else {
-      swal("Keep grinding, you got this!");
-    }
-  });
+  const logout = document.getElementById("logout");
+  if (logout.textContent == "Logout") { 
+    swal({
+      title: "WAIT, ARE YOU SURE?!",
+      text: "Logging out will delete your current sprint progress!",
+      closeOnClickOutside: false,
+      icon: "warning",
+      buttons: [true, "YES"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        deleteSprint();
+        window.location.href = "goals/delete/";
+        window.location.href = "logout/";
+      } else {
+        swal("Keep grinding, you got this!");
+      }
+    });
+  }
 }
 
 const logout = document.getElementById("logout");

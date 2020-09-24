@@ -1724,6 +1724,12 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	height: 70vh;
 }
 
+#taskInput {
+	box-shadow: 0px 0px 20px #0CB4B4;
+	-moz-box-shadow: 0px 0px 20px #0CB4B4;
+	-webkit-box-shadow: 0px 0px 20px #0CB4B4;
+}
+
 .todo_list a {
 	cursor: default;
 	color: #0CB4B4;
@@ -1839,7 +1845,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 
  /* Change this name */
-.next_btn {
+.journal_btn {
+	color: #000;
 	background: #fff;
 	padding: 1em;
 	position: absolute;
@@ -1853,7 +1860,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	right: 0;
 }
 
-.next_btn:hover {
+.journal_btn:hover {
 	background: #0CB4B4;
 	box-shadow: none;
 }
