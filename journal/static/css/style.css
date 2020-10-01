@@ -195,49 +195,63 @@ a {
 
 
 
-/* MOOD CHECK */
+/* INSPIRATIONAL QUOTES */
 .after-header {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	margin: auto;
+	width: 80%;
 	height: 90vh;
 }
 
-.feeling_container {
-	padding-top: 5em;
-	z-index: 1;
-	color: #fff;
+#quote{
+	font-size: 1.25rem;
+	margin-top: 0.75em;
+	text-shadow: 0px 0px 20px white;
 }
 
-.feeling {
-	text-decoration: underline;
-	font-size: 1.5rem;
+#quoteAuthor{
+	font-style: italic;
+	text-shadow: 0px 0px 10px white;
+}
+
+.quote_button {
 	display: flex;
 	justify-content: center;
+	font-size: 1.75rem;
+	outline: none;
+	color: white;
+	background-color: transparent;
+	transition: all;
+}
+
+.quote_button span {
+	cursor: pointer;
+}
+
+.quote_button span:hover .fa-lightbulb-o {
+	color: yellow;
+	text-shadow: 0px 0px 10px yellow;
+}
+
+.fa-lightbulb-o {
+	transition: 0.5s ease;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.inspiration_container {
+	padding-top: 5em;
+	z-index: 1;
+	color: #fff
 }
 
 .emoji {
 	display: flex;
 	justify-content: center;
 }
+/* INSPIRATIONAL QUOTES */
 
-.emoji a {
-	padding: 0.4em;
-}
-
-#happy:hover {
-	color: yellow;
-	box-shadow: 0px 5px 5px yellow;
-}
-#meh:hover {
-	color: grey;
-	box-shadow: 0px 5px 5px grey;
-}
-#sad:hover {
-	color: blue;
-	box-shadow: 0px 5px 5px blue;
-}
-/* MOOD CHECK */
 
 
 
@@ -1873,118 +1887,4 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 #collection_page {
 	padding: 3em;
 	height: 75vh;
-}
-
-
-
-
-
-
-
-#generator {
-	background-size: cover;
-	background-color: #fff;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	font-size: large;
-}
-
-#quoteMobile{
-	display: none;
-	margin-top:0px;
-	text-shadow: 0px 0px 20px white;
-}
-
-#quoteDesktop{
-	margin-top:0px;
-	text-shadow: 0px 0px 20px white;
-}
-
-#quoteAuthorMobile{
-	font-weight:bold;
-	font-style:italic;
-	text-shadow: 0px 0px 10px white;
-}
-
-#quoteAuthorDesktop{
-	font-style:italic;
-	text-shadow: 0px 0px 10px white;
-}
-
-.buttons {
-	outline:none;
-	border-width: 2px;
-	border-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-	color: white;
-	background-color:transparent;
-	transition: all;
-}
-
-.touch .buttons:hover {
-	outline:none;
-	border-width: 2px;
-	border-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-	color: white;
-	background-color:transparent;
-}
-
-.buttons:hover {
-	outline:none;
-	border-color: white;
-	color:white;
-	background-color:#476b6b;
-}
-
-.no-touch .buttons:target {
-	outline:none;
-	border-color: white;
-	color:white;
-	background-color:#476b6b;
-}
-
-.no-touch .buttons:active {
-	outline:none;
-	border-color: white;
-	color:white;
-	background-color:#476b6b;
-}
-
-.no-touch .buttons:focus {
-	outline:none;
-	border-color: white;
-	color:white;
-	background-color:#476b6b;
-}
-
-.no-touch .buttons:active:focus {
-	outline:none;
-	border-color: white;
-	color:white;
-	background-color:#334d4d;
-}
-
-#inspireContainer {
-	position: absolute;
-	bottom: 100px;
-	height: 25px;
-}
-
-#tweetContainer {
-	position: absolute;
-	bottom: 0;
-	height: 60px;
-}
-
-.fa-lightbulb-o{
-	margin-left:5px;
-	margin-right:5px;
-}
-
-.fa-twitter{
-  	margin-left:5px;
 }

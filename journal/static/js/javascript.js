@@ -103,23 +103,22 @@ if (window.location.pathname == "/") {
       .then(function(response) {
         return response.json();
       })
-      .then(function(data) {
+      .then(function(quote) {
         // Adding more quotes and authors to the arrays
-        for(var i = 0; i < data.length; i++) {
-          if (data[i].author) {
-            quoteArray.push(data[i].text)
-            authorArray.push(data[i].author)
+        for(var i = 0; i < quote.length; i++) {
+          if (quote[i].author) {
+            quoteArray.push(quote[i].text)
+            authorArray.push(quote[i].author)
           }
         }
-        var quoteNumber = randomNumber(quoteArray.length,currentNumber)
+        var quoteNumber = randomNumber(quoteArray.length, currentNumber)
         // Use the quote number to pick the quote text and corresponding author
         var quoteBody = quoteArray[quoteNumber]
         var quoteAuthor = authorArray[quoteNumber]
         // Update the currentNumber global variable
         currentNumber = quoteNumber
-        // Populate the quoteBody and quoteAuthor HTML elements with the chosen quote text and author
-        document.getElementById("quoteBodyDesktop").innerHTML = '"' + quoteBody + '"'
-        document.getElementById("quoteAuthorDesktop").innerHTML = quoteAuthor
+        document.getElementById("quote").innerHTML = '"' + quoteBody + '"'
+        document.getElementById("quoteAuthor").innerHTML = quoteAuthor
     });
     
     //Function to generate a random integer using the total number of quotes in the array as the upper limit
@@ -137,15 +136,10 @@ if (window.location.pathname == "/") {
       return number
     }
   }
-  
-  //Set previous random number to null, as there is no previous number on page load
+  // Set previous random number to null, as there is no previous number on page load
   var currentNumber = null;
+
   
-  //Call the quote function on page load to populate with a quote
-  window.onload = quote;
-  // document.querySelector('#Goals').scrollIntoView({behavior: 'smooth'});
-
-
 
   var header = document.getElementById("myHeader");
   var sticky = header.offsetTop;
@@ -160,8 +154,8 @@ if (window.location.pathname == "/") {
     // Objects from home page
     const targetButtons = document.querySelectorAll('.btnlink');
     var targetGoals = document.getElementsByClassName('goal_parallax');
-    var targetEmojiCon = document.getElementsByClassName('feeling');
-    var targetEmoji = document.getElementsByClassName('far');
+    var targetEmojiCon = document.getElementsByClassName('quote_button');
+    var targetEmoji = document.getElementsByClassName('quote');
 
     // This function Tracks the rate 
     function parallax(target) {
@@ -470,16 +464,14 @@ function resetGoalsLogout() {
   if (logout.textContent == "Logout") { 
     swal({
       title: "WAIT, ARE YOU SURE?!",
-      text: "Logging out will delete your current sprint progress!",
+      text: "Logging out will put a pause on your 90 day sprint!",
       closeOnClickOutside: false,
       icon: "warning",
       buttons: [true, "YES"],
       dangerMode: true,
     })
-    .then((willDelete) => {
-      if (willDelete) {
-        deleteSprint();
-        window.location.href = "goals/delete/";
+    .then((willLogout) => {
+      if (willLogout) {
         window.location.href = "logout/";
       } else {
         swal("Keep grinding, you got this!");

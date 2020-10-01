@@ -7,32 +7,13 @@
 
     <section class="after-header" id="AF">
         <!-- DAILY MOOD -->
-        <div class="feeling_container">
+        <div class="inspiration_container">
             <!-- No Y axis so the parallax movement is completely horizontal -->
-            <h2 class="feeling" data-rateY="0" data-rateX="5" data-direction="horizontal"><i class="fa fa-lightbulb-o"></i>Inspirational Quotes<i class="fa fa-lightbulb-o"></i></h3>
+            <h2 class="quote_button" data-rateY="0" data-rateX="5" data-direction="horizontal"><span onclick="this.blur();quote();"><i class="fa fa-lightbulb-o"></i><b> See Inspirational Quote </b><i class="fa fa-lightbulb-o"></i></h2></span></h2>
             <div class="emoji">
-                <!-- Uses both x and y axis to create a diagonal shift -->
-                <a class="far fa fa-smile-beam fa-2x" id="happy" data-rateY="-1" data-rateX="-1" data-direction="horizontal"></a>
-                <a class="far fa fa-meh fa-2x" id="meh" data-rate="-1" data-direction="vertical"></a>
-                <a class="far fa fa-sad-tear fa-2x" id="sad" data-rateY="-1" data-rateX="1" data-direction="horizontal"></a>
-            </div>
-        </div>
-        <div id="generator" class="container-fluid">
-            <div id="quoteDesktop" class="row">
                 <div class="col-xs-10 col-xs-offset-1 visible-sm visible-md visible-lg">
-                    <h1 id="quoteBodyDesktop"></h1>
-                    <h3 id="quoteAuthorDesktop"></h3>
-                </div>
-            </div>
-            <div id="quoteMobile" class="row">
-                <div class="col-xs-10 col-xs-offset-1 visible-xs">
-                    <h3 id="quoteBodyMobile"></h3>
-                    <h5 id="quoteAuthorMobile"></h5>
-                </div>
-            </div>
-            <div class="row">
-                <div id="inspireContainer" class="text-center col-xs-12">
-                    <h2 id="buttonInspire" class="btn btn-default btn-lg buttons" onclick="this.blur();quote();"><i class="fa fa-lightbulb-o"></i><b> Quote Of The Day </b><i class="fa fa-lightbulb-o"></i></h2>
+                    <h1 id="quote" class="quote" data-rateY="0" data-rateX="-5" data-direction="horizontal"></h1>
+                    <h3 id="quoteAuthor" class="quote" data-rateY="0" data-rateX="-5" data-direction="horizontal"></h3>
                 </div>
             </div>
         </div>
