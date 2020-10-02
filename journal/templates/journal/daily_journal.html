@@ -70,7 +70,6 @@
                             '<div class="inputContainer"><label>End Date (optional)</label><input type="datetime-local" id="eventEndDate" class="swal2-input"></div>' +
                             '<div id="eventTaskReminder">' +
                                 '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="event" class="radio"></div>' +
-                                '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="task" class="radio"></div>' +
                                 '<div class="radioContainer"><input type="radio" name="EventTaskReminder" id="reminder" class="radio"></div>' +
                             '</div>',
                         focusConfirm: false,
@@ -78,11 +77,14 @@
                         confirmButtonText: "CREATE",
                         preConfirm: function () {
                             var radioInputs = document.getElementsByName('EventTaskReminder');
-                            for (var i=0; i<radioInputs.length; i++) {
+                            for (var i = 0; i < radioInputs.length; i++) {
                                 if (radioInputs[i].checked) {
                                     value = radioInputs[i].id;
                                     break;
                                 } 
+                                else {
+                                    value = 'task'
+                                }
                             }
                             if($("#eventTitle").val() && value) {
                                 title = document.getElementById("eventTitle").value
@@ -115,17 +117,17 @@
                     })
                 },
                 eventRender: function(event, element, value) {
-                    if (event.value == "task") {
-                        element.css("background", "#0CB4B4")
-                        element.css("border-color", "#0CB4B4")   
+                    if (event.value == "event") {
+                        element.css("background", "rgba(0,0,0,0.9)")
+                        element.css("border-color", "rgba(0,0,0,0.9)")  
                     }
                     else if (event.value == "reminder") {
                         element.css("background", "red")
                         element.css("border-color", "red")
                     } 
-                    else {
-                        element.css("background", "rgba(0,0,0,0.9)")
-                        element.css("border-color", "rgba(0,0,0,0.9)")                      
+                    else {  
+                        element.css("background", "#0CB4B4")
+                        element.css("border-color", "#0CB4B4")                     
                     }
                 },
                 eventResize: function (event) {
@@ -175,8 +177,6 @@
                         showConfirmButton: true,
                         confirmButtonText: 'DELETE FROM CALENDAR',
                         confirmButtonColor: 'red',
-                        showCancelButton: true,
-                        cancelButtonText: 'Keep it!',
                     })
                     .then((willDelete) => {
                         if (willDelete.isConfirmed) {

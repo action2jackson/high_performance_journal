@@ -101,6 +101,7 @@ def goals_list(request):
     return render(request, 'journal/goals_list.html', stuff_for_frontend)
 
 # Edit 90 day goals form
+@login_required(login_url='login')
 def goal_edit(request, pk):
     # Get all the objects that are related to their Primary key
     goal = Goal.objects.get(id=pk)
@@ -118,10 +119,12 @@ def goal_edit(request, pk):
         return render(request, 'journal/goal_edit.html', stuff_for_frontend)
 
 # Delete 90 day Goals form
+@login_required(login_url='login')
 def goals_delete(request):
     Goal.objects.filter(user=request.user).delete()
     return redirect('goals_list')
 
+@login_required(login_url='login')
 def goals_download(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="90 Day Goals.csv"'
@@ -141,6 +144,7 @@ def goals_download(request):
 
 
 # DREAMS
+@login_required(login_url='login')
 def dream_list(request):
     # Order dreams by created date and exclude other users dreams
     order_dreams = Dream.objects.order_by('-created_date')
@@ -152,6 +156,7 @@ def dream_list(request):
     return render(request, 'journal/dream_list.html', stuff_for_frontend)
     
 
+@login_required(login_url='login')
 def dream_create(request):
     dreamForm = DreamForm()
 
@@ -170,6 +175,7 @@ def dream_create(request):
         return render(request, 'journal/dream_edit.html', stuff_for_frontend)
 
 
+@login_required(login_url='login')
 def dream_edit(request, pk):
     # Get specific dream using pk 
     dream = get_object_or_404(Dream, pk=pk)
@@ -189,6 +195,7 @@ def dream_edit(request, pk):
         return render(request, 'journal/dream_edit.html', stuff_for_frontend)
 
 # Downloads the users dreams and places them in a csv file
+@login_required(login_url='login')
 def dreams_download(request):
     # Establishing file type
     response = HttpResponse(content_type='text/csv')
@@ -207,11 +214,13 @@ def dreams_download(request):
     return response 
 
 # Delete all the users dreams
+@login_required(login_url='login')
 def dreams_delete(request):
     Dream.objects.filter(user=request.user).delete()
     return redirect('dream_list')
 
 # Search for a dream
+@login_required(login_url='login')
 def dream_search(request):
     if request.method == 'GET':
         # Gets inputted search data from the user
@@ -232,6 +241,7 @@ def dream_search(request):
         return render(request, 'journal/dream_list.html')
 
 
+@login_required(login_url='login')
 def notes_journal(request):
     order_notes = Note.objects.order_by('-created_date')
     notes = Note.objects.filter(user=request.user)
@@ -242,7 +252,7 @@ def notes_journal(request):
     return render(request, 'journal/notes_journal.html', stuff_for_frontend)
 
 
-
+@login_required(login_url='login')
 def note_create(request):
     noteForm = NoteForm()
 
@@ -261,6 +271,7 @@ def note_create(request):
         return render(request, 'journal/note_create.html', stuff_for_frontend)
 
 
+@login_required(login_url='login')
 def note_edit(request, pk):
     # Get specific dream using pk 
     note = get_object_or_404(Note, pk=pk)
@@ -281,6 +292,7 @@ def note_edit(request, pk):
         return render(request, 'journal/note_create.html', stuff_for_frontend)
 
 
+@login_required(login_url='login')
 def note_delete(request, pk):
     note = Note.objects.get(user=request.user, pk=pk)
     note.delete()
@@ -288,6 +300,7 @@ def note_delete(request, pk):
 
 
 
+@login_required(login_url='login')
 def calendar(request):
     all_events = Events.objects.filter(user=request.user)
     context = {
@@ -295,6 +308,7 @@ def calendar(request):
     }
     return render(request,'journal/daily_journal.html',context)
 
+@login_required(login_url='login')
 def add_event(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
@@ -305,7 +319,7 @@ def add_event(request):
     data = {}
     return JsonResponse(data)
 
-
+@login_required(login_url='login')
 def update(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
@@ -317,12 +331,13 @@ def update(request):
     event.start = start
     event.end = end
     event.name = title
+    event.id = id
     event.user = request.user
     event.save()
     data = {}
     return JsonResponse(data)
 
-
+@login_required(login_url='login')
 def remove(request):
     id = request.GET.get("id", None)
     event = Events.objects.get(user=request.user, id=id)
@@ -332,34 +347,7 @@ def remove(request):
 
 
 
-
-# def daily_journal(request):
-#     taskForm = TaskForm()
-
-#     if request.method == 'POST':
-#         taskForm = TaskForm(request.POST)
-#         if taskForm.is_valid():
-#             task = taskForm.save(commit=False)
-#             task.user = request.user
-#             task.save()
-#         return redirect('daily_journal')
-
-#     order_tasks = Task.objects.order_by('-created_date')
-#     tasks = Task.objects.filter(user=request.user)
-#     stuff_for_frontend = {
-#         'order_tasks': order_tasks,
-#         'tasks': tasks,
-#         'taskForm': taskForm,
-#     }
-#     return render(request, 'journal/todo_journal.html', stuff_for_frontend)
-
-
-def task_delete(request, pk):
-    task = Task.objects.get(user=request.user, pk=pk)
-    task.delete()
-    return redirect('daily_journal')
-
-
+@login_required(login_url='login')
 def daily_journal(request):
     recapForm = RecapForm()
     taskForm = TaskForm()
@@ -387,7 +375,13 @@ def daily_journal(request):
         }
         return render(request, 'journal/todo_journal.html', stuff_for_frontend)
 
+@login_required(login_url='login')
+def task_delete(request, pk):
+    task = Task.objects.get(user=request.user, pk=pk)
+    task.delete()
+    return redirect('daily_journal')
 
+@login_required(login_url='login')
 def collection(request):
     order = Recap.objects.order_by('-created_date')
     recapData = Recap.objects.filter(user=request.user)
@@ -398,6 +392,7 @@ def collection(request):
     return render(request, 'journal/collection.html', stuff_for_frontend)
 
 
+@login_required(login_url='login')
 def collection_download(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="90 Day Recaps.csv"'
@@ -413,8 +408,9 @@ def collection_download(request):
         writer.writerow(recapRow)
 
     return response 
+    
 
-
+@login_required(login_url='login')
 def ninety_day_sprint_finish(request):
     tasks = Task.objects.filter(user=request.user)
     dreams = Dream.objects.filter(user=request.user)

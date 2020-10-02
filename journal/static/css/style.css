@@ -8,6 +8,7 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 a {
@@ -94,7 +95,7 @@ a {
 
 .clouds {
 	position: absolute;
-	height: 50%;
+	height: 75%;
 	top: 0;
 	width: 100%;
 }
@@ -1596,6 +1597,11 @@ input.valid {
 	margin: auto;
 	width: 75%;
 	background-color: #fff;
+}
+
+/* Class from Fullcalendar that effects the events drag color */
+.fc-event-inner {
+	background-color: #0CB4B4 !important;
 }
 
 #eventTaskReminder {

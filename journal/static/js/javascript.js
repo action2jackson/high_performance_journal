@@ -198,6 +198,7 @@ if (window.location.pathname == "/") {
         swal("Submitting Form!", {
           icon: "success",
         });
+        location.href = "sprint/finish/"
         timerRestart();
         // If message was confirmed then submit the form
         document.getElementById("form_for_goals").submit();
@@ -368,7 +369,7 @@ if (window.location.pathname == "/goals/") {
 
 
 // All the dream page urls start with "/dream"
-if (window.location.pathname.startsWith("/dream")) {
+if (window.location.pathname.startsWith("/dream/new/")) {
   document.addEventListener("mousemove", function(e) {
     var body = document.querySelector('body');
     var zzz = document.createElement('span');
