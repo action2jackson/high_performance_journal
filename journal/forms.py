@@ -96,7 +96,7 @@ class NoteForm(forms.ModelForm):
         exclude = ('user', 'created_date')
         fields = '__all__'
         widgets = {
-            'title': (forms.TextInput(attrs={'placeholder': 'Work', 'required': 'True', 'autofocus': 'autofocus', 'class': 'note_title', 'autocomplete': 'off'})),
+            'title': (forms.TextInput(attrs={'placeholder': 'Work', 'required': 'True', 'class': 'note_title', 'autocomplete': 'off'})),
         }
         labels = {
             'text': ''

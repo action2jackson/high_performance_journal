@@ -1449,9 +1449,16 @@ input.valid {
 	}
 
 
+	.note_arrow_container {
+		display: flex;
+		flex-direction: column;
+	}
+	.note_container {
+		min-width: 100%;
+	}
 	.home_note_mobile {
 		display: flex;
-		margin-bottom: 4em;
+		margin: 1em 0 2.25em 0;
 	}
 	.note_container h6 {
 		padding-bottom: 2em;
@@ -1471,7 +1478,6 @@ input.valid {
 	}
 }
 /* Font-size changes */
-
 
 .note_container {
 	background: #12FFF7;
@@ -1493,7 +1499,7 @@ input.valid {
 
 .home_note_button {
 	position: absolute;
-	padding-left: 3em;
+	padding-left: 0.5em;
 	color: #12FFF7;
 }
 

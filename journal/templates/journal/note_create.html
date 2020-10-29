@@ -6,18 +6,20 @@
     {{ noteForm.media }}
     <form method="POST" action="">
         {% csrf_token %}
-        <div class="home_note_mobile">
-            <a class="home_note_button" href="{% url 'notes_journal' %}"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
-        </div>
-        <div class="note_container">
-            {% if note.pk %}
-                <h6>{{ note.created_date }}</h6>
-                <a class="delete_note" href="{% url 'note_delete' pk=note.pk %}">&times;</a>
-            {% endif %}
-            {{ noteForm | safe }}
-            <div class="notes_button_container">
-                <!-- Using dream_create class for this button -->
-                <button type="submit" class="dream_create" id="noteSave">Save Note</button>
+        <div class="note_arrow_container">
+            <div class="home_note_mobile">
+                <a class="home_note_button" href="{% url 'notes_journal' %}"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+            </div>
+            <div class="note_container">
+                {% if note.pk %}
+                    <h6>{{ note.created_date }}</h6>
+                    <a class="delete_note" href="{% url 'note_delete' pk=note.pk %}">&times;</a>
+                {% endif %}
+                {{ noteForm | safe }}
+                <div class="notes_button_container">
+                    <!-- Using dream_create class for this button -->
+                    <button type="submit" class="dream_create" id="noteSave">Save Note</button>
+                </div>
             </div>
         </div>
     </form> 
