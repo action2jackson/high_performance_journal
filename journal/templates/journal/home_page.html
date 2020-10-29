@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="goal_container">
-            <a id="goals" href="#form_for_goals" class="goal_parallax" data-rateY="0" data-rateX="-5" data-direction="horizontal"><h3>90 DAY GOALS<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
+            <a id="goals" href="#bottom_of_homepage" onclick="anchor()" class="goal_parallax" data-rateY="0" data-rateX="-5" data-direction="horizontal"><h3>90 DAY GOALS<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
         </div>
         <!-- MAIN PAGE -->
     </section>
@@ -79,7 +79,7 @@
 
     <!-- COUNTDOWN TIMER -->
     <section class="countdownContainer" id="Countdown">
-        <table class="countdownTable">
+        <table class="countdownTable" id="bottom_of_homepage">
             <!-- TITLE -->
             <tr class="countdownTitle">
                 <td colspan="4">90 DAY SPRINT</td>
@@ -101,5 +101,17 @@
         </table>
     </section>
     <!-- COUNTDOWN TIMER -->
+
+    <script>
+        function anchor() {
+            var anchor = document.getElementById("goals")
+            console.log(anchor)
+            var countdown = document.getElementsByClassName('countdownContainer')
+            var createGoals = document.getElementsByClassName('my_goals')
+            if (createGoals[0].style.display == 'flex') {
+                anchor.href = '#form_for_goals'
+            }
+        }
+    </script>
 
 {% endblock %}

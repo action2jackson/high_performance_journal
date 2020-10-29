@@ -26,6 +26,7 @@
                         },
                     {% endfor %} 
                 ],
+                longPressDelay: 1000,
                 selectable: true,
                 selectHelper: true,
                 editable: true,
@@ -40,23 +41,8 @@
                     agenda: .5
                 },
                 contentHeight: 800,
-                // viewDisplay   : function(view) {
-                //     var now = new Date(); 
-                //     var end = new Date();
-                //     end.setMonth(now.getMonth() + 3); //Adjust as needed
 
-                //     var cal_date_string = view.start.getMonth()+'/'+view.start.getFullYear();
-                //     var cur_date_string = now.getMonth()+'/'+now.getFullYear();
-                //     var end_date_string = end.getMonth()+'/'+end.getFullYear();
 
-                //     if(cal_date_string == cur_date_string) { jQuery('.fc-button-prev').addClass("fc-state-disabled");
-                //     } 
-                //     else { jQuery('.fc-button-prev').removeClass("fc-state-disabled"); }
-
-                //     if (end_date_string == cal_date_string) { jQuery('.fc-button-next').addClass("fc-state-disabled");
-                //     }
-                //     else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
-                // },
                 select: function (start, end) {
                     var title;
                     var value;
@@ -118,17 +104,13 @@
                 },
                 eventRender: function(event, element, value) {
                     if (event.value == "event") {
-                        element.css("background", "rgba(0,0,0,0.9)")
+                        element.css("background-color", "rgba(0,0,0,0.9)")
                         element.css("border-color", "rgba(0,0,0,0.9)")  
                     }
                     else if (event.value == "reminder") {
-                        element.css("background", "red")
+                        element.css("background-color", "red")
                         element.css("border-color", "red")
                     } 
-                    else {  
-                        element.css("background", "#0CB4B4")
-                        element.css("border-color", "#0CB4B4")                     
-                    }
                 },
                 eventResize: function (event) {
                     var start = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd HH:mm:ss');
