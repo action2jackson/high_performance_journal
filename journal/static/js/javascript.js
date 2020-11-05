@@ -69,6 +69,10 @@ if (window.location.pathname == "/") {
       isMobile = true;
   }
 
+  if (isMobile == true) {
+    document.getElementById('mobileFalse').style.display = "none"
+  }
+
   if (localStorage.getItem("date")) {
     var x = setInterval( function sprintTimer() {
       var countdown = document.getElementById("Countdown");

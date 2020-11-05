@@ -5,7 +5,11 @@
 {% block title %}Daily Journal{% endblock %}
 
 {% block content %}
-    
+    <style>
+        .fc-month-view span.fc-title{
+            white-space: normal;
+        }
+   </style>
     <script>
         $(document).ready(function () {
             $('#calendar').fullCalendar('render');
