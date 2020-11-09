@@ -1,14 +1,14 @@
 {% extends 'journal/base.html' %}
 
-{% block title %}Signup{% endblock%}
+{% block title %}Login{% endblock%}
 
 {% block content %}
 
-    <div class="signupSection" style="width: 30%;">
+    <div class="signupSection" id="Login">
         <!-- Login Form -->
-        <form action="" method="POST" class="signupForm" autocomplete="off" style="width: 100%;">
+        <form action="" method="POST" class="signupForm" autocomplete="off">
             {% csrf_token %}
-            <h2>It's Journal Time!</h2>
+            <h2>It's Journaling Time!</h2>
             <ul class="noBullet">
                 <!-- USERNAME -->
                 <li>
