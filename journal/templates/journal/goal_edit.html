@@ -10,7 +10,7 @@
             {% csrf_token %}
             <h1 id="goal_number" style="padding-top: 0.5em;">My Big Goal</h1>
             {{ goalForm|crispy }}
-            <div class="multi_step">
+            <div id="multi_step">
                 <button type="submit" class="nextButton">Save</button>
             </div>
         </form>

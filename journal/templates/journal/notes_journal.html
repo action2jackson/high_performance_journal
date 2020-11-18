@@ -7,6 +7,7 @@
         <em><a href="{% url 'note_create' %}">New Note</a><em>
     </div>
     <div class="note_list_container">
+        <!-- Show notes -->
         {% for note in notes %}
             <a class="note_list" href="{% url 'note_edit' pk=note.pk %}">
                 <h6>{{ note.created_date }}</h6>

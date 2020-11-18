@@ -118,12 +118,6 @@ def goal_edit(request, pk):
         stuff_for_frontend = {'goalForm': goalForm}
         return render(request, 'journal/goal_edit.html', stuff_for_frontend)
 
-# Delete 90 day Goals form
-@login_required(login_url='login')
-def goals_delete(request):
-    Goal.objects.filter(user=request.user).delete()
-    return redirect('goals_list')
-
 @login_required(login_url='login')
 def goals_download(request):
     response = HttpResponse(content_type='text/csv')
@@ -212,12 +206,6 @@ def dreams_download(request):
         writer.writerow(rowobj)
     # Return the file
     return response 
-
-# Delete all the users dreams
-@login_required(login_url='login')
-def dreams_delete(request):
-    Dream.objects.filter(user=request.user).delete()
-    return redirect('dream_list')
 
 # Search for a dream
 @login_required(login_url='login')
@@ -409,15 +397,13 @@ def collection_download(request):
 
     return response 
     
-
+# Restart sprint
 @login_required(login_url='login')
 def ninety_day_sprint_finish(request):
-    tasks = Task.objects.filter(user=request.user)
     dreams = Dream.objects.filter(user=request.user)
     recaps = Recap.objects.filter(user=request.user)
     goals = Goal.objects.filter(user=request.user)
-    tasks.delete()
     dreams.delete()
     recaps.delete()
     goals.delete()
-    return redirect('/')
+    return redirect('/#form_for_goals')

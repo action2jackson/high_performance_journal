@@ -203,7 +203,7 @@ a {
 	flex-direction: column;
 	margin: auto;
 	width: 80%;
-	height: 90vh;
+	min-height: 90vh;
 }
 
 #quote{
@@ -321,7 +321,7 @@ a {
 .my_goals {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
 	width: 100%;
 }
 
@@ -410,14 +410,15 @@ input.valid {
 	font-size: 1rem;
 }
 
+
 /* Next and previous slide for Form */
-.multi_step {
+#multi_step {
 	display: flex;
-	margin: auto;
+	margin: 1em auto;
 	width: 80%;
 }
 
-.multi_step button {
+#multi_step button {
 	color: #fff;
 	width: 100%;
 	border-radius: 40px;
@@ -432,6 +433,18 @@ input.valid {
 	margin: 0.2em;
 }
 
+#clearSprint {
+	color: #50497e;
+	text-transform: uppercase;
+	font-size: 0.75rem;  
+	transition: 0.5s;
+}
+
+#clearSprint:hover {
+	font-size: 1rem;
+	transition: 0.5s;
+}
+
 .nextButton {
 	width: 60%;
 }
@@ -441,33 +454,16 @@ input.valid {
 	width: 40%;
 }
 
-.multi_step .prevButton:hover {
+#multi_step .prevButton:hover {
 	transition: 0.5s ease;
 	background: #8179b9;
 }
 
-.multi_step .nextButton:hover {
+#multi_step .nextButton:hover {
 	transition: 0.5s ease;
 	background: #6d64a5;
 }
 
-/* Delete goals button */
-.delete_goals {
-	display: flex;
-	justify-content: center;
-	font-size: 0.75rem;
-	text-decoration: none;
-	color: #000;
-	padding: 0.4em;
-	background: none;
-	transition: 0.5s ease;
-}
-.delete_goals:hover {
-	transition: 0.5s ease;
-	padding: 0.4em 2em;
-	color: #fff;
-	background: #8360c3;
-}
 
 /* Slide show for displaying Goals */
 .mySlides {
@@ -678,143 +674,6 @@ input.valid {
 /* Sweet Alerts Message Styling */
 
 /* GOALS */
-
-
-
-/* Desktops */
-@media screen and (min-width: 2000px) {
-	.nav-link {
-		font-size: 2rem;
-	}
-	#home_page {
-		font-size: 3.5rem;
-	}
-	.feeling {
-		font-size: 2.5rem;
-	}
-	.emoji a {
-		font-size: 3rem;
-	}
-	.btnlink {
-		margin-top: 2.5em;
-		font-size: 3rem;
-	}
-	.goal_parallax {
-		font-size: 2rem;		
-	}
-	.intro_title {
-		font-size: 3.5rem;
-	}
-	.goals_form {
-		font-size: 2rem;
-	}
-	.multi_step button {
-		font-size: 2.25rem;
-	}
-	.goals_form label {
-		font-size: 2rem;
-	}
-	.goals_form input {
-		font-size: 1.75rem;
-	}
-	.delete_goals {
-		font-size: 1.5rem;
-	}
-	.swal-text {
-		font-size: 2rem;
-	}
-}
-/* Desktops */
-
-
-@media screen and (max-width: 1350px) {
-
-	/* MOBILE HEADER */
-	.burger div {
-		display: block;
-	}
-
-	.navigation_container {
-		position: fixed;
-		background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-		right: 0;
-		height: 92vh;
-		width: 100%;
-		z-index: 5;
-		top: 8vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		transform: translateX(100%);
-		transition: transform 0.5s ease-in;
-	}
-
-	.nav-link {
-		opacity: 0;
-		font-size: 2rem;
-	}
-
-	.header-active {
-		transform: translateX(0%);
-	}
-
-	@keyframes headerFade {
-		from {
-			opacity: 0;
-			transform: translateX(50px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0px);
-		}
-	}
-
-	/* Hamburger > X */
-	.toggle .line1 {
-		transform: rotate(-45deg) translate(-5px, 6px);
-	}
-	.toggle .line2 {
-		opacity: 0;
-	}
-	.toggle .line3 {
-		transform: rotate(45deg) translate(-5px, -6px);
-	}
-	/* MOBILE HEADER */
-
-	.feeling {
-		font-size: 1.1rem;
-	}
-
-	.feeling_container {
-		font-size: 0.8rem;
-		padding: 20px;
-	}
-
-	.button {
-		width: 70%;
-		margin: auto;
-		display: flex;
-		/* Switch main buttons to column stack */
-		flex-direction: column;
-	}
-
-	.btnlink {
-		font-size: 2rem;
-		padding: 1em;
-		word-spacing: 0;
-		background: url(https://images.theconversation.com/files/222720/original/file-20180612-52455-d6et0u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip);
-		transition: all 0.3s ease-in 0s;
-	}
-
-	.btnlink:hover {
-		background: url(https://cdn.mos.cms.futurecdn.net/paWPwF85Vkcs8YUuyvA3YM-1200-80.jpg);
-		background-size: cover;
-	}
-
-	#goals, .ninety-days {
-		font-size: 1.2rem;
-	}
-}
 
 
 
@@ -1178,11 +1037,577 @@ input.valid {
 
 
 
-/* iMac */
-@media only screen and (max-width: 1920) {
 
+.fc-month-view span.fc-title{
+	white-space: normal !important;
 }
 
+/* NOTES */
+.note_container {
+	background: #12FFF7;
+	display: flex;
+	flex-direction: column;
+	margin: 2em auto;
+	width: 70%;
+	padding: 2em;
+	border-radius: 10px;
+}
+
+.note_container .note_title, label {
+	font-weight: 500;
+}
+
+.note_container .note_text {
+	padding: 2em;
+}
+
+.home_note_button {
+	position: absolute;
+	padding-left: 0.5em;
+	color: #12FFF7;
+}
+
+
+.note_container h6 {
+	text-align: center;
+}
+
+.note_title, .note_text {
+	padding: 1em;
+	background: #12FFF7;
+	border: none;
+	outline: none;
+}
+
+.note_title {
+	padding-bottom: 2em;
+}
+
+.note_text {
+	height: 50vh;
+	resize: none;
+}
+
+.delete_note {
+	position: absolute;
+	font-size: 2rem;
+	color: #000;
+	text-decoration: none;
+	right: 18%;
+}
+
+.new_note {
+	display: flex;
+	justify-content: center;
+	margin: 3em auto;
+}
+
+.new_note a {
+	color: #000;
+	text-decoration: none;
+	background: #fff;
+	border: 4px inset #fff;
+	padding: 1em 2.5em;  
+}
+
+.new_note a:hover {
+	border: 4px outset #fff;
+}
+
+#noteSave {
+	margin-top: 2em;
+}
+
+
+.note_list_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.note_list {
+	background: linear-gradient(#B3FFAB, #12FFF7);
+	margin: 2em;
+	padding: 1em;
+	width: 25%;
+	height: 25vh;
+	min-width: 240px;
+	min-height: 200px;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+	border: linear-gradient(#B3FFAB, #12FFF7) solid 3px;
+	transition: ease 0.5s;
+}
+
+.note_list:hover {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.note_list p {
+	color: #000;
+	padding: 3em 1em 1em 1em;
+}
+
+.note_list h6 {
+	color: #000;
+}
+
+.note {
+	font-size: 1.25rem;
+}
+/* NOTES */
+
+
+
+/* CALENDAR */
+#calendar {
+	margin: auto;
+	width: 75%;
+	background-color: #fff;
+}
+
+#eventTaskReminder {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.inputContainer label {
+	float: left;
+	margin: none;
+}
+
+.inputContainer input {
+	border: 1px solid grey;
+}
+
+.swal2-input:after {
+	border: none;
+}
+
+.radioContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.radio {
+	margin: 1em auto;
+    width: 7em;
+	height: 5em;
+	color: red;
+	-webkit-appearance: none;
+}
+
+.radio:after {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	font-size: 1rem;
+	visibility: visible;
+	transition: ease 0.5s;
+	border-radius: 50px;
+}
+
+.radio:checked:after {
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+}
+
+#event:after {
+	color: rgba(0,0,0);
+	border: 2px solid rgba(0,0,0);
+	content: 'Event';
+}
+#event:checked:after {
+	background:rgba(0,0,0);
+	color: #fff;
+	border-radius: none;
+}
+
+#task:after {
+	color: #0CB4B4;	
+	border: 2px solid #0CB4B4;
+	content: 'Task';
+}
+#task:checked:after {
+	background:#0CB4B4;
+	color: #fff;
+}
+
+#reminder:after {
+	color: red;	
+	border: 2px solid red;
+	content: 'Reminder';
+}
+#reminder:checked:after {
+	background:red;
+	color: #fff;
+}
+
+.swal2-confirm {
+	width: 100%;
+	padding: 1em;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+/* CALENDAR */
+
+
+
+/* DAILY JOURNAL */
+.daily_journal_header {
+	display: flex;
+	justify-content: center;
+	margin: 3em auto;
+	width: 60%;
+	border-bottom: 1px solid #0CB4B4;
+}
+
+.dateContainer {
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+}
+
+.daily_journal_container {
+	display: flex;
+	flex-direction: row;
+	width: 70%;
+	margin: auto;
+	color: #fff;
+}
+
+.journal_container {
+	flex-direction: column;
+	flex: 3;
+}
+
+.journal_container h1 {
+	text-align: center;
+}
+
+.task_container {
+	flex-direction: column;
+	flex: 2;
+	padding-left: 1em;
+	border-left: 3px solid #0CB4B4;
+	height: 70vh;
+}
+
+#taskInput {
+	box-shadow: 0px 0px 20px #0CB4B4;
+	-moz-box-shadow: 0px 0px 20px #0CB4B4;
+	-webkit-box-shadow: 0px 0px 20px #0CB4B4;
+	-webkit-appearance: none;
+}
+
+.todo_list a {
+	cursor: default;
+	color: #0CB4B4;
+	text-decoration: none;
+}
+.todo_list a p:last-child {
+	display: none;
+}
+.todo_list a:hover p:last-child {
+	display: inline-block;
+}
+.todo_list a:hover p:first-child {
+	display: none;
+}
+
+
+.openFormContainer {
+	display: flex;
+	flex-direction: column;
+	height: 55vh;
+	justify-content: center;
+	align-items: center;
+} 
+
+#openRecapForm {
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #0CB4B4;
+	width: 75%;
+	font-size: 1.25rem;
+	padding: 2em;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+	outline: none;
+	opacity: 0.5;
+	transition: 0.5s ease;
+}
+
+#openRecapForm:hover {
+	opacity: 1;
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 0.8);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 1);
+	transition: all 0.4s ease 0s;
+}
+
+.recapForm {
+	display: none;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 2em auto;
+	transition: 0.5s ease;
+}
+
+.recapContainer {
+	display: flex;
+	flex-direction: column;	
+}
+
+.recapLists {
+	width: 300px;
+	margin: 1em auto;
+	padding: 0.65em;
+	border: 1px solid rgba(10, 180, 180, 1);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	background: rgba(20, 20, 20, .2);
+	color: white;
+	outline: none;
+	font-size: 1rem;
+}
+
+.recapTextArea {
+	height: 70%;
+	padding: 0.5em;
+	border: 1px solid rgba(10, 180, 180, 1);
+	border-right: none;
+	background: rgba(20, 20, 20, .2);
+	color: white;
+	outline: none;
+	resize: none;
+}
+
+.recapSubmit {
+	display: flex;
+	justify-content: center;
+}
+
+.recapSubmit button {
+	text-decoration: none;
+	text-align: center;
+	color: #fff;
+	font-size: 1rem;
+	background: #0CB4B4;
+	margin: 2em auto;
+	padding: .8em;
+	width: 100%;
+	border-radius: 10px;
+	transition: 0.5s ease;
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
+.recapSubmit button:hover {
+	-webkit-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
+	-moz-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
+	box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
+}
+
+
+ /* Change this name */
+.journal_btn {
+	color: #000;
+	background: #fff;
+	padding: 1em;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.25rem;
+	box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
+	z-index: 50;
+	cursor: pointer;
+	transition: 400ms;
+	right: 0;
+}
+
+.journal_btn:hover {
+	background: #0CB4B4;
+	box-shadow: none;
+}
+
+.daily_recap_class {
+	margin: 1em auto;
+}
+
+#collection_page {
+	padding: 3em;
+	height: 75vh;
+}
+
+/* DAILY JOURNAL */
+
+
+
+/* MEDIA */
+
+/* Desktops */
+@media screen and (min-width: 2000px) {
+	.nav-link {
+		font-size: 2rem;
+	}
+	#home_page {
+		font-size: 3.5rem;
+	}
+	.feeling {
+		font-size: 2.5rem;
+	}
+	.emoji a {
+		font-size: 3rem;
+	}
+	.btnlink {
+		margin-top: 2.5em;
+		font-size: 3rem;
+	}
+	.goal_parallax {
+		font-size: 2rem;		
+	}
+	.intro_title {
+		font-size: 3.5rem;
+	}
+	.goals_form {
+		font-size: 2rem;
+	}
+	.multi_step button {
+		font-size: 2.25rem;
+	}
+	.goals_form label {
+		font-size: 2rem;
+	}
+	.goals_form input {
+		font-size: 1.75rem;
+	}
+	.delete_goals {
+		font-size: 1.5rem;
+	}
+	.swal-text {
+		font-size: 2rem;
+	}
+}
+/* Desktops */
+
+
+@media screen and (max-width: 1350px) {
+
+	/* MOBILE HEADER */
+	.burger div {
+		display: block;
+	}
+
+	.navigation_container {
+		position: fixed;
+		background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+		right: 0;
+		height: 92vh;
+		width: 100%;
+		z-index: 5;
+		top: 8vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transform: translateX(100%);
+		transition: transform 0.5s ease-in;
+	}
+
+	.nav-link {
+		opacity: 0;
+		font-size: 2rem;
+	}
+
+	.header-active {
+		transform: translateX(0%);
+	}
+
+	@keyframes headerFade {
+		from {
+			opacity: 0;
+			transform: translateX(50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0px);
+		}
+	}
+
+	/* Hamburger > X */
+	.toggle .line1 {
+		transform: rotate(-45deg) translate(-5px, 6px);
+	}
+	.toggle .line2 {
+		opacity: 0;
+	}
+	.toggle .line3 {
+		transform: rotate(45deg) translate(-5px, -6px);
+	}
+	/* MOBILE HEADER */
+
+	.feeling {
+		font-size: 1.1rem;
+	}
+
+	.feeling_container {
+		font-size: 0.8rem;
+		padding: 20px;
+	}
+
+	.button {
+		width: 70%;
+		margin: auto;
+		display: flex;
+		/* Switch main buttons to column stack */
+		flex-direction: column;
+	}
+
+	.btnlink {
+		font-size: 2rem;
+		padding: 1em;
+		word-spacing: 0;
+		background: url(https://images.theconversation.com/files/222720/original/file-20180612-52455-d6et0u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip);
+		transition: all 0.3s ease-in 0s;
+	}
+
+	.btnlink:hover {
+		background: url(https://cdn.mos.cms.futurecdn.net/paWPwF85Vkcs8YUuyvA3YM-1200-80.jpg);
+		background-size: cover;
+	}
+
+	#goals, .ninety-days {
+		font-size: 1.2rem;
+	}
+}
 
 /* Just for Ipad Pro */
 @media only screen and (max-width: 1350px) and (min-width: 1023px) {
@@ -1404,6 +1829,23 @@ input.valid {
 	}
 }
 
+@media screen and (max-width: 750px) {
+	#calendar {
+		font-size: 10px;
+	}
+}
+@media screen and (max-width: 480px) {
+	#calendar {
+		font-size: 8px;
+	}
+}
+@media screen and (max-width: 400px) {
+	#calendar {
+		font-size: 6px;
+	}
+}
+
+
 @media screen and (max-width: 620px) {
 
 	#home_page {
@@ -1593,12 +2035,6 @@ input.valid {
 	}
 }
 
-@media screen and (max-width: 725px) {
-	#calendar {
-		font-size: 10px;
-	}
-}
-
 @media screen and (max-width: 330px) {
 	#home_page {
 		font-size: 0.9rem;
@@ -1610,445 +2046,4 @@ input.valid {
 }
 /* Font-size changes */
 
-.fc-month-view span.fc-title{
-	white-space: normal !important;
-}
-
-.note_container {
-	background: #12FFF7;
-	display: flex;
-	flex-direction: column;
-	margin: 2em auto;
-	width: 70%;
-	padding: 2em;
-	border-radius: 10px;
-}
-
-.note_container .note_title, label {
-	font-weight: 500;
-}
-
-.note_container .note_text {
-	padding: 2em;
-}
-
-.home_note_button {
-	position: absolute;
-	padding-left: 0.5em;
-	color: #12FFF7;
-}
-
-
-.note_container h6 {
-	text-align: center;
-}
-
-.note_title, .note_text {
-	padding: 1em;
-	background: #12FFF7;
-	border: none;
-	outline: none;
-}
-
-.note_title {
-	padding-bottom: 2em;
-}
-
-.note_text {
-	height: 50vh;
-	resize: none;
-}
-
-.delete_note {
-	position: absolute;
-	font-size: 2rem;
-	color: #000;
-	text-decoration: none;
-	right: 18%;
-}
-
-.new_note {
-	display: flex;
-	justify-content: center;
-	margin: 3em auto;
-}
-
-.new_note a {
-	color: #000;
-	text-decoration: none;
-	background: #fff;
-	border: 4px inset #fff;
-	padding: 1em 2.5em;  
-}
-
-.new_note a:hover {
-	border: 4px outset #fff;
-}
-
-#noteSave {
-	margin-top: 2em;
-}
-
-
-.note_list_container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	margin: 0 auto;
-	width: 80%;
-}
-
-.note_list {
-	background: linear-gradient(#B3FFAB, #12FFF7);
-	margin: 2em;
-	padding: 1em;
-	width: 25%;
-	height: 25vh;
-	min-width: 240px;
-	min-height: 200px;
-	border-radius: 10px;
-	text-decoration: none;
-	text-align: center;
-	border: linear-gradient(#B3FFAB, #12FFF7) solid 3px;
-	transition: ease 0.5s;
-}
-
-.note_list:hover {
-	-webkit-transform: scale(1.2);
-	-ms-transform: scale(1.2);
-	transform: scale(1.2);
-}
-
-.note_list p {
-	color: #000;
-	padding: 3em 1em 1em 1em;
-}
-
-.note_list h6 {
-	color: #000;
-}
-
-.note {
-	font-size: 1.25rem;
-}
-
-
-
-#calendar {
-	margin: auto;
-	width: 75%;
-	background-color: #fff;
-}
-
-/* Class from Fullcalendar that effects the events drag color */
-/* .fc-event-inner {
-	background: #0CB4B4;
-	border-color: #0CB4B4;
-} */
-
-#eventTaskReminder {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.inputContainer label {
-	float: left;
-	margin: none;
-}
-
-.inputContainer input {
-	border: 1px solid grey;
-}
-
-.swal2-input:after {
-	border: none;
-}
-
-.radioContainer {
-	display: flex;
-	flex-direction: column;
-}
-
-.radio {
-	margin: 1em auto;
-    width: 7em;
-	height: 5em;
-}
-
-.radio:after {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	background-color: #fff;
-	font-size: 1rem;
-	visibility: visible;
-	transition: ease 0.5s;
-	border-radius: 50px;
-}
-
-.radio:checked:after {
-	width: 100%;
-	height: 100%;
-	visibility: visible;
-}
-
-#event:after {
-	color: rgba(0,0,0);
-	border: 2px solid rgba(0,0,0);
-	content: 'Event';
-}
-#event:checked:after {
-	background:rgba(0,0,0);
-	color: #fff;
-	border-radius: none;
-}
-
-#task:after {
-	color: #0CB4B4;	
-	border: 2px solid #0CB4B4;
-	content: 'Task';
-}
-#task:checked:after {
-	background:#0CB4B4;
-	color: #fff;
-}
-
-#reminder:after {
-	color: red;	
-	border: 2px solid red;
-	content: 'Reminder';
-}
-#reminder:checked:after {
-	background:red;
-	color: #fff;
-}
-
-.swal2-confirm {
-	width: 100%;
-	padding: 1em;
-}
-
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    color: rgba(0, 0, 0, 0);
-    opacity: 1;
-    display: block;
-    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-}
-
-::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-}
-
-
-
-.daily_journal_header {
-	display: flex;
-	justify-content: center;
-	margin: 3em auto;
-	width: 60%;
-	border-bottom: 1px solid #0CB4B4;
-}
-
-.dateContainer {
-	display: flex;
-	flex-direction: row;
-	margin: auto;
-}
-
-.daily_journal_container {
-	display: flex;
-	flex-direction: row;
-	width: 70%;
-	margin: auto;
-	color: #fff;
-}
-
-.journal_container {
-	flex-direction: column;
-	flex: 3;
-}
-
-.journal_container h1 {
-	text-align: center;
-}
-
-.task_container {
-	flex-direction: column;
-	flex: 2;
-	padding-left: 1em;
-	border-left: 3px solid #0CB4B4;
-	height: 70vh;
-}
-
-#taskInput {
-	box-shadow: 0px 0px 20px #0CB4B4;
-	-moz-box-shadow: 0px 0px 20px #0CB4B4;
-	-webkit-box-shadow: 0px 0px 20px #0CB4B4;
-	-webkit-appearance: none;
-}
-
-.todo_list a {
-	cursor: default;
-	color: #0CB4B4;
-	text-decoration: none;
-}
-.todo_list a p:last-child {
-	display: none;
-}
-.todo_list a:hover p:last-child {
-	display: inline-block;
-}
-.todo_list a:hover p:first-child {
-	display: none;
-}
-
-
-.openFormContainer {
-	display: flex;
-	flex-direction: column;
-	height: 55vh;
-	justify-content: center;
-	align-items: center;
-} 
-
-#openRecapForm {
-	color: #fff !important;
-	text-transform: uppercase;
-	text-decoration: none;
-	background: #0CB4B4;
-	width: 75%;
-	font-size: 1.25rem;
-	padding: 2em;
-	border-radius: 50px;
-	display: inline-block;
-	border: none;
-	transition: all 0.4s ease 0s;
-	outline: none;
-	opacity: 0.5;
-	transition: 0.5s ease;
-}
-
-#openRecapForm:hover {
-	opacity: 1;
-	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-	-webkit-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 0.8);
-	-moz-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 1);
-	transition: all 0.4s ease 0s;
-}
-
-.recapForm {
-	display: none;
-	flex-direction: row;
-	justify-content: space-between;
-	margin: 2em auto;
-	transition: 0.5s ease;
-}
-
-.recapContainer {
-	display: flex;
-	flex-direction: column;	
-}
-
-.recapLists {
-	width: 300px;
-	margin: 1em auto;
-	padding: 0.65em;
-	border: 1px solid rgba(10, 180, 180, 1);
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	background: rgba(20, 20, 20, .2);
-	color: white;
-	outline: none;
-	font-size: 1rem;
-}
-
-.recapTextArea {
-	height: 70%;
-	padding: 0.5em;
-	border: 1px solid rgba(10, 180, 180, 1);
-	border-right: none;
-	background: rgba(20, 20, 20, .2);
-	color: white;
-	outline: none;
-	resize: none;
-}
-
-.recapSubmit {
-	display: flex;
-	justify-content: center;
-}
-
-.recapSubmit button {
-	text-decoration: none;
-	text-align: center;
-	color: #fff;
-	font-size: 1rem;
-	background: #0CB4B4;
-	margin: 2em auto;
-	padding: .8em;
-	width: 100%;
-	border-radius: 10px;
-	transition: 0.5s ease;
-	cursor: pointer;
-	outline: none;
-	border: none;
-}
-
-.recapSubmit button:hover {
-	-webkit-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
-	-moz-box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
-	box-shadow: -4px 10px 5px 0px rgba(12,180,180,0.38);
-}
-
-
- /* Change this name */
-.journal_btn {
-	color: #000;
-	background: #fff;
-	padding: 1em;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 1.25rem;
-	box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
-	z-index: 50;
-	cursor: pointer;
-	transition: 400ms;
-	right: 0;
-}
-
-.journal_btn:hover {
-	background: #0CB4B4;
-	box-shadow: none;
-}
-
-
-.daily_recap_class {
-	margin: 1em auto;
-}
-
-#collection_page {
-	padding: 3em;
-	height: 75vh;
-}
-
-
-/* @media screen and (min-width: 320px) and (max-width: 1067px) {
-	.countdownContainer {
-		display: none !important;
-	}
-	.my_goals {
-		display: none !important;
-	}
-	.goal_container {
-		display: none !important;
-	}
-} */
+/* MEDIA */

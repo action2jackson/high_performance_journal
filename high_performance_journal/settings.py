@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+# Editor plugin for notes
 CKEDITOR_CONFIGS = {
     'default': {
         'startupFocus': 'true',

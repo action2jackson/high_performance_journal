@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="goal_container">
-            <a id="goals" href="#bottom_of_homepage" onclick="anchor()" class="goal_parallax" data-rateY="0" data-rateX="-5" data-direction="horizontal"><h3>90 DAY GOALS<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
+            <a id="goals" href="#bottom_of_homepage" onclick="anchor()" class="goal_parallax" data-rateY="0" data-rateX="-5" data-direction="horizontal"><h3>90 DAY SPRINT<br></h3><h3 class="fas fa fa-angle-double-down fa-2x"></h3></a>
         </div>
         <!-- MAIN PAGE -->
     </section>
@@ -51,8 +51,9 @@
                         These goals can be related to any part of your life that your looking to improve. EX: 
                         work, health, relationships, etc... </p>
                     </div>
-                    <div>
-                        <h5 class="intro_end">Make sure to download your dreams, goals and daily recap collection from your previous sprint before starting a new one because it will all be cleared!</h5>
+                    <div id="clearSprintContainer">
+                        <h5 class="intro_end" >Make sure to download your dreams, goals and daily recap collection from previous sprints before starting a new one!</h5>
+                        <strong><a id="clearSprint" href="goals/sprint/finish/">Clear Previous Sprint</a></strong>
                     </div>
                 </div>
 
@@ -67,11 +68,10 @@
                 {% endfor %}
 
                 <!-- Navigation through form slides -->
-                <div class="multi_step">
+                <div id="multi_step">
                     <button type="button" class="prevButton" id="prevBtn">Previous</button>
                     <button type="button" class="nextButton" id="nextBtn">Next</button>
                 </div> 
-
             </form>
         </div>
     </section>
@@ -102,6 +102,7 @@
     </section>
     <!-- COUNTDOWN TIMER -->
 
+    <!-- This scripts switches the 90 day sprint anchor depending on if the timer or goals form is showing -->
     <script>
         function anchor() {
             var anchor = document.getElementById("goals")

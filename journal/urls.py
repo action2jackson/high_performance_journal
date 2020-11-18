@@ -7,7 +7,6 @@ urlpatterns = [
     path('goals/', views.goals_list, name='goals_list'),
     # Need a pk value for getting instances
     path('goal/edit/<str:pk>/', views.goal_edit, name='goal_edit'),
-    path('goals/delete/', views.goals_delete, name='goals_delete'),
     path(r'goals/download/', views.goals_download, name='goals_download'),
     path('signup/', views.signup_page, name='signup_page'),
     path('login/', views.login_page, name='login_page'),
@@ -17,7 +16,6 @@ urlpatterns = [
     path('dream/new/', views.dream_create, name='dream_create'),
     # int:pk finds pk value through integers
     path('dreams/<int:pk>/edit/', views.dream_edit, name='dream_edit'),
-    path('dreams/delete/', views.dreams_delete, name='dreams_delete'),
     path(r'dreams/download/', views.dreams_download, name='dreams_download'),
     path('notes/journal', views.notes_journal, name='notes_journal'),
     path('note/new/', views.note_create, name='note_create'),
@@ -31,5 +29,5 @@ urlpatterns = [
     path('task/<int:pk>/delete/', views.task_delete, name="task_delete"),  
     path('collection/', views.collection, name='collection'), 
     path(r'collection/download/', views.collection_download, name='collection_download'),
-    path('sprint/finish/', views.ninety_day_sprint_finish, name='sprint_finish'),
+    path('goals/sprint/finish/', views.ninety_day_sprint_finish, name='sprint_finish'),
 ]
